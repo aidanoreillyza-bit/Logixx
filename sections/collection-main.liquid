@@ -1,85 +1,238 @@
+<!-- ── Collection hero banner ────────────────────────────────── -->
+<div class="lx-coll-hero">
+  <div class="lx-container">
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+    <p class="lx-coll-hero__desc">{{ collection.description }}</p>
+    {% endif %}
+    <div class="lx-coll-hero__pills">
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/></svg>
+        {{ collection.products_count }} Products
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8zM5.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+        Free UK Delivery
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Clinically Proven
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        Halal Certified
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Filter & sort bar ─────────────────────────────────────── -->
+<div class="lx-coll-bar" id="lx-coll-bar">
+  <div class="lx-coll-bar__filters" role="group" aria-label="Filter products">
+    <button class="lx-coll-bar__filter is-active" data-filter="all" type="button">All</button>
+    <button class="lx-coll-bar__filter" data-filter="male" type="button">Male</button>
+    <button class="lx-coll-bar__filter" data-filter="female" type="button">Female</button>
+    <button class="lx-coll-bar__filter" data-filter="diagnostics" type="button">Diagnostics</button>
+  </div>
+  <div class="lx-coll-bar__right">
+    <select class="lx-coll-bar__sort" id="lx-coll-sort" aria-label="Sort products">
+      <option value="default">Featured</option>
+      <option value="price-asc">Price: Low → High</option>
+      <option value="price-desc">Price: High → Low</option>
+      <option value="title-asc">Name A–Z</option>
+    </select>
+    <button class="lx-coll-bar__view is-active" id="lx-view-grid" aria-label="Grid view" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    </button>
+    <button class="lx-coll-bar__view" id="lx-view-list" aria-label="List view" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ── Product grid ──────────────────────────────────────────── -->
 <section class="lx-coll">
   <div class="lx-container">
-    <div class="lx-coll__head lx-fade-in">
-      {% if section.settings.badge != blank %}
-      <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
-      {% endif %}
-      <h1>{{ collection.title }}</h1>
-      {% if collection.description != blank %}
-      <p>{{ collection.description }}</p>
-      {% endif %}
-    </div>
 
     {% if collection.products.size > 0 %}
-    <div class="lx-coll__grid">
+    <div class="lx-coll__grid" id="lx-coll-grid">
       {% for product in collection.products limit: 24 %}
-      <article class="lx-pcard lx-fade-in">
-        <a href="{{ product.url }}" class="lx-pcard__img-link" aria-label="{{ product.title }}">
-          <div class="lx-pcard__img">
-            {% if product.featured_image != blank %}
-            <img
-              src="{{ product.featured_image | img_url: '600x' }}"
-              alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
-              loading="lazy"
-              width="600"
-              height="450"
-            >
-            {% else %}
-            <svg class="lx-pcard__img-placeholder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            {% endif %}
-            {% if product.compare_at_price > product.price %}
-            <span class="lx-pcard__sale" aria-label="Sale">SALE</span>
-            {% endif %}
-          </div>
-        </a>
-        <div class="lx-pcard__body">
+      {% assign cat_raw = product.type | downcase | strip %}
+      {% assign cat_key = 'other' %}
+      {% if cat_raw contains 'male' and cat_raw contains 'female' %}
+        {% assign cat_key = 'male female' %}
+      {% elsif cat_raw contains 'female' %}
+        {% assign cat_key = 'female' %}
+      {% elsif cat_raw contains 'male' %}
+        {% assign cat_key = 'male' %}
+      {% elsif cat_raw contains 'diagnostic' %}
+        {% assign cat_key = 'diagnostics' %}
+      {% endif %}
+
+      <article class="lx-coll-card lx-fade-in" data-category="{{ cat_key }}" data-price="{{ product.price }}" data-title="{{ product.title | escape }}">
+        <!-- Image -->
+        <div class="lx-coll-card__img">
+          {% if product.featured_image != blank %}
+          <img
+            src="{{ product.featured_image | img_url: '600x' }}"
+            alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+          {% else %}
+          <svg class="lx-coll-card__img-placeholder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          {% endif %}
+          {% if product.compare_at_price > product.price %}
+          <span class="lx-coll-card__badge-sale" aria-label="Sale">SALE</span>
+          {% endif %}
+          {% if product.tags contains 'best-seller' or product.tags contains 'bestseller' %}
+          <span class="lx-coll-card__badge-best">Best Seller</span>
+          {% endif %}
+        </div>
+
+        <!-- Body -->
+        <div class="lx-coll-card__body">
           {% if product.type != blank %}
-          <div class="lx-pcard__cat">{{ product.type }}</div>
+          <div class="lx-coll-card__cat">{{ product.type }}</div>
           {% endif %}
-          <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+
+          <a href="{{ product.url }}" class="lx-coll-card__title">{{ product.title }}</a>
+
           {% if product.description != blank %}
-          <p class="lx-pcard__desc">{{ product.description | strip_html | truncate: 100 }}</p>
+          <p class="lx-coll-card__desc">{{ product.description | strip_html | truncate: 90 }}</p>
           {% endif %}
-          <div class="lx-pcard__price-row">
-            <span class="lx-pcard__price">{{ product.price | money }}</span>
+
+          <div class="lx-coll-card__stars" aria-label="Rated 5 out of 5 stars">
+            {% for i in (1..5) %}
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            {% endfor %}
+            <span>({{ product.metafields.reviews.rating_count | default: '4.9' }})</span>
+          </div>
+
+          <div class="lx-coll-card__price-row">
+            <span class="lx-coll-card__price">{{ product.price | money }}</span>
             {% if product.compare_at_price > product.price %}
-            <span class="lx-pcard__compare">{{ product.compare_at_price | money }}</span>
+            <span class="lx-coll-card__compare">{{ product.compare_at_price | money }}</span>
             {% assign saving = product.compare_at_price | minus: product.price %}
-            <span class="lx-pcard__save">Save {{ saving | money }}</span>
+            <span class="lx-coll-card__save">Save {{ saving | money }}</span>
             {% endif %}
           </div>
-          <div class="lx-pcard__add-form">
-            <form action="/cart/add" method="post">
+
+          <div class="lx-coll-card__actions">
+            <form action="/cart/add" method="post" style="flex:1;display:flex;">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
               <input type="hidden" name="quantity" value="1">
-              <button type="submit" class="lx-pcard__add-btn" {% unless product.available %}disabled{% endunless %}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+              <button type="submit" class="lx-coll-card__add" {% unless product.available %}disabled{% endunless %} style="flex:1;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 {% if product.available %}Add to Basket{% else %}Sold Out{% endif %}
               </button>
             </form>
+            <a href="{{ product.url }}" class="lx-coll-card__view">Details</a>
           </div>
         </div>
       </article>
       {% endfor %}
     </div>
 
+    <!-- Empty-state shown by JS when all cards are filtered out -->
+    <div class="lx-coll__empty" id="lx-coll-empty" hidden>
+      <div class="lx-coll__empty-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <h2>No products found</h2>
+      <p>Try a different filter or browse our full range.</p>
+      <button class="lx-btn lx-btn--mint" data-filter="all" type="button" onclick="document.querySelector('[data-filter=all]').click()">Browse All</button>
+    </div>
+
     {% else %}
+    <!-- Collection is empty in Shopify -->
     <div class="lx-coll__empty" role="status">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      <div class="lx-coll__empty-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
       <h2>No products found</h2>
       <p>This collection is currently empty. Check back soon!</p>
       <a href="/collections/all" class="lx-btn lx-btn--mint">Browse All Products</a>
     </div>
     {% endif %}
+
   </div>
 </section>
+
+<script>
+(function () {
+  'use strict';
+
+  var grid   = document.getElementById('lx-coll-grid');
+  var empty  = document.getElementById('lx-coll-empty');
+  var sort   = document.getElementById('lx-coll-sort');
+  var btnGrid = document.getElementById('lx-view-grid');
+  var btnList = document.getElementById('lx-view-list');
+
+  if (!grid) return;
+
+  var cards = Array.from(grid.querySelectorAll('.lx-coll-card'));
+  var currentFilter = 'all';
+
+  /* ── Filter ── */
+  document.querySelectorAll('.lx-coll-bar__filter').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.lx-coll-bar__filter').forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      currentFilter = btn.dataset.filter;
+      applyFilter();
+    });
+  });
+
+  function applyFilter() {
+    var visible = 0;
+    cards.forEach(function (card) {
+      var cat = card.dataset.category || '';
+      var show = currentFilter === 'all' || cat.indexOf(currentFilter) !== -1;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    if (empty) empty.hidden = visible > 0;
+  }
+
+  /* ── Sort ── */
+  if (sort) {
+    sort.addEventListener('change', function () {
+      var val   = sort.value;
+      var items = Array.from(grid.querySelectorAll('.lx-coll-card:not([hidden])'));
+      items.sort(function (a, b) {
+        if (val === 'price-asc')  return Number(a.dataset.price) - Number(b.dataset.price);
+        if (val === 'price-desc') return Number(b.dataset.price) - Number(a.dataset.price);
+        if (val === 'title-asc')  return (a.dataset.title || '').localeCompare(b.dataset.title || '');
+        return 0;
+      });
+      items.forEach(function (item) { grid.appendChild(item); });
+    });
+  }
+
+  /* ── Grid / List toggle ── */
+  if (btnGrid) {
+    btnGrid.addEventListener('click', function () {
+      grid.classList.remove('is-list');
+      btnGrid.classList.add('is-active');
+      if (btnList) btnList.classList.remove('is-active');
+    });
+  }
+  if (btnList) {
+    btnList.addEventListener('click', function () {
+      grid.classList.add('is-list');
+      btnList.classList.add('is-active');
+      if (btnGrid) btnGrid.classList.remove('is-active');
+    });
+  }
+})();
+</script>
 
 {% schema %}
 {
   "name": "Collection",
-  "settings":[
-    {"type":"text","id":"badge","label":"Badge","default":"Browse"}
-  ],
-  "presets":[{"name":"Collection"}]
+  "settings": [],
+  "presets": [{"name": "Collection"}]
 }
 {% endschema %}
