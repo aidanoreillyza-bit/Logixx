@@ -1,0 +1,141 @@
+<section class="products-section" id="products" aria-labelledby="products-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">{{ section.settings.badge_text }}</span>
+      <h2 class="section-title" id="products-heading">{{ section.settings.heading }}</h2>
+      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+    <ul class="products-grid" role="list">
+      {% if section.settings.collection != blank %}
+        {% for product in section.settings.collection.products limit: 6 %}
+          <li class="product-card">
+            <a href="{{ product.url }}" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="{{ product.featured_image | img_url: '400x300', crop: 'center' }}"
+                alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                class="product-image"
+                width="400"
+                height="300"
+                loading="lazy"
+              />
+            </a>
+            {% if product.metafields.custom.badge != blank %}
+              <div class="product-badge product-badge--bestseller">{{ product.metafields.custom.badge }}</div>
+            {% endif %}
+            <div class="product-body">
+              <h3 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <p class="product-desc">{{ product.description | strip_html | truncate: 120 }}</p>
+              <div class="product-footer">
+                <span class="product-price">{{ product.price | money }}</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-variant-id="{{ product.variants.first.id }}"
+                  data-product="{{ product.title | escape }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                >Add to Cart</button>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      {% else %}
+        <li class="product-card">
+          <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img src="https://placehold.co/400x300/e8f6f3/0f1f3a?text=FertilBoost+Pro" alt="FertilBoost Pro supplement bottle" class="product-image" width="400" height="300" loading="lazy" />
+          </a>
+          <div class="product-badge product-badge--bestseller">Best Seller</div>
+          <div class="product-body">
+            <h3 class="product-title"><a href="#">FertilBoost Pro</a></h3>
+            <p class="product-desc">Comprehensive prenatal formula with CoQ10, folate, and antioxidants to optimise egg quality and hormonal balance.</p>
+            <div class="product-footer">
+              <span class="product-price">$49.99 <small>/ 30-day supply</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-product="FertilBoost Pro" aria-label="Add FertilBoost Pro to cart">Add to Cart</button>
+            </div>
+          </div>
+        </li>
+        <li class="product-card">
+          <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img src="https://placehold.co/400x300/e8f0fc/0f1f3a?text=MaleVital+Max" alt="MaleVital Max supplement bottle" class="product-image" width="400" height="300" loading="lazy" />
+          </a>
+          <div class="product-body">
+            <h3 class="product-title"><a href="#">MaleVital Max</a></h3>
+            <p class="product-desc">Clinically proven blend to improve sperm motility, morphology, and count with zinc, selenium, and L-carnitine.</p>
+            <div class="product-footer">
+              <span class="product-price">$44.99 <small>/ 30-day supply</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-product="MaleVital Max" aria-label="Add MaleVital Max to cart">Add to Cart</button>
+            </div>
+          </div>
+        </li>
+        <li class="product-card">
+          <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img src="https://placehold.co/400x300/fef3cd/0f1f3a?text=OvuTrack+Kit" alt="OvuTrack home ovulation testing kit" class="product-image" width="400" height="300" loading="lazy" />
+          </a>
+          <div class="product-badge product-badge--new">New</div>
+          <div class="product-body">
+            <h3 class="product-title"><a href="#">OvuTrack Home Kit</a></h3>
+            <p class="product-desc">Precision LH surge detection strips with app connectivity to identify your peak fertile window with 99% accuracy.</p>
+            <div class="product-footer">
+              <span class="product-price">$29.99 <small>/ 30 strips</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-product="OvuTrack Home Kit" aria-label="Add OvuTrack Home Kit to cart">Add to Cart</button>
+            </div>
+          </div>
+        </li>
+        <li class="product-card">
+          <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img src="https://placehold.co/400x300/fce8ec/0f1f3a?text=HormoneHarmony" alt="HormoneHarmony supplement bottles" class="product-image" width="400" height="300" loading="lazy" />
+          </a>
+          <div class="product-body">
+            <h3 class="product-title"><a href="#">HormoneHarmony</a></h3>
+            <p class="product-desc">Adaptogenic formula with myo-inositol and Vitex to support hormonal balance, regular cycles, and PCOS management.</p>
+            <div class="product-footer">
+              <span class="product-price">$39.99 <small>/ 60-day supply</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-product="HormoneHarmony" aria-label="Add HormoneHarmony to cart">Add to Cart</button>
+            </div>
+          </div>
+        </li>
+        <li class="product-card">
+          <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img src="https://placehold.co/400x300/e8f6f3/0f1f3a?text=Couples+Bundle" alt="LogixX Couples Fertility Bundle" class="product-image" width="400" height="300" loading="lazy" />
+          </a>
+          <div class="product-badge product-badge--sale">Save 20%</div>
+          <div class="product-body">
+            <h3 class="product-title"><a href="#">Couples Fertility Bundle</a></h3>
+            <p class="product-desc">Everything you need together — FertilBoost Pro and MaleVital Max at a special bundle price for couples starting their journey.</p>
+            <div class="product-footer">
+              <span class="product-price">$74.99 <small><s>$94.98</s></small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-product="Couples Fertility Bundle" aria-label="Add Couples Fertility Bundle to cart">Add to Cart</button>
+            </div>
+          </div>
+        </li>
+        <li class="product-card">
+          <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img src="https://placehold.co/400x300/e8f0fc/0f1f3a?text=Sperm+Test+Kit" alt="SpermCheck at-home fertility test kit" class="product-image" width="400" height="300" loading="lazy" />
+          </a>
+          <div class="product-body">
+            <h3 class="product-title"><a href="#">SpermCheck Home Test</a></h3>
+            <p class="product-desc">Clinically validated at-home sperm count test. Get results in 10 minutes and connect with our specialists for next steps.</p>
+            <div class="product-footer">
+              <span class="product-price">$34.99 <small>/ 2 tests</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-product="SpermCheck Home Test" aria-label="Add SpermCheck Home Test to cart">Add to Cart</button>
+            </div>
+          </div>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "type": "featured-products",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Our Products" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Science-backed fertility supplements & kits" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Clinically formulated to support every stage of your fertility journey, from preparation to pregnancy." },
+    { "type": "collection", "id": "collection", "label": "Collection" }
+  ],
+  "presets": [
+    { "name": "Featured Products" }
+  ]
+}
+{% endschema %}

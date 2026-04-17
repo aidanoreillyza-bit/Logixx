@@ -1,0 +1,53 @@
+<div class="container" style="padding-top: 48px; padding-bottom: 48px;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+    <div>
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | img_url: '560x560', crop: 'center' }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          width="560"
+          height="560"
+          style="width: 100%; border-radius: 14px;"
+          loading="eager"
+        />
+      {% endif %}
+    </div>
+    <div>
+      <h1 style="font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy-800); margin-bottom: 12px;">{{ product.title }}</h1>
+      <p style="font-size: 1.4rem; font-weight: 700; color: var(--mint-600); margin-bottom: 20px;">{{ product.price | money }}</p>
+      <div style="color: var(--grey-600); line-height: 1.7; margin-bottom: 28px;">{{ product.description }}</div>
+
+      {% form 'product', product %}
+        {% if product.variants.size > 1 %}
+          <div style="margin-bottom: 20px;">
+            <label for="variant-select" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--navy-800);">Option</label>
+            <select id="variant-select" name="id" style="width: 100%; padding: 10px 14px; border: 1px solid var(--grey-200); border-radius: var(--radius-md); font-family: inherit; font-size: 15px;">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                  {{ variant.title }}{% unless variant.available %} — Sold out{% endunless %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        {% endif %}
+
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
+          <label for="quantity" style="font-weight: 600; color: var(--navy-800);">Qty</label>
+          <input type="number" id="quantity" name="quantity" value="1" min="1" style="width: 70px; padding: 10px; border: 1px solid var(--grey-200); border-radius: var(--radius-md); text-align: center; font-family: inherit; font-size: 15px;" />
+        </div>
+
+        {% if product.available %}
+          <button type="submit" name="add" class="btn btn-primary btn-lg btn-full">Add to Cart</button>
+        {% else %}
+          <button type="button" class="btn btn-primary btn-lg btn-full" disabled>Sold Out</button>
+        {% endif %}
+      {% endform %}
+
+      {% if product.metafields.custom.trust_note != blank %}
+        <p style="margin-top: 16px; font-size: 13px; color: var(--grey-400); text-align: center;">{{ product.metafields.custom.trust_note }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

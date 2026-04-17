@@ -1,0 +1,117 @@
+<header class="site-header" id="site-header">
+  <div class="header-inner container">
+    <a href="{{ routes.root_url }}" class="logo" aria-label="{{ shop.name }} home">
+      <span class="logo-icon" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" fill="#00d4a8" opacity="0.15"/>
+          <circle cx="16" cy="16" r="8" fill="#00d4a8"/>
+          <path d="M16 8 Q20 12 16 16 Q12 20 16 24" stroke="#0f1f3a" stroke-width="2" fill="none"/>
+        </svg>
+      </span>
+      <span class="logo-text">Logix<span class="logo-accent">X</span></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <ul>
+        {% for block in section.blocks %}
+          {% if block.type == 'nav_link' %}
+            <li><a href="{{ block.settings.url }}">{{ block.settings.label }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="{{ section.settings.cta_url }}" class="btn btn-primary btn-sm">{{ section.settings.cta_label }}</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true" role="dialog">
+  <div class="drawer-header">
+    <a href="{{ routes.root_url }}" class="logo" aria-label="{{ shop.name }} home">
+      <span class="logo-text">Logix<span class="logo-accent">X</span></span>
+    </a>
+    <button class="drawer-close" id="drawer-close-btn" aria-label="Close navigation menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-nav-list">
+    {% for block in section.blocks %}
+      {% if block.type == 'nav_link' %}
+        <li><a href="{{ block.settings.url }}" class="drawer-link">{{ block.settings.label }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <div class="drawer-cta">
+    <a href="{{ section.settings.cta_url }}" class="btn btn-primary btn-full drawer-link">{{ section.settings.cta_label }}</a>
+    {% if section.settings.phone != blank %}
+      <p class="drawer-contact">
+        <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
+      </p>
+    {% endif %}
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "type": "header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button text",
+      "default": "Free Consultation"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button URL"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone (shown in mobile drawer)",
+      "default": "+1 (800) 555-6789"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        { "type": "nav_link", "settings": { "label": "Why Us", "url": "#why-us" } },
+        { "type": "nav_link", "settings": { "label": "Products", "url": "#products" } },
+        { "type": "nav_link", "settings": { "label": "Testimonials", "url": "#testimonials" } },
+        { "type": "nav_link", "settings": { "label": "FAQ", "url": "#faq" } },
+        { "type": "nav_link", "settings": { "label": "Contact", "url": "#email-cta" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+<section class="why-us-section" id="why-us" aria-labelledby="why-us-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">{{ section.settings.badge_text }}</span>
+      <h2 class="section-title" id="why-us-heading">{{ section.settings.heading }}</h2>
+      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+    <ul class="why-us-grid" role="list">
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          <li class="why-us-card" {{ block.shopify_attributes }}>
+            <div class="why-icon" aria-hidden="true">
+              {% case forloop.index %}
+                {% when 1 %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"/></svg>
+                {% when 2 %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+                {% when 3 %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                {% when 4 %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                {% else %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+              {% endcase %}
+            </div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Us",
+  "type": "why-us",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Why LogixX" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "The care you deserve, the results you need" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "We combine world-class medical expertise with compassionate support at every step of your journey." }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Feature" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Description of this feature." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Us",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Expert Specialist Team", "text": "Our board-certified reproductive endocrinologists and embryologists bring decades of combined experience to your care." } },
+        { "type": "card", "settings": { "title": "Personalised Treatment Plans", "text": "No two fertility journeys are the same. We create bespoke protocols designed around your unique biology and goals." } },
+        { "type": "card", "settings": { "title": "Advanced Laboratory Technology", "text": "Our state-of-the-art lab uses the latest AI-assisted embryo selection, time-lapse imaging, and genetic screening technology." } },
+        { "type": "card", "settings": { "title": "Compassionate Support", "text": "From your first consultation to beyond your positive pregnancy test, our dedicated coordinators are with you every step of the way." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

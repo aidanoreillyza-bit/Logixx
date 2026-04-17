@@ -1,0 +1,63 @@
+<section class="faq-section" id="faq" aria-labelledby="faq-heading">
+  <div class="container faq-container">
+    <div class="section-header">
+      <span class="section-badge">{{ section.settings.badge_text }}</span>
+      <h2 class="section-title" id="faq-heading">{{ section.settings.heading }}</h2>
+      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+    <div class="faq-list" role="list">
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_item' %}
+          <div class="faq-item" role="listitem" {{ block.shopify_attributes }}>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-{{ forloop.index }}">
+              <span>{{ block.settings.question }}</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-{{ forloop.index }}" hidden>
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "type": "faq",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "FAQs" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Frequently asked questions" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Everything you need to know about fertility treatment at LogixX." }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Answer to the question." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "What fertility treatments do you offer?", "answer": "We offer a full range of fertility treatments including IVF, IUI, ICSI, egg freezing, embryo freezing, sperm freezing, donor egg/sperm programmes, and pre-implantation genetic testing (PGT)." } },
+        { "type": "faq_item", "settings": { "question": "How long does an IVF cycle take?", "answer": "A typical IVF cycle takes between 4 to 6 weeks from the start of stimulation to the embryo transfer. The stimulation phase usually lasts 8–14 days, followed by egg retrieval, fertilisation and embryo development (3–5 days), and then a fresh or frozen embryo transfer." } },
+        { "type": "faq_item", "settings": { "question": "What is your success rate for IVF?", "answer": "Our overall clinical pregnancy rate is 85%, significantly above the national average of around 32% per embryo transfer. For women under 35 using their own eggs, our success rate exceeds 60% per transfer." } },
+        { "type": "faq_item", "settings": { "question": "Are your fertility supplements safe and regulated?", "answer": "Yes. All LogixX supplements are formulated by our in-house reproductive medicine team and independently manufactured in GMP-certified facilities. They are rigorously tested for purity, potency, and safety." } },
+        { "type": "faq_item", "settings": { "question": "How much does fertility treatment cost?", "answer": "An initial consultation is free. A standard IVF cycle starts from $8,500, which includes all monitoring scans, egg retrieval, lab fees, and one fresh embryo transfer. We also offer flexible payment plans and multi-cycle packages." } },
+        { "type": "faq_item", "settings": { "question": "Do I need a GP referral to book a consultation?", "answer": "No, you do not need a GP referral. You can self-refer by booking online or calling our team directly." } },
+        { "type": "faq_item", "settings": { "question": "What happens at my first consultation?", "answer": "Your initial consultation is a relaxed, 60-minute appointment with one of our senior fertility consultants. We will review your medical history, discuss your goals, and may arrange initial fertility tests. There is absolutely no pressure to proceed." } },
+        { "type": "faq_item", "settings": { "question": "Do you offer support for same-sex couples and single parents?", "answer": "Absolutely. LogixX welcomes everyone on their path to parenthood regardless of relationship status or sexual orientation. We have dedicated pathways for same-sex couples and single parents by choice." } },
+        { "type": "faq_item", "settings": { "question": "Can I freeze my eggs if I'm not ready to have a family yet?", "answer": "Yes. Elective egg freezing is one of our most popular services. We recommend it for women between 25–37 who wish to preserve their fertility. Frozen eggs can be stored for up to 10 years." } },
+        { "type": "faq_item", "settings": { "question": "How do I get started with LogixX?", "answer": "Simply enter your email below to receive our free fertility guide and book your complimentary initial consultation. Alternatively, call us on +1 (800) 555-6789 or email hello@logixxfertility.com." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

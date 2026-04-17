@@ -1,0 +1,45 @@
+<div class="container" style="padding-top: 48px; padding-bottom: 64px;">
+  <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+    <h1 class="section-title">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <p class="section-subtitle">{{ collection.description }}</p>
+    {% endif %}
+  </div>
+
+  {% if collection.products.size > 0 %}
+    <ul class="products-grid" role="list">
+      {% for product in collection.products %}
+        <li class="product-card">
+          <a href="{{ product.url }}" class="product-image-link" tabindex="-1" aria-hidden="true">
+            <img
+              src="{{ product.featured_image | img_url: '400x300', crop: 'center' }}"
+              alt="{{ product.featured_image.alt | default: product.title | escape }}"
+              class="product-image"
+              width="400"
+              height="300"
+              loading="lazy"
+            />
+          </a>
+          {% if product.metafields.custom.badge != blank %}
+            <div class="product-badge product-badge--bestseller">{{ product.metafields.custom.badge }}</div>
+          {% endif %}
+          <div class="product-body">
+            <h2 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h2>
+            <p class="product-desc">{{ product.description | strip_html | truncate: 120 }}</p>
+            <div class="product-footer">
+              <span class="product-price">{{ product.price | money }}</span>
+              <button
+                class="btn btn-primary btn-sm add-to-cart"
+                data-variant-id="{{ product.variants.first.id }}"
+                data-product="{{ product.title | escape }}"
+                aria-label="Add {{ product.title | escape }} to cart"
+              >Add to Cart</button>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="color: var(--grey-500); text-align: center; padding: 48px 0;">No products found in this collection.</p>
+  {% endif %}
+</div>
