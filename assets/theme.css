@@ -1609,7 +1609,7 @@ p  { line-height: 1.7; }
 }
 .lx-404__num {
   font-family: var(--font-head);
-  font-size: 48px;
+  font-size: 24px;
   color: var(--c-mint);
   line-height: 1;
   margin-bottom: 8px;
@@ -1663,7 +1663,7 @@ p  { line-height: 1.7; }
   .lx-coll__grid { grid-template-columns: 1fr; }
   .lx-ann__contact { display: none; }
   .lx-cta h2 { font-size: 1.8rem; }
-  .lx-404__num { font-size: 36px; }
+  .lx-404__num { font-size: 20px; }
   .lx-hdr__inner { gap: 12px; }
   .lx-hero__btns { flex-direction: column; }
   .lx-hero__btns .lx-btn { width: 100%; justify-content: center; }
