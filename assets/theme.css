@@ -943,6 +943,32 @@ p  { line-height: 1.7; }
   color: var(--c-navy-dk);
   box-shadow: 0 8px 20px rgba(0,184,212,.3);
 }
+/* ── List-view layout for .lx-pcard grid ─────────────────────── */
+.lx-pgrid--list {
+  grid-template-columns: 1fr;
+}
+.lx-pgrid--list .lx-pcard {
+  flex-direction: row;
+  max-height: 160px;
+}
+.lx-pgrid--list .lx-pcard__img {
+  width: 200px;
+  height: 160px;
+  flex-shrink: 0;
+}
+.lx-pgrid--list .lx-pcard__body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lx-pgrid--list .lx-pcard__foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px 20px;
+}
+
 .lx-prods__cta { text-align: center; }
 
 /* ============================================================
