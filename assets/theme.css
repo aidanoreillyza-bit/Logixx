@@ -366,9 +366,11 @@ p  { line-height: 1.7; }
   height: 14px;
   fill: rgba(255,255,255,.5);
   transition: fill var(--transition), transform var(--transition);
+  pointer-events: none;
 }
 .lx-hdr__nav > ul > li:hover > a svg { fill: var(--c-mint); transform: rotate(180deg); }
 /* Dropdown */
+.lx-hdr__drop { cursor: pointer; }
 .lx-hdr__drop-panel {
   position: absolute;
   top: calc(100% + 8px);
