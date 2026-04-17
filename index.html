@@ -1,81 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogixX Fertility</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LogixX Fertility — Helping couples achieve their dream of parenthood with expert care, advanced science, and personalised support." />
+  <title>LogixX Fertility | Expert Fertility Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
-    <header>
-        <div class="mobile-drawer">
-            <button class="drawer-toggle">Menu</button>
-            <nav class="drawer-menu">
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#stats">Stats</a></li>
-                    <li><a href="#why-us">Why Us</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#cta">Contact</a></li>
-                </ul>
-            </nav>
+
+  <!-- ========== ANNOUNCEMENT BAR ========== -->
+  <div class="announcement-bar" role="banner" aria-label="Announcement">
+    <div class="announcement-inner">
+      <span class="announcement-contact">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+        <a href="tel:+18005556789">+1 (800) 555-6789</a>
+      </span>
+      <span class="announcement-ticker">
+        <span class="ticker-text">✨ Free consultation this month &nbsp;•&nbsp; 85% success rate &nbsp;•&nbsp; 10,000+ families helped &nbsp;•&nbsp; Certified fertility specialists &nbsp;•&nbsp; ✨ Free consultation this month</span>
+      </span>
+      <span class="announcement-contact">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:hello@logixxfertility.com">hello@logixxfertility.com</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="LogixX Fertility home">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="14" fill="#00d4a8" opacity="0.15"/>
+            <circle cx="16" cy="16" r="8" fill="#00d4a8"/>
+            <path d="M16 8 Q20 12 16 16 Q12 20 16 24" stroke="#0f1f3a" stroke-width="2" fill="none"/>
+          </svg>
+        </span>
+        <span class="logo-text">Logix<span class="logo-accent">X</span></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#email-cta" class="btn btn-primary btn-sm">Free Consultation</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== MOBILE DRAWER ========== -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true" role="dialog">
+    <div class="drawer-header">
+      <a href="/" class="logo" aria-label="LogixX Fertility home">
+        <span class="logo-text">Logix<span class="logo-accent">X</span></span>
+      </a>
+      <button class="drawer-close" id="drawer-close-btn" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="drawer-nav-list">
+      <li><a href="#why-us" class="drawer-link">Why Us</a></li>
+      <li><a href="#products" class="drawer-link">Products</a></li>
+      <li><a href="#testimonials" class="drawer-link">Testimonials</a></li>
+      <li><a href="#faq" class="drawer-link">FAQ</a></li>
+      <li><a href="#email-cta" class="drawer-link">Contact</a></li>
+    </ul>
+    <div class="drawer-cta">
+      <a href="#email-cta" class="btn btn-primary btn-full drawer-link">Book Free Consultation</a>
+      <p class="drawer-contact">
+        <a href="tel:+18005556789">+1 (800) 555-6789</a>
+      </p>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg-shape" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge">Trusted by 10,000+ Families</span>
+          <h1 class="hero-headline" id="hero-heading">
+            Your Path to<br/>
+            <em>Parenthood</em><br/>
+            Starts Here
+          </h1>
+          <p class="hero-subheading">
+            Expert fertility care blending cutting-edge science with compassionate, personalised support — so you can grow the family you've always dreamed of.
+          </p>
+          <div class="hero-ctas">
+            <a href="#email-cta" class="btn btn-primary btn-lg">Book Free Consultation</a>
+            <a href="#products" class="btn btn-outline btn-lg">Explore Products</a>
+          </div>
+          <div class="hero-trust">
+            <img src="https://placehold.co/40x40/00d4a8/ffffff?text=✓" alt="Certified fertility clinic badge" width="40" height="40" />
+            <img src="https://placehold.co/40x40/3366d9/ffffff?text=A" alt="HFEA accredited badge" width="40" height="40" />
+            <img src="https://placehold.co/40x40/0f1f3a/ffffff?text=★" alt="5-star rated clinic badge" width="40" height="40" />
+            <span class="hero-trust-text">Certified &amp; Accredited Fertility Clinic</span>
+          </div>
         </div>
-        <h1>LogixX Fertility</h1>
-    </header>
-    <section id="hero">
-        <h2>Your journey to parenthood starts here</h2>
+        <div class="hero-image-wrap">
+          <img
+            src="https://placehold.co/560x600/e8f6f3/0f1f3a?text=Happy+Family"
+            alt="A happy couple holding their newborn baby after successful fertility treatment"
+            class="hero-image"
+            width="560"
+            height="600"
+            loading="eager"
+          />
+          <div class="hero-stat-card" aria-label="85% success rate">
+            <span class="stat-number">85%</span>
+            <span class="stat-label">Success Rate</span>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="stats">
-        <h2>Our Success Stats</h2>
-        <p>85% success rate over the last 5 years.</p>
-    </section>
-    <section id="why-us">
-        <h2>Why Choose Us?</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Expert Team</h3>
-                <p>Our team of specialists is dedicated to your journey.</p>
+
+    <!-- ========== STATS SECTION ========== -->
+    <section class="stats-section" id="stats" aria-labelledby="stats-heading">
+      <div class="container">
+        <h2 class="sr-only" id="stats-heading">Our Key Statistics</h2>
+        <ul class="stats-grid" role="list">
+          <li class="stat-item">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
-            <div class="card">
-                <h3>Personalized Care</h3>
-                <p>We provide personalized plans tailored to your needs.</p>
+            <span class="stat-big-number">85%</span>
+            <span class="stat-description">Clinical Success Rate</span>
+          </li>
+          <li class="stat-item">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            <div class="card">
-                <h3>Advanced Technology</h3>
-                <p>Utilizing the latest technology for optimal results.</p>
+            <span class="stat-big-number">10k+</span>
+            <span class="stat-description">Families Helped</span>
+          </li>
+          <li class="stat-item">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
+            <span class="stat-big-number">15+</span>
+            <span class="stat-description">Years of Experience</span>
+          </li>
+          <li class="stat-item">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span class="stat-big-number">98%</span>
+            <span class="stat-description">Patient Satisfaction</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== WHY US SECTION ========== -->
+    <section class="why-us-section" id="why-us" aria-labelledby="why-us-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Why LogixX</span>
+          <h2 class="section-title" id="why-us-heading">The care you deserve,<br/><em>the results you need</em></h2>
+          <p class="section-subtitle">We combine world-class medical expertise with compassionate support at every step of your journey.</p>
         </div>
+        <ul class="why-us-grid" role="list">
+          <li class="why-us-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"/></svg>
+            </div>
+            <h3>Expert Specialist Team</h3>
+            <p>Our board-certified reproductive endocrinologists and embryologists bring decades of combined experience to your care.</p>
+          </li>
+          <li class="why-us-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+            </div>
+            <h3>Personalised Treatment Plans</h3>
+            <p>No two fertility journeys are the same. We create bespoke protocols designed around your unique biology and goals.</p>
+          </li>
+          <li class="why-us-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h3>Advanced Laboratory Technology</h3>
+            <p>Our state-of-the-art lab uses the latest AI-assisted embryo selection, time-lapse imaging, and genetic screening technology.</p>
+          </li>
+          <li class="why-us-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h3>Compassionate Support</h3>
+            <p>From your first consultation to beyond your positive pregnancy test, our dedicated coordinators are with you every step of the way.</p>
+          </li>
+        </ul>
+      </div>
     </section>
-    <section id="products">
-        <h2>Our Products</h2>
-        <p>Explore our range of fertility products.</p>
-    </section>
-    <section id="testimonials">
-        <h2>What Our Clients Say</h2>
-        <blockquote>
-            <p>LogixX helped us achieve our dream!</p>
-            <cite>- Happy Client</cite>
-        </blockquote>
-    </section>
-    <section id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <h3>Question 1</h3>
-            <p>Answer to question 1.</p>
+
+    <!-- ========== PRODUCT GRID ========== -->
+    <section class="products-section" id="products" aria-labelledby="products-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Our Products</span>
+          <h2 class="section-title" id="products-heading">Science-backed fertility<br/><em>supplements &amp; kits</em></h2>
+          <p class="section-subtitle">Clinically formulated to support every stage of your fertility journey, from preparation to pregnancy.</p>
         </div>
-        <div class="faq-item">
-            <h3>Question 2</h3>
-            <p>Answer to question 2.</p>
+        <ul class="products-grid" role="list">
+          <!-- Product 1 -->
+          <li class="product-card">
+            <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img src="https://placehold.co/400x300/e8f6f3/0f1f3a?text=FertilBoost+Pro" alt="FertilBoost Pro supplement bottle" class="product-image" width="400" height="300" loading="lazy" />
+            </a>
+            <div class="product-badge product-badge--bestseller">Best Seller</div>
+            <div class="product-body">
+              <h3 class="product-title"><a href="#">FertilBoost Pro</a></h3>
+              <p class="product-desc">Comprehensive prenatal formula with CoQ10, folate, and antioxidants to optimise egg quality and hormonal balance.</p>
+              <div class="product-footer">
+                <span class="product-price">$49.99 <small>/ 30-day supply</small></span>
+                <button class="btn btn-primary btn-sm add-to-cart" data-product="FertilBoost Pro" aria-label="Add FertilBoost Pro to cart">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+          <!-- Product 2 -->
+          <li class="product-card">
+            <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img src="https://placehold.co/400x300/e8f0fc/0f1f3a?text=MaleVital+Max" alt="MaleVital Max supplement bottle" class="product-image" width="400" height="300" loading="lazy" />
+            </a>
+            <div class="product-body">
+              <h3 class="product-title"><a href="#">MaleVital Max</a></h3>
+              <p class="product-desc">Clinically proven blend to improve sperm motility, morphology, and count with zinc, selenium, and L-carnitine.</p>
+              <div class="product-footer">
+                <span class="product-price">$44.99 <small>/ 30-day supply</small></span>
+                <button class="btn btn-primary btn-sm add-to-cart" data-product="MaleVital Max" aria-label="Add MaleVital Max to cart">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+          <!-- Product 3 -->
+          <li class="product-card">
+            <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img src="https://placehold.co/400x300/fef3cd/0f1f3a?text=OvuTrack+Kit" alt="OvuTrack home ovulation testing kit" class="product-image" width="400" height="300" loading="lazy" />
+            </a>
+            <div class="product-badge product-badge--new">New</div>
+            <div class="product-body">
+              <h3 class="product-title"><a href="#">OvuTrack Home Kit</a></h3>
+              <p class="product-desc">Precision LH surge detection strips with app connectivity to identify your peak fertile window with 99% accuracy.</p>
+              <div class="product-footer">
+                <span class="product-price">$29.99 <small>/ 30 strips</small></span>
+                <button class="btn btn-primary btn-sm add-to-cart" data-product="OvuTrack Home Kit" aria-label="Add OvuTrack Home Kit to cart">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+          <!-- Product 4 -->
+          <li class="product-card">
+            <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img src="https://placehold.co/400x300/fce8ec/0f1f3a?text=HormoneHarmony" alt="HormoneHarmony supplement bottles" class="product-image" width="400" height="300" loading="lazy" />
+            </a>
+            <div class="product-body">
+              <h3 class="product-title"><a href="#">HormoneHarmony</a></h3>
+              <p class="product-desc">Adaptogenic formula with myo-inositol and Vitex to support hormonal balance, regular cycles, and PCOS management.</p>
+              <div class="product-footer">
+                <span class="product-price">$39.99 <small>/ 60-day supply</small></span>
+                <button class="btn btn-primary btn-sm add-to-cart" data-product="HormoneHarmony" aria-label="Add HormoneHarmony to cart">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+          <!-- Product 5 -->
+          <li class="product-card">
+            <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img src="https://placehold.co/400x300/e8f6f3/0f1f3a?text=Couples+Bundle" alt="LogixX Couples Fertility Bundle" class="product-image" width="400" height="300" loading="lazy" />
+            </a>
+            <div class="product-badge product-badge--sale">Save 20%</div>
+            <div class="product-body">
+              <h3 class="product-title"><a href="#">Couples Fertility Bundle</a></h3>
+              <p class="product-desc">Everything you need together — FertilBoost Pro and MaleVital Max at a special bundle price for couples starting their journey.</p>
+              <div class="product-footer">
+                <span class="product-price">$74.99 <small><s>$94.98</s></small></span>
+                <button class="btn btn-primary btn-sm add-to-cart" data-product="Couples Fertility Bundle" aria-label="Add Couples Fertility Bundle to cart">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+          <!-- Product 6 -->
+          <li class="product-card">
+            <a href="#" class="product-image-link" tabindex="-1" aria-hidden="true">
+              <img src="https://placehold.co/400x300/e8f0fc/0f1f3a?text=Sperm+Test+Kit" alt="SpermCheck at-home fertility test kit" class="product-image" width="400" height="300" loading="lazy" />
+            </a>
+            <div class="product-body">
+              <h3 class="product-title"><a href="#">SpermCheck Home Test</a></h3>
+              <p class="product-desc">Clinically validated at-home sperm count test. Get results in 10 minutes and connect with our specialists for next steps.</p>
+              <div class="product-footer">
+                <span class="product-price">$34.99 <small>/ 2 tests</small></span>
+                <button class="btn btn-primary btn-sm add-to-cart" data-product="SpermCheck Home Test" aria-label="Add SpermCheck Home Test to cart">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header section-header--light">
+          <span class="section-badge section-badge--light">Real Stories</span>
+          <h2 class="section-title section-title--light" id="testimonials-heading">Families made possible<br/><em>by LogixX</em></h2>
         </div>
+        <ul class="testimonials-grid" role="list">
+          <li class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              "After two years of trying and two failed IUI cycles elsewhere, we found LogixX. Within six months we were pregnant with our daughter Mia. The team's dedication and personalised approach made all the difference. We cannot thank them enough."
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/56x56/e8f6f3/0f1f3a?text=S" alt="Portrait of Sarah M." class="testimonial-avatar" width="56" height="56" loading="lazy" />
+              <div>
+                <strong class="testimonial-name">Sarah &amp; James M.</strong>
+                <span class="testimonial-detail">IVF success — baby Mia, 8 months</span>
+              </div>
+            </div>
+          </li>
+          <li class="testimonial-card testimonial-card--featured">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              "I was diagnosed with PCOS and told my chances were slim. LogixX's HormoneHarmony supplement combined with their IVF protocol gave us our twins, Oliver and Emma. The support team was incredible throughout — always available, always compassionate."
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/56x56/e8f0fc/0f1f3a?text=P" alt="Portrait of Priya K." class="testimonial-avatar" width="56" height="56" loading="lazy" />
+              <div>
+                <strong class="testimonial-name">Priya &amp; David K.</strong>
+                <span class="testimonial-detail">IVF with PCOS — twins Oliver &amp; Emma</span>
+              </div>
+            </div>
+          </li>
+          <li class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              "The SpermCheck kit showed us the issue quickly and the MaleVital Max made a real difference in six weeks. Our natural pregnancy followed shortly after. LogixX's products are backed by real science — we're so grateful we found them."
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/56x56/fef3cd/0f1f3a?text=L" alt="Portrait of Laura T." class="testimonial-avatar" width="56" height="56" loading="lazy" />
+              <div>
+                <strong class="testimonial-name">Laura &amp; Tom T.</strong>
+                <span class="testimonial-detail">Natural conception after supplement protocol</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
-    <section id="cta">
-        <h2>Ready to start?</h2>
-        <p>Contact us today for a consultation.</p>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="container faq-container">
+        <div class="section-header">
+          <span class="section-badge">FAQs</span>
+          <h2 class="section-title" id="faq-heading">Frequently asked<br/><em>questions</em></h2>
+          <p class="section-subtitle">Everything you need to know about fertility treatment at LogixX. Can't find your answer? <a href="#email-cta">Contact us</a>.</p>
+        </div>
+        <div class="faq-list" role="list">
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              <span>What fertility treatments do you offer?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-1" hidden>
+              <p>We offer a full range of fertility treatments including IVF (In Vitro Fertilisation), IUI (Intrauterine Insemination), ICSI (Intracytoplasmic Sperm Injection), egg freezing, embryo freezing, sperm freezing, donor egg/sperm programmes, and pre-implantation genetic testing (PGT). Our specialists will recommend the most appropriate treatment after a thorough assessment of your individual circumstances.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              <span>How long does an IVF cycle take?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-2" hidden>
+              <p>A typical IVF cycle takes between 4 to 6 weeks from the start of stimulation to the embryo transfer. However, this can vary depending on your individual protocol. The stimulation phase usually lasts 8–14 days, followed by egg retrieval, fertilisation and embryo development (3–5 days), and then a fresh or frozen embryo transfer. We will give you a precise timeline tailored to your protocol during your initial consultation.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              <span>What is your success rate for IVF?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-3" hidden>
+              <p>Our overall clinical pregnancy rate is 85%, significantly above the national average of around 32% per embryo transfer. Success rates vary by age and individual factors. For women under 35 using their own eggs, our success rate exceeds 60% per transfer. We are transparent about our statistics and publish our full outcome data annually. During your consultation, we will give you personalised success rate estimates based on your specific situation.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              <span>Are your fertility supplements safe and regulated?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-4" hidden>
+              <p>Yes. All LogixX supplements are formulated by our in-house reproductive medicine team and independently manufactured in GMP-certified facilities. They are rigorously tested for purity, potency, and safety. Every ingredient is backed by peer-reviewed clinical evidence. Our products are free from artificial colours, fillers, and allergens. We recommend discussing any supplement with your doctor or our fertility specialist before starting, especially if you are already on medication.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+              <span>How much does fertility treatment cost?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-5" hidden>
+              <p>Costs vary depending on the treatment type. An initial consultation is free. A standard IVF cycle starts from $8,500, which includes all monitoring scans, egg retrieval, lab fees, and one fresh embryo transfer. We also offer flexible payment plans, multi-cycle packages with savings, and can help you navigate insurance coverage. We believe financial concerns should never be a barrier to starting your family, and our finance team will work with you to find the best option.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+              <span>Do I need a GP referral to book a consultation?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-6" hidden>
+              <p>No, you do not need a GP referral to book your initial consultation at LogixX. You can self-refer by booking online or calling our team directly. However, if you have had previous fertility investigations or treatments elsewhere, we would recommend bringing any relevant test results or medical records to your appointment. This helps our specialists give you the most informed and personalised assessment possible.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+              <span>What happens at my first consultation?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-7" hidden>
+              <p>Your initial consultation is a relaxed, 60-minute appointment with one of our senior fertility consultants. We will review your medical and reproductive history, discuss your goals, and may arrange initial fertility tests such as a hormone blood panel and ultrasound scan. By the end of the appointment, you will have a clear picture of your fertility status and a personalised treatment plan with options, timelines, and costs outlined. There is absolutely no pressure to proceed.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
+              <span>Do you offer support for same-sex couples and single parents?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-8" hidden>
+              <p>Absolutely. LogixX welcomes everyone on their path to parenthood regardless of relationship status or sexual orientation. We have dedicated pathways for same-sex female couples (donor sperm IUI/IVF), same-sex male couples (surrogacy coordination and donor egg programmes), and single parents by choice. Our team is trained to support diverse family structures with sensitivity, knowledge, and care. We also provide legal and counselling referrals as needed.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-9">
+              <span>Can I freeze my eggs if I'm not ready to have a family yet?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-9" hidden>
+              <p>Yes. Elective egg freezing (social egg freezing) is one of our most popular services. We recommend it for women between 25–37 who wish to preserve their fertility for the future. The process involves 10–12 days of hormone stimulation, a brief egg retrieval procedure, and secure long-term storage. Frozen eggs can be stored for up to 10 years. We recommend booking a fertility assessment first so we can advise on the optimal time to freeze based on your ovarian reserve and age.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-10">
+              <span>How do I get started with LogixX?</span>
+              <svg class="faq-arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-10" hidden>
+              <p>Getting started is easy. Simply enter your email below to receive our free fertility guide and to book your complimentary initial consultation. Alternatively, call us on +1 (800) 555-6789 or email hello@logixxfertility.com. Our patient coordinators are available Monday to Saturday, 8am–7pm, and will guide you through every step from initial enquiry to your first appointment and beyond.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <footer>
-        <p>&copy; 2026 LogixX Fertility. All rights reserved.</p>
-    </footer>
+
+    <!-- ========== EMAIL CTA SECTION ========== -->
+    <section class="email-cta-section" id="email-cta" aria-labelledby="email-cta-heading">
+      <div class="container email-cta-grid">
+        <div class="email-cta-content">
+          <span class="section-badge section-badge--light">Free Consultation</span>
+          <h2 class="section-title section-title--light" id="email-cta-heading">Start your fertility<br/><em>journey today</em></h2>
+          <p class="email-cta-body">Join thousands of families who have trusted LogixX. Enter your email to receive our free fertility guide and book your complimentary consultation.</p>
+          <ul class="email-cta-perks" aria-label="What you'll receive">
+            <li>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Free 60-minute fertility consultation
+            </li>
+            <li>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Personalised fertility guide (PDF)
+            </li>
+            <li>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Exclusive product discounts
+            </li>
+          </ul>
+        </div>
+        <div class="email-cta-form-wrap">
+          <form class="email-cta-form" id="subscribe-form" novalidate aria-label="Newsletter signup form">
+            <div class="form-group">
+              <label for="email-input" class="form-label">Email address</label>
+              <input
+                type="email"
+                id="email-input"
+                name="email"
+                class="form-input"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="email-error"
+              />
+              <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="first-name-input" class="form-label">First name <span class="form-optional">(optional)</span></label>
+              <input type="text" id="first-name-input" name="firstName" class="form-input" placeholder="Your first name" autocomplete="given-name" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg">
+              <span class="btn-text">Get My Free Guide</span>
+              <span class="btn-loading" aria-hidden="true" hidden>Sending…</span>
+            </button>
+            <p class="form-privacy">No spam, ever. Unsubscribe any time. <a href="#">Privacy Policy</a>.</p>
+            <div class="form-success" id="form-success" role="alert" aria-live="polite" hidden>
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>You're in! Check your inbox for your free fertility guide.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TRUST SECTION ========== -->
+    <section class="trust-section" id="trust" aria-labelledby="trust-heading">
+      <div class="container">
+        <h2 class="trust-heading" id="trust-heading">Trusted, accredited &amp; award-winning</h2>
+        <ul class="trust-logos" role="list" aria-label="Certifications and accreditations">
+          <li>
+            <img src="https://placehold.co/140x60/f5f7fa/6b7485?text=HFEA+Licensed" alt="HFEA Licensed Clinic" width="140" height="60" loading="lazy" />
+          </li>
+          <li>
+            <img src="https://placehold.co/140x60/f5f7fa/6b7485?text=ISO+9001" alt="ISO 9001 Certified" width="140" height="60" loading="lazy" />
+          </li>
+          <li>
+            <img src="https://placehold.co/140x60/f5f7fa/6b7485?text=ESHRE+Member" alt="ESHRE Member Clinic" width="140" height="60" loading="lazy" />
+          </li>
+          <li>
+            <img src="https://placehold.co/140x60/f5f7fa/6b7485?text=ASRM+Member" alt="ASRM Member" width="140" height="60" loading="lazy" />
+          </li>
+          <li>
+            <img src="https://placehold.co/140x60/f5f7fa/6b7485?text=5-Star+Award+2025" alt="5-Star Fertility Clinic Award 2025" width="140" height="60" loading="lazy" />
+          </li>
+        </ul>
+        <p class="trust-body">LogixX Fertility is fully licensed by the Human Fertilisation &amp; Embryology Authority (HFEA), ISO 9001 quality-certified, and a proud member of the European Society of Human Reproduction and Embryology (ESHRE) and the American Society for Reproductive Medicine (ASRM).</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo footer-logo" aria-label="LogixX Fertility home">
+          <span class="logo-text">Logix<span class="logo-accent">X</span></span>
+        </a>
+        <p class="footer-tagline">Helping families grow since 2009. Expert fertility care you can trust.</p>
+        <address class="footer-address" aria-label="Contact information">
+          <p>
+            <a href="tel:+18005556789">+1 (800) 555-6789</a>
+          </p>
+          <p>
+            <a href="mailto:hello@logixxfertility.com">hello@logixxfertility.com</a>
+          </p>
+          <p>123 Fertility Way, Suite 400<br/>New York, NY 10001</p>
+        </address>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" aria-label="LogixX on Instagram" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="LogixX on Facebook" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="LogixX on Twitter / X" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="LogixX on LinkedIn" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Treatments navigation">
+        <h3 class="footer-nav-title">Treatments</h3>
+        <ul>
+          <li><a href="#">IVF</a></li>
+          <li><a href="#">IUI</a></li>
+          <li><a href="#">Egg Freezing</a></li>
+          <li><a href="#">Sperm Freezing</a></li>
+          <li><a href="#">Donor Programmes</a></li>
+          <li><a href="#">Genetic Testing (PGT)</a></li>
+          <li><a href="#">Surrogacy Support</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Products navigation">
+        <h3 class="footer-nav-title">Products</h3>
+        <ul>
+          <li><a href="#">FertilBoost Pro</a></li>
+          <li><a href="#">MaleVital Max</a></li>
+          <li><a href="#">OvuTrack Home Kit</a></li>
+          <li><a href="#">HormoneHarmony</a></li>
+          <li><a href="#">Couples Bundle</a></li>
+          <li><a href="#">SpermCheck Home Test</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Company navigation">
+        <h3 class="footer-nav-title">Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Success Rates</a></li>
+          <li><a href="#">Blog &amp; Resources</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="footer-copyright">&copy; 2026 LogixX Fertility Ltd. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal navigation">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Accessibility</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart notification toast -->
+  <div class="cart-toast" id="cart-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
