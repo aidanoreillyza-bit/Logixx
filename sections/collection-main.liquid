@@ -1,21 +1,18 @@
-<section class="lx-prods">
+<section class="lx-coll">
   <div class="lx-container">
-    <div class="lx-section-head lx-fade-in">
+    <div class="lx-coll__head lx-fade-in">
       {% if section.settings.badge != blank %}
       <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
       {% endif %}
-      {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading | newline_to_br }}</h2>
-      {% endif %}
-      {% if section.settings.subtext != blank %}
-      <p>{{ section.settings.subtext }}</p>
+      <h1>{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+      <p>{{ collection.description }}</p>
       {% endif %}
     </div>
 
-    {% assign featured_collection = collections[section.settings.collection] %}
-    {% if featured_collection != blank and featured_collection.products.size > 0 %}
-    <div class="lx-prods__grid">
-      {% for product in featured_collection.products limit: section.settings.limit %}
+    {% if collection.products.size > 0 %}
+    <div class="lx-coll__grid">
+      {% for product in collection.products limit: 24 %}
       <article class="lx-pcard lx-fade-in">
         <a href="{{ product.url }}" class="lx-pcard__img-link" aria-label="{{ product.title }}">
           <div class="lx-pcard__img">
@@ -56,7 +53,7 @@
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="lx-pcard__add-btn" {% unless product.available %}disabled{% endunless %}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
                 {% if product.available %}Add to Basket{% else %}Sold Out{% endif %}
               </button>
             </form>
@@ -66,18 +63,12 @@
       {% endfor %}
     </div>
 
-    {% if section.settings.view_all_url != blank %}
-    <div class="lx-prods__cta lx-fade-in">
-      <a href="{{ section.settings.view_all_url }}" class="lx-btn lx-btn--ghost-navy">
-        View All Products
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-    {% endif %}
-
     {% else %}
-    <div class="lx-coll__empty">
-      <p>No products found. Please select a collection in the theme editor.</p>
+    <div class="lx-coll__empty" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      <h2>No products found</h2>
+      <p>This collection is currently empty. Check back soon!</p>
+      <a href="/collections/all" class="lx-btn lx-btn--mint">Browse All Products</a>
     </div>
     {% endif %}
   </div>
@@ -85,15 +76,10 @@
 
 {% schema %}
 {
-  "name": "Featured Products",
+  "name": "Collection",
   "settings":[
-    {"type":"text","id":"badge","label":"Badge","default":"Our Products"},
-    {"type":"textarea","id":"heading","label":"Heading","default":"Clinically proven fertility\nsupplements & diagnostics"},
-    {"type":"textarea","id":"subtext","label":"Subtext","default":"Formulated by fertility specialists and backed by clinical research."},
-    {"type":"collection","id":"collection","label":"Collection"},
-    {"type":"range","id":"limit","label":"Products to show","min":3,"max":12,"step":3,"default":6},
-    {"type":"url","id":"view_all_url","label":"View All URL","default":"/collections/all"}
+    {"type":"text","id":"badge","label":"Badge","default":"Browse"}
   ],
-  "presets":[{"name":"Featured Products"}]
+  "presets":[{"name":"Collection"}]
 }
 {% endschema %}

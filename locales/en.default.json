@@ -6,34 +6,27 @@
       "login_form_password_placeholder": "Your password",
       "login_form_submit": "Enter",
       "signup_form_email_label": "Email",
-      "signup_button_text": "Notify me when it's ready"
+      "signup_button_text": "Notify me when ready"
     }
   },
   "products": {
     "product": {
-      "add_to_cart": "Add to Cart",
+      "add_to_cart": "Add to Basket",
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
       "quantity": "Quantity",
       "description": "Description",
-      "share": "Share",
       "sku": "SKU"
     }
   },
   "cart": {
     "general": {
-      "title": "Your Cart",
-      "empty": "Your cart is currently empty.",
-      "continue_browsing_html": "<a href=\"/\">Continue browsing</a>",
+      "title": "Your Basket",
+      "empty": "Your basket is currently empty.",
       "remove": "Remove",
       "update": "Update",
-      "checkout": "Check out",
+      "checkout": "Checkout",
       "subtotal": "Subtotal"
-    }
-  },
-  "sections": {
-    "faq": {
-      "title": "Frequently Asked Questions"
     }
   }
 }

@@ -1,0 +1,120 @@
+<section class="lx-cart">
+  <div class="lx-container">
+    <h1>{{ 'cart.general.title' | t | default: 'Your Basket' }}</h1>
+
+    {% if cart.item_count > 0 %}
+    <form action="/cart" method="post">
+
+      <table class="lx-cart__table">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+          <tr>
+            <td style="width:100px;">
+              {% if item.image != blank %}
+              <div class="lx-cart__item-img">
+                <img
+                  src="{{ item.image | img_url: '200x' }}"
+                  alt="{{ item.image.alt | escape | default: item.title | escape }}"
+                  loading="lazy"
+                  width="80"
+                  height="80"
+                >
+              </div>
+              {% endif %}
+            </td>
+            <td>
+              <div class="lx-cart__item-info">
+                <div class="lx-cart__item-title">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </div>
+                {% unless item.variant.title == 'Default Title' %}
+                <div class="lx-cart__item-variant">{{ item.variant.title }}</div>
+                {% endunless %}
+                <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="lx-cart__remove" aria-label="Remove {{ item.product.title }} from basket">
+                  {{ 'cart.general.remove' | t | default: 'Remove' }}
+                </a>
+              </div>
+            </td>
+            <td>{{ item.price | money }}</td>
+            <td>
+              <div class="lx-qty" style="border-color:var(--c-grey);">
+                <button type="button" class="lx-qty__btn" data-qty="-" aria-label="Decrease">−</button>
+                <input
+                  type="number"
+                  name="updates[]"
+                  value="{{ item.quantity }}"
+                  min="0"
+                  max="99"
+                  aria-label="Quantity for {{ item.product.title }}"
+                >
+                <button type="button" class="lx-qty__btn" data-qty="+" aria-label="Increase">+</button>
+              </div>
+            </td>
+            <td>{{ item.line_price | money }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div style="display:flex;justify-content:flex-end;margin-top:8px;gap:12px;flex-wrap:wrap;">
+        <button type="submit" name="update" class="lx-btn lx-btn--ghost-navy lx-btn--sm">
+          {{ 'cart.general.update' | t | default: 'Update Basket' }}
+        </button>
+      </div>
+
+      <!-- Subtotal & checkout -->
+      <div class="lx-cart__subtotal">
+        {% if cart.total_price >= 5000 %}
+        <div class="lx-cart__free-del">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          🎉 Free UK delivery applied!
+        </div>
+        {% else %}
+        {% assign remaining = 5000 | minus: cart.total_price %}
+        <p style="font-size:13px;color:var(--c-mute);">
+          Spend {{ remaining | money }} more for free UK delivery
+        </p>
+        {% endif %}
+
+        <div class="lx-cart__subtotal-row">
+          <span>{{ 'cart.general.subtotal' | t | default: 'Subtotal' }}</span>
+          <strong>{{ cart.total_price | money }}</strong>
+        </div>
+        <p style="font-size:12px;color:var(--c-mute);">Taxes and shipping calculated at checkout</p>
+        <button type="submit" name="checkout" class="lx-cart__checkout-btn">
+          {{ 'cart.general.checkout' | t | default: 'Proceed to Checkout' }}
+          <span aria-hidden="true"> →</span>
+        </button>
+      </div>
+
+    </form>
+
+    {% else %}
+    <div class="lx-cart__empty" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      <h2>{{ 'cart.general.empty' | t | default: 'Your basket is currently empty.' }}</h2>
+      <p>Discover our clinically proven fertility supplements.</p>
+      <a href="/collections/all" class="lx-btn lx-btn--mint">Browse Shop</a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings":[
+    {"type":"text","id":"free_delivery_threshold","label":"Free delivery threshold label","default":"Free UK delivery on orders over £50"}
+  ],
+  "presets":[{"name":"Cart"}]
+}
+{% endschema %}

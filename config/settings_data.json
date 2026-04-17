@@ -4,77 +4,28 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "phone": "+1 (800) 555-6789",
-          "email": "hello@logixxfertility.com",
-          "ticker_text": "✨ Free consultation this month \u00a0•\u00a0 85% success rate \u00a0•\u00a0 10,000+ families helped \u00a0•\u00a0 Certified fertility specialists \u00a0•\u00a0 ✨ Free consultation this month"
+          "phone": "+44 (0) 1189 011 747",
+          "email": "info@logixxpharma.com"
         }
       },
       "header": {
         "type": "header",
         "settings": {
-          "cta_label": "Free Consultation",
-          "cta_url": "#email-cta",
-          "phone": "+1 (800) 555-6789"
-        },
-        "blocks": {
-          "nav-1": { "type": "nav_link", "settings": { "label": "Why Us",       "url": "#why-us"      } },
-          "nav-2": { "type": "nav_link", "settings": { "label": "Products",     "url": "#products"    } },
-          "nav-3": { "type": "nav_link", "settings": { "label": "Testimonials", "url": "#testimonials" } },
-          "nav-4": { "type": "nav_link", "settings": { "label": "FAQ",          "url": "#faq"         } },
-          "nav-5": { "type": "nav_link", "settings": { "label": "Contact",      "url": "#email-cta"   } }
-        },
-        "block_order": ["nav-1", "nav-2", "nav-3", "nav-4", "nav-5"]
+          "tagline": "Trusted Fertility Supplements",
+          "cta_url": "/collections/all",
+          "cta_label": "Shop Now"
+        }
       },
       "footer": {
         "type": "footer",
         "settings": {
-          "tagline": "Helping families grow since 2009. Expert fertility care you can trust.",
-          "phone": "+1 (800) 555-6789",
-          "email": "hello@logixxfertility.com",
-          "address": "123 Fertility Way, Suite 400\nNew York, NY 10001",
-          "copyright_name": "LogixX Fertility Ltd"
-        },
-        "blocks": {
-          "col-1": {
-            "type": "nav_column",
-            "settings": {
-              "title": "Treatments",
-              "link_1_label": "IVF",                   "link_1_url": "#email-cta",
-              "link_2_label": "IUI",                   "link_2_url": "#email-cta",
-              "link_3_label": "Egg Freezing",          "link_3_url": "#email-cta",
-              "link_4_label": "Sperm Freezing",        "link_4_url": "#email-cta",
-              "link_5_label": "Donor Programmes",      "link_5_url": "#email-cta",
-              "link_6_label": "Genetic Testing (PGT)", "link_6_url": "#email-cta",
-              "link_7_label": "Surrogacy Support",     "link_7_url": "#email-cta"
-            }
-          },
-          "col-2": {
-            "type": "nav_column",
-            "settings": {
-              "title": "Products",
-              "link_1_label": "FertilBoost Pro",     "link_1_url": "/collections/all",
-              "link_2_label": "MaleVital Max",        "link_2_url": "/collections/all",
-              "link_3_label": "OvuTrack Home Kit",    "link_3_url": "/collections/all",
-              "link_4_label": "HormoneHarmony",       "link_4_url": "/collections/all",
-              "link_5_label": "Couples Bundle",       "link_5_url": "/collections/all",
-              "link_6_label": "SpermCheck Home Test", "link_6_url": "/collections/all"
-            }
-          },
-          "col-3": {
-            "type": "nav_column",
-            "settings": {
-              "title": "Company",
-              "link_1_label": "About Us",         "link_1_url": "#why-us",
-              "link_2_label": "Our Team",         "link_2_url": "#why-us",
-              "link_3_label": "Success Rates",    "link_3_url": "#why-us",
-              "link_4_label": "Blog & Resources", "link_4_url": "#",
-              "link_5_label": "Careers",          "link_5_url": "#",
-              "link_6_label": "Press",            "link_6_url": "#",
-              "link_7_label": "Contact Us",       "link_7_url": "#email-cta"
-            }
-          }
-        },
-        "block_order": ["col-1", "col-2", "col-3"]
+          "tagline": "Helping families grow with clinically proven fertility supplements since 2009.",
+          "partner_badge": "Official Proxeed UK Partner",
+          "copyright": "LogixX Pharma Ltd",
+          "address": "Merlin House, Brunel Road, Reading, RG7 4AB",
+          "phone": "+44 (0) 1189 011 747",
+          "email": "info@logixxpharma.com"
+        }
       }
     }
   }

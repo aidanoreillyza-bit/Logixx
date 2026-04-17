@@ -2,58 +2,26 @@
   {
     "name": "theme_info",
     "theme_name": "LogixX Fertility",
-    "theme_version": "1.0.0",
-    "theme_author": "LogixX",
+    "theme_version": "2.0.0",
+    "theme_author": "LogixX Pharma Ltd",
     "theme_documentation_url": "",
     "theme_support_url": ""
   },
   {
     "name": "Colors",
     "settings": [
-      {
-        "type": "color",
-        "id": "color_primary",
-        "label": "Primary (mint) color",
-        "default": "#00d4a8"
-      },
-      {
-        "type": "color",
-        "id": "color_secondary",
-        "label": "Secondary (navy) color",
-        "default": "#0f1f3a"
-      },
-      {
-        "type": "color",
-        "id": "color_accent",
-        "label": "Accent (blue) color",
-        "default": "#3366d9"
-      }
+      {"type":"color","id":"color_primary","label":"Primary mint","default":"#00d4a8"},
+      {"type":"color","id":"color_secondary","label":"Secondary navy","default":"#0f1f3a"},
+      {"type":"color","id":"color_accent","label":"Accent blue","default":"#3366d9"}
     ]
   },
   {
-    "name": "Typography",
+    "name": "Social",
     "settings": [
-      {
-        "type": "font_picker",
-        "id": "font_heading",
-        "label": "Heading font",
-        "default": "instrument_serif_n4"
-      },
-      {
-        "type": "font_picker",
-        "id": "font_body",
-        "label": "Body font",
-        "default": "inter_n4"
-      }
-    ]
-  },
-  {
-    "name": "Social media",
-    "settings": [
-      { "type": "url", "id": "social_instagram_url", "label": "Instagram URL" },
-      { "type": "url", "id": "social_facebook_url", "label": "Facebook URL" },
-      { "type": "url", "id": "social_twitter_url", "label": "Twitter / X URL" },
-      { "type": "url", "id": "social_linkedin_url", "label": "LinkedIn URL" }
+      {"type":"url","id":"social_instagram","label":"Instagram URL"},
+      {"type":"url","id":"social_facebook","label":"Facebook URL"},
+      {"type":"url","id":"social_twitter","label":"Twitter URL"},
+      {"type":"url","id":"social_linkedin","label":"LinkedIn URL"}
     ]
   }
 ]

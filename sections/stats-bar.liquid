@@ -1,0 +1,35 @@
+<section class="lx-stats" aria-label="Key statistics">
+  <div class="lx-container">
+    <div class="lx-stats__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+        <div class="lx-stats__item lx-fade-in" {{ block.shopify_attributes }}>
+          <div class="lx-stats__num">{{ block.settings.number }}</div>
+          <div class="lx-stats__lbl">{{ block.settings.label }}</div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats Bar",
+  "blocks":[
+    {"type":"stat","name":"Stat","settings":[
+      {"type":"text","id":"number","label":"Number","default":"85%"},
+      {"type":"text","id":"label","label":"Label","default":"Success Rate"}
+    ]}
+  ],
+  "presets":[{
+    "name":"Stats Bar",
+    "blocks":[
+      {"type":"stat","settings":{"number":"10,000+","label":"Families Helped"}},
+      {"type":"stat","settings":{"number":"15+","label":"Years Experience"}},
+      {"type":"stat","settings":{"number":"98%","label":"Patient Satisfaction"}},
+      {"type":"stat","settings":{"number":"85%","label":"Clinical Success Rate"}}
+    ]
+  }]
+}
+{% endschema %}

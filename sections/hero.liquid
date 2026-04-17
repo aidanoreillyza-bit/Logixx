@@ -1,51 +1,46 @@
-<section class="hero-section" id="hero" aria-labelledby="hero-heading">
-  <div class="hero-bg-shape" aria-hidden="true"></div>
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <span class="hero-badge">{{ section.settings.badge_text }}</span>
-      <h1 class="hero-headline" id="hero-heading">
-        {{ section.settings.headline | newline_to_br }}
-      </h1>
-      <p class="hero-subheading">{{ section.settings.subheading }}</p>
-      <div class="hero-ctas">
-        <a href="{{ section.settings.primary_cta_url }}" class="btn btn-primary btn-lg">{{ section.settings.primary_cta_label }}</a>
-        <a href="{{ section.settings.secondary_cta_url }}" class="btn btn-outline btn-lg">{{ section.settings.secondary_cta_label }}</a>
+<section class="lx-hero" {% if section.settings.image != blank %}style="background-image: url('{{ section.settings.image | img_url: '1600x' }}')"{% endif %}>
+  <div class="lx-hero__orb lx-hero__orb--1" aria-hidden="true"></div>
+  <div class="lx-hero__orb lx-hero__orb--2" aria-hidden="true"></div>
+  <div class="lx-container">
+    <div class="lx-hero__content lx-fade-in">
+      {% if section.settings.badge != blank %}
+      <div class="lx-hero__badge" aria-label="Badge">
+        <span class="lx-hero__badge-dot" aria-hidden="true"></span>
+        {{ section.settings.badge }}
       </div>
-      <div class="hero-trust">
-        {% if section.settings.trust_badge_1 != blank %}
-          <img src="{{ section.settings.trust_badge_1 | img_url: '40x40', crop: 'center' }}" alt="{{ section.settings.trust_badge_1_alt }}" width="40" height="40" />
-        {% else %}
-          <img src="https://placehold.co/40x40/00d4a8/ffffff?text=✓" alt="Certified fertility clinic badge" width="40" height="40" />
-          <img src="https://placehold.co/40x40/3366d9/ffffff?text=A" alt="HFEA accredited badge" width="40" height="40" />
-          <img src="https://placehold.co/40x40/0f1f3a/ffffff?text=★" alt="5-star rated clinic badge" width="40" height="40" />
-        {% endif %}
-        <span class="hero-trust-text">{{ section.settings.trust_text }}</span>
-      </div>
-    </div>
-    <div class="hero-image-wrap">
-      {% if section.settings.hero_image != blank %}
-        <img
-          src="{{ section.settings.hero_image | img_url: '560x600', crop: 'center' }}"
-          alt="{{ section.settings.hero_image.alt | default: 'Happy family after successful fertility treatment' }}"
-          class="hero-image"
-          width="560"
-          height="600"
-          loading="eager"
-        />
-      {% else %}
-        <img
-          src="https://placehold.co/560x600/e8f6f3/0f1f3a?text=Happy+Family"
-          alt="A happy couple holding their newborn baby after successful fertility treatment"
-          class="hero-image"
-          width="560"
-          height="600"
-          loading="eager"
-        />
       {% endif %}
-      <div class="hero-stat-card" aria-label="{{ section.settings.stat_number }} {{ section.settings.stat_label }}">
-        <span class="stat-number">{{ section.settings.stat_number }}</span>
-        <span class="stat-label">{{ section.settings.stat_label }}</span>
+
+      <h1>{{ section.settings.heading | newline_to_br }}</h1>
+
+      {% if section.settings.subtext != blank %}
+      <p class="lx-hero__sub">{{ section.settings.subtext }}</p>
+      {% endif %}
+
+      <div class="lx-hero__btns">
+        {% if section.settings.btn1_label != blank %}
+        <a href="{{ section.settings.btn1_url | default: '/collections/all' }}" class="lx-btn lx-btn--mint lx-btn--lg">
+          {{ section.settings.btn1_label }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        {% endif %}
+        {% if section.settings.btn2_label != blank %}
+        <a href="{{ section.settings.btn2_url | default: '/pages/about' }}" class="lx-btn lx-btn--ghost">
+          {{ section.settings.btn2_label }}
+        </a>
+        {% endif %}
       </div>
+
+      {% if section.blocks.size > 0 %}
+      <div class="lx-hero__trust" role="list">
+        {% for block in section.blocks %}
+          {% if block.type == 'trust' %}
+          <div class="lx-hero__trust-item" role="listitem" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -54,20 +49,25 @@
 {
   "name": "Hero",
   "settings": [
-    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Trusted by 10,000+ Families" },
-    { "type": "textarea", "id": "headline", "label": "Headline", "default": "Your Path to\nParenthood\nStarts Here" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Expert fertility care blending cutting-edge science with compassionate, personalised support — so you can grow the family you've always dreamed of." },
-    { "type": "text", "id": "primary_cta_label", "label": "Primary CTA label", "default": "Book Free Consultation" },
-    { "type": "url", "id": "primary_cta_url", "label": "Primary CTA URL" },
-    { "type": "text", "id": "secondary_cta_label", "label": "Secondary CTA label", "default": "Explore Products" },
-    { "type": "url", "id": "secondary_cta_url", "label": "Secondary CTA URL" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
-    { "type": "text", "id": "stat_number", "label": "Stat number", "default": "85%" },
-    { "type": "text", "id": "stat_label", "label": "Stat label", "default": "Success Rate" },
-    { "type": "text", "id": "trust_text", "label": "Trust badge text", "default": "Certified & Accredited Fertility Clinic" }
+    {"type":"image_picker","id":"image","label":"Background image"},
+    {"type":"text","id":"badge","label":"Badge text","default":"Trusted UK Fertility Specialists"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"The UK's Leading\nFertility Supplement\nExperts"},
+    {"type":"textarea","id":"subtext","label":"Subtext","default":"Clinically proven supplements to support male and female fertility — trusted by thousands of families across the UK."},
+    {"type":"text","id":"btn1_label","label":"Primary button","default":"Shop Products"},
+    {"type":"url","id":"btn1_url","label":"Primary button URL"},
+    {"type":"text","id":"btn2_label","label":"Secondary button","default":"Learn More"},
+    {"type":"url","id":"btn2_url","label":"Secondary button URL"}
   ],
-  "presets": [
-    { "name": "Hero" }
-  ]
+  "blocks":[
+    {"type":"trust","name":"Trust item","settings":[{"type":"text","id":"text","label":"Text","default":"Free UK Delivery"}]}
+  ],
+  "presets":[{
+    "name":"Hero",
+    "blocks":[
+      {"type":"trust","settings":{"text":"Free UK Delivery over £50"}},
+      {"type":"trust","settings":{"text":"Clinically Proven Formula"}},
+      {"type":"trust","settings":{"text":"30-Day Returns"}}
+    ]
+  }]
 }
 {% endschema %}

@@ -1,65 +1,69 @@
-<section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
-  <div class="container">
-    <div class="section-header section-header--light">
-      <span class="section-badge section-badge--light">{{ section.settings.badge_text }}</span>
-      <h2 class="section-title section-title--light" id="testimonials-heading">{{ section.settings.heading }}</h2>
+<section class="lx-testi">
+  <div class="lx-container">
+    <div class="lx-section-head lx-fade-in">
+      {% if section.settings.badge != blank %}
+      <span class="lx-badge lx-badge--navy">{{ section.settings.badge }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
     </div>
-    <ul class="testimonials-grid" role="list">
+
+    <div class="lx-testi__grid">
       {% for block in section.blocks %}
-        {% if block.type == 'testimonial' %}
-          <li class="testimonial-card{% if forloop.index == 2 %} testimonial-card--featured{% endif %}" {{ block.shopify_attributes }}>
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              <span aria-hidden="true">★★★★★</span>
+        {% if block.type == 'review' %}
+        <article class="lx-testi__card lx-fade-in" {{ block.shopify_attributes }}>
+          <div class="lx-testi__stars" aria-label="5 stars">
+            <span class="lx-testi__star" aria-hidden="true">★</span>
+            <span class="lx-testi__star" aria-hidden="true">★</span>
+            <span class="lx-testi__star" aria-hidden="true">★</span>
+            <span class="lx-testi__star" aria-hidden="true">★</span>
+            <span class="lx-testi__star" aria-hidden="true">★</span>
+          </div>
+          {% if block.settings.quote != blank %}
+          <blockquote class="lx-testi__quote">"{{ block.settings.quote }}"</blockquote>
+          {% endif %}
+          <div class="lx-testi__author">
+            <div class="lx-testi__avatar" aria-hidden="true">
+              {{ block.settings.name | slice: 0, 1 | upcase }}
             </div>
-            <blockquote class="testimonial-quote">
-              "{{ block.settings.quote }}"
-            </blockquote>
-            <div class="testimonial-author">
-              {% if block.settings.avatar != blank %}
-                <img src="{{ block.settings.avatar | img_url: '56x56', crop: 'center' }}" alt="Portrait of {{ block.settings.name | escape }}" class="testimonial-avatar" width="56" height="56" loading="lazy" />
-              {% else %}
-                <img src="https://placehold.co/56x56/e8f6f3/0f1f3a?text={{ block.settings.name | slice: 0 }}" alt="Portrait of {{ block.settings.name | escape }}" class="testimonial-avatar" width="56" height="56" loading="lazy" />
-              {% endif %}
-              <div>
-                <strong class="testimonial-name">{{ block.settings.name }}</strong>
-                <span class="testimonial-detail">{{ block.settings.detail }}</span>
+            <div class="lx-testi__info">
+              <div class="lx-testi__name">{{ block.settings.name }}</div>
+              <div class="lx-testi__label">
+                {% if block.settings.detail != blank %}{{ block.settings.detail }}{% else %}Verified Customer{% endif %}
               </div>
             </div>
-          </li>
+          </div>
+        </article>
         {% endif %}
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
   "name": "Testimonials",
-  "settings": [
-    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Real Stories" },
-    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Families made possible by LogixX" }
+  "settings":[
+    {"type":"text","id":"badge","label":"Badge","default":"Customer Stories"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"Real people.\nReal results."}
   ],
-  "blocks": [
-    {
-      "type": "testimonial",
-      "name": "Testimonial",
-      "settings": [
-        { "type": "textarea", "id": "quote", "label": "Quote" },
-        { "type": "text", "id": "name", "label": "Name", "default": "Happy Client" },
-        { "type": "text", "id": "detail", "label": "Detail", "default": "IVF success" },
-        { "type": "image_picker", "id": "avatar", "label": "Avatar photo" }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Testimonials",
-      "blocks": [
-        { "type": "testimonial", "settings": { "quote": "After two years of trying and two failed IUI cycles elsewhere, we found LogixX. Within six months we were pregnant with our daughter Mia. The team's dedication and personalised approach made all the difference.", "name": "Sarah & James M.", "detail": "IVF success — baby Mia, 8 months" } },
-        { "type": "testimonial", "settings": { "quote": "I was diagnosed with PCOS and told my chances were slim. LogixX's HormoneHarmony supplement combined with their IVF protocol gave us our twins, Oliver and Emma.", "name": "Priya & David K.", "detail": "IVF with PCOS — twins Oliver & Emma" } },
-        { "type": "testimonial", "settings": { "quote": "The SpermCheck kit showed us the issue quickly and the MaleVital Max made a real difference in six weeks. Our natural pregnancy followed shortly after.", "name": "Laura & Tom T.", "detail": "Natural conception after supplement protocol" } }
-      ]
-    }
-  ]
+  "blocks":[{
+    "type":"review","name":"Review",
+    "settings":[
+      {"type":"textarea","id":"quote","label":"Quote"},
+      {"type":"text","id":"name","label":"Name"},
+      {"type":"text","id":"detail","label":"Detail"}
+    ]
+  }],
+  "presets":[{
+    "name":"Testimonials",
+    "blocks":[
+      {"type":"review","settings":{"quote":"My partner and I tried for over 2 years. After Proxeed Plus — we're now proud parents of baby Mia.","name":"Nick, 41","detail":"Verified Customer"}},
+      {"type":"review","settings":{"quote":"If you've been trying and can't conceive, get checked out and take action. We now have our perfect child.","name":"James","detail":"Verified Customer"}},
+      {"type":"review","settings":{"quote":"After taking Proxeed Women, six months later I was pregnant. Now I have a beautiful baby girl.","name":"Hannah, 35","detail":"Verified Customer"}},
+      {"type":"review","settings":{"quote":"I started Proxeed Women at 38. Seven months later I was pregnant — we now have a healthy baby girl.","name":"Jo, 39","detail":"Verified Customer"}}
+    ]
+  }]
 }
 {% endschema %}

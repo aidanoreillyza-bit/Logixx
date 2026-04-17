@@ -1,0 +1,63 @@
+<section class="lx-faq">
+  <div class="lx-container">
+    <div class="lx-section-head lx-fade-in">
+      {% if section.settings.badge != blank %}
+      <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+      <p>{{ section.settings.subtext }}</p>
+      {% endif %}
+    </div>
+
+    <div class="lx-faq__list lx-fade-in" role="list">
+      {% assign faq_index = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'item' %}
+        {% assign faq_index = faq_index | plus: 1 %}
+        <div class="lx-faq__item{% if forloop.first %} open{% endif %}" role="listitem" {{ block.shopify_attributes }}>
+          <button class="lx-faq__q" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+            <span class="lx-faq__num" aria-hidden="true">{{ faq_index }}</span>
+            <span class="lx-faq__q-text">{{ block.settings.question }}</span>
+            <svg class="lx-faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lx-faq__a" role="region">
+            <div class="lx-faq__a-inner">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings":[
+    {"type":"text","id":"badge","label":"Badge","default":"FAQ"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"Frequently asked questions"},
+    {"type":"textarea","id":"subtext","label":"Subtext","default":"Can't find your answer? Contact us at info@logixxpharma.com"}
+  ],
+  "blocks":[{
+    "type":"item","name":"FAQ Item",
+    "settings":[
+      {"type":"text","id":"question","label":"Question"},
+      {"type":"textarea","id":"answer","label":"Answer"}
+    ]
+  }],
+  "presets":[{
+    "name":"FAQ",
+    "blocks":[
+      {"type":"item","settings":{"question":"How long should I take Proxeed?","answer":"We recommend taking Proxeed for a minimum of 4–6 months. Sperm take approximately 90 days to mature, so consistent supplementation over this period gives the best results."}},
+      {"type":"item","settings":{"question":"Can my partner and I both take Proxeed?","answer":"Yes — Proxeed Plus or Proxeed Men is formulated for him, while Proxeed Women is specifically designed to support female fertility. Both can be taken simultaneously."}},
+      {"type":"item","settings":{"question":"Is Proxeed clinically proven?","answer":"Yes. Proxeed has been validated in multiple peer-reviewed clinical studies published in respected medical journals, demonstrating significant improvements in sperm parameters."}},
+      {"type":"item","settings":{"question":"What is oxidative stress and why does it matter?","answer":"Oxidative stress occurs when free radicals damage sperm DNA. It is estimated to be a factor in up to 40% of male infertility cases. Proxeed's antioxidant formula helps neutralise free radicals to protect sperm health."}},
+      {"type":"item","settings":{"question":"Are your products Halal certified?","answer":"Yes — Proxeed Plus is Halal certified, making it suitable for customers following a Halal diet."}},
+      {"type":"item","settings":{"question":"Do you offer free delivery?","answer":"Yes! We offer free standard UK delivery on all orders over £50. All orders are dispatched in plain, discreet packaging."}}
+    ]
+  }]
+}
+{% endschema %}

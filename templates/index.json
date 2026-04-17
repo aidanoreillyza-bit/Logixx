@@ -1,115 +1,12 @@
 {
   "sections": {
-    "hero": {
-      "type": "hero",
-      "settings": {
-        "badge_text": "Trusted by 10,000+ Families",
-        "headline": "Your Path to\nParenthood\nStarts Here",
-        "subheading": "Expert fertility care blending cutting-edge science with compassionate, personalised support — so you can grow the family you've always dreamed of.",
-        "primary_cta_label": "Book Free Consultation",
-        "primary_cta_url": "#email-cta",
-        "secondary_cta_label": "Explore Products",
-        "secondary_cta_url": "#products",
-        "stat_number": "85%",
-        "stat_label": "Success Rate",
-        "trust_text": "Certified & Accredited Fertility Clinic"
-      }
-    },
-    "stats": {
-      "type": "stats",
-      "blocks": {
-        "stat-1": { "type": "stat_item", "settings": { "number": "85%", "description": "Clinical Success Rate" } },
-        "stat-2": { "type": "stat_item", "settings": { "number": "10k+", "description": "Families Helped" } },
-        "stat-3": { "type": "stat_item", "settings": { "number": "15+", "description": "Years of Experience" } },
-        "stat-4": { "type": "stat_item", "settings": { "number": "98%", "description": "Patient Satisfaction" } }
-      },
-      "block_order": ["stat-1", "stat-2", "stat-3", "stat-4"],
-      "settings": {}
-    },
-    "why-us": {
-      "type": "why-us",
-      "blocks": {
-        "card-1": { "type": "card", "settings": { "title": "Expert Specialist Team", "text": "Our board-certified reproductive endocrinologists and embryologists bring decades of combined experience to your care." } },
-        "card-2": { "type": "card", "settings": { "title": "Personalised Treatment Plans", "text": "No two fertility journeys are the same. We create bespoke protocols designed around your unique biology and goals." } },
-        "card-3": { "type": "card", "settings": { "title": "Advanced Laboratory Technology", "text": "Our state-of-the-art lab uses the latest AI-assisted embryo selection, time-lapse imaging, and genetic screening technology." } },
-        "card-4": { "type": "card", "settings": { "title": "Compassionate Support", "text": "From your first consultation to beyond your positive pregnancy test, our dedicated coordinators are with you every step of the way." } }
-      },
-      "block_order": ["card-1", "card-2", "card-3", "card-4"],
-      "settings": {
-        "badge_text": "Why LogixX",
-        "heading": "The care you deserve, the results you need",
-        "subheading": "We combine world-class medical expertise with compassionate support at every step of your journey."
-      }
-    },
-    "featured-products": {
-      "type": "featured-products",
-      "settings": {
-        "badge_text": "Our Products",
-        "heading": "Science-backed fertility supplements & kits",
-        "subheading": "Clinically formulated to support every stage of your fertility journey, from preparation to pregnancy."
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "t-1": { "type": "testimonial", "settings": { "quote": "After two years of trying and two failed IUI cycles elsewhere, we found LogixX. Within six months we were pregnant with our daughter Mia. The team's dedication and personalised approach made all the difference. We cannot thank them enough.", "name": "Sarah & James M.", "detail": "IVF success — baby Mia, 8 months" } },
-        "t-2": { "type": "testimonial", "settings": { "quote": "I was diagnosed with PCOS and told my chances were slim. LogixX's HormoneHarmony supplement combined with their IVF protocol gave us our twins, Oliver and Emma. The support team was incredible throughout — always available, always compassionate.", "name": "Priya & David K.", "detail": "IVF with PCOS — twins Oliver & Emma" } },
-        "t-3": { "type": "testimonial", "settings": { "quote": "The SpermCheck kit showed us the issue quickly and the MaleVital Max made a real difference in six weeks. Our natural pregnancy followed shortly after. LogixX's products are backed by real science — we're so grateful we found them.", "name": "Laura & Tom T.", "detail": "Natural conception after supplement protocol" } }
-      },
-      "block_order": ["t-1", "t-2", "t-3"],
-      "settings": {
-        "badge_text": "Real Stories",
-        "heading": "Families made possible by LogixX"
-      }
-    },
-    "faq": {
-      "type": "faq",
-      "blocks": {
-        "faq-1": { "type": "faq_item", "settings": { "question": "What fertility treatments do you offer?", "answer": "We offer a full range of fertility treatments including IVF (In Vitro Fertilisation), IUI (Intrauterine Insemination), ICSI (Intracytoplasmic Sperm Injection), egg freezing, embryo freezing, sperm freezing, donor egg/sperm programmes, and pre-implantation genetic testing (PGT). Our specialists will recommend the most appropriate treatment after a thorough assessment of your individual circumstances." } },
-        "faq-2": { "type": "faq_item", "settings": { "question": "How long does an IVF cycle take?", "answer": "A typical IVF cycle takes between 4 to 6 weeks from the start of stimulation to the embryo transfer. The stimulation phase usually lasts 8–14 days, followed by egg retrieval, fertilisation and embryo development (3–5 days), and then a fresh or frozen embryo transfer." } },
-        "faq-3": { "type": "faq_item", "settings": { "question": "What is your success rate for IVF?", "answer": "Our overall clinical pregnancy rate is 85%, significantly above the national average of around 32% per embryo transfer. For women under 35 using their own eggs, our success rate exceeds 60% per transfer." } },
-        "faq-4": { "type": "faq_item", "settings": { "question": "Are your fertility supplements safe and regulated?", "answer": "Yes. All LogixX supplements are formulated by our in-house reproductive medicine team and independently manufactured in GMP-certified facilities. They are rigorously tested for purity, potency, and safety. Every ingredient is backed by peer-reviewed clinical evidence." } },
-        "faq-5": { "type": "faq_item", "settings": { "question": "How much does fertility treatment cost?", "answer": "An initial consultation is free. A standard IVF cycle starts from $8,500, which includes all monitoring scans, egg retrieval, lab fees, and one fresh embryo transfer. We also offer flexible payment plans and multi-cycle packages." } },
-        "faq-6": { "type": "faq_item", "settings": { "question": "Do I need a GP referral to book a consultation?", "answer": "No, you do not need a GP referral to book your initial consultation at LogixX. You can self-refer by booking online or calling our team directly." } },
-        "faq-7": { "type": "faq_item", "settings": { "question": "What happens at my first consultation?", "answer": "Your initial consultation is a relaxed, 60-minute appointment with one of our senior fertility consultants. We will review your medical and reproductive history, discuss your goals, and may arrange initial fertility tests. There is absolutely no pressure to proceed." } },
-        "faq-8": { "type": "faq_item", "settings": { "question": "Do you offer support for same-sex couples and single parents?", "answer": "Absolutely. LogixX welcomes everyone on their path to parenthood regardless of relationship status or sexual orientation. We have dedicated pathways for same-sex couples and single parents by choice." } },
-        "faq-9": { "type": "faq_item", "settings": { "question": "Can I freeze my eggs if I'm not ready to have a family yet?", "answer": "Yes. Elective egg freezing is one of our most popular services. We recommend it for women between 25–37 who wish to preserve their fertility. Frozen eggs can be stored for up to 10 years." } },
-        "faq-10": { "type": "faq_item", "settings": { "question": "How do I get started with LogixX?", "answer": "Simply enter your email below to receive our free fertility guide and book your complimentary initial consultation. Alternatively, call us on +1 (800) 555-6789 or email hello@logixxfertility.com." } }
-      },
-      "block_order": ["faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6", "faq-7", "faq-8", "faq-9", "faq-10"],
-      "settings": {
-        "badge_text": "FAQs",
-        "heading": "Frequently asked questions",
-        "subheading": "Everything you need to know about fertility treatment at LogixX. Can't find your answer? Contact us."
-      }
-    },
-    "email-cta": {
-      "type": "email-cta",
-      "settings": {
-        "badge_text": "Free Consultation",
-        "heading": "Start your fertility journey today",
-        "body_text": "Join thousands of families who have trusted LogixX. Enter your email to receive our free fertility guide and book your complimentary consultation.",
-        "perk_1": "Free 60-minute fertility consultation",
-        "perk_2": "Personalised fertility guide (PDF)",
-        "perk_3": "Exclusive product discounts",
-        "submit_label": "Get My Free Guide"
-      }
-    },
-    "trust": {
-      "type": "trust",
-      "blocks": {
-        "logo-1": { "type": "logo", "settings": { "alt_text": "HFEA Licensed" } },
-        "logo-2": { "type": "logo", "settings": { "alt_text": "ISO 9001" } },
-        "logo-3": { "type": "logo", "settings": { "alt_text": "ESHRE Member" } },
-        "logo-4": { "type": "logo", "settings": { "alt_text": "ASRM Member" } },
-        "logo-5": { "type": "logo", "settings": { "alt_text": "5-Star Award 2025" } }
-      },
-      "block_order": ["logo-1", "logo-2", "logo-3", "logo-4", "logo-5"],
-      "settings": {
-        "heading": "Trusted, accredited & award-winning",
-        "body_text": "LogixX Fertility is fully licensed by the Human Fertilisation & Embryology Authority (HFEA), ISO 9001 quality-certified, and a proud member of the European Society of Human Reproduction and Embryology (ESHRE) and the American Society for Reproductive Medicine (ASRM)."
-      }
-    }
+    "hero": {"type": "hero"},
+    "stats-bar": {"type": "stats-bar"},
+    "why-us": {"type": "why-us"},
+    "featured-products": {"type": "featured-products"},
+    "testimonials": {"type": "testimonials"},
+    "faq-section": {"type": "faq-section"},
+    "cta-banner": {"type": "cta-banner"}
   },
-  "order": ["hero", "stats", "why-us", "featured-products", "testimonials", "faq", "email-cta", "trust"]
+  "order": ["hero","stats-bar","why-us","featured-products","testimonials","faq-section","cta-banner"]
 }
