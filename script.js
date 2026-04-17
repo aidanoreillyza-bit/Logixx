@@ -241,7 +241,23 @@
 
   function showToast(message) {
     if (!cartToast) return;
-    cartToast.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>' + message;
+    // Build toast content safely without innerHTML to prevent XSS
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('width', '16');
+    svg.setAttribute('height', '16');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2.5');
+    svg.setAttribute('aria-hidden', 'true');
+    var polyline = document.createElementNS(svgNS, 'polyline');
+    polyline.setAttribute('points', '20 6 9 17 4 12');
+    svg.appendChild(polyline);
+    var textNode = document.createTextNode(' ' + message);
+    cartToast.textContent = '';
+    cartToast.appendChild(svg);
+    cartToast.appendChild(textNode);
     cartToast.classList.add('show');
 
     clearTimeout(toastTimer);
