@@ -1,0 +1,77 @@
+.root {
+  --primary-color: #4CAF50;
+  --secondary-color: #FFC107;
+  --background-color: #FFFFFF;
+  --font-family: 'Arial', sans-serif;
+  --font-size: 16px;
+  --border-radius: 4px;
+  --transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  background-color: var(--background-color);
+  color: #333;
+}
+
+.header {
+  background-color: var(--primary-color);
+  padding: 20px;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateX(-100%);
+  transition: transform var(--transition);
+  z-index: 1000;
+}
+
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.content {
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: box-shadow var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 10px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .mobile-drawer {
+    width: 250px;
+  }
+}
