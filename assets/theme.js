@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     drawer.setAttribute('aria-hidden', 'false');
+    if (burger) burger.setAttribute('aria-expanded', 'true');
   }
   function closeDrawer() {
     if (!drawer || !overlay) return;
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     drawer.setAttribute('aria-hidden', 'true');
+    if (burger) burger.setAttribute('aria-expanded', 'false');
   }
   if (burger) burger.addEventListener('click', openDrawer);
   if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
@@ -37,8 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.lx-faq__item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.lx-faq__item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.lx-faq__item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.lx-faq__q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 

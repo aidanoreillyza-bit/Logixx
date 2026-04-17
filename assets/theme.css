@@ -1075,7 +1075,7 @@ p  { line-height: 1.7; }
 }
 .lx-faq__item.open .lx-faq__a { max-height: 600px; }
 .lx-faq__a-inner {
-  padding: 0 0 20px 48px;
+  padding: 0 0 20px 0;
   border-left: 3px solid var(--c-mint);
   margin-left: 16px;
   padding-left: 16px;
