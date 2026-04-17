@@ -73,4 +73,96 @@ document.addEventListener('DOMContentLoaded', () => {
       input.value = Math.max(1, (parseInt(input.value) || 1) + delta);
     });
   });
+
+  // 6. Collection filter / sort / grid-list toggle
+  const collGrid  = document.getElementById('lx-coll-grid');
+  const collEmpty = document.getElementById('lx-coll-empty');
+
+  if (collGrid) {
+    const collCards = Array.from(collGrid.querySelectorAll('.lx-coll-card, .lx-pcard'));
+    let activeFilter = 'all';
+
+    /* ── helpers ── */
+    function showCard(card) {
+      card.hidden = false;
+      // allow browser to paint the element before transitioning in
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          card.classList.remove('lx-coll-card--hiding');
+        });
+      });
+    }
+
+    function hideCard(card) {
+      card.classList.add('lx-coll-card--hiding');
+      const onEnd = () => {
+        card.removeEventListener('transitionend', onEnd);
+        // only fully hide if still meant to be hidden
+        if (card.classList.contains('lx-coll-card--hiding')) {
+          card.hidden = true;
+        }
+      };
+      card.addEventListener('transitionend', onEnd);
+    }
+
+    function applyFilter() {
+      let visible = 0;
+      collCards.forEach(card => {
+        const cat  = (card.dataset.category || '').toLowerCase();
+        const show = activeFilter === 'all' || cat.indexOf(activeFilter) !== -1;
+        if (show) {
+          showCard(card);
+          visible++;
+        } else {
+          hideCard(card);
+        }
+      });
+      if (collEmpty) collEmpty.hidden = visible > 0;
+    }
+
+    /* ── filter buttons ── */
+    document.querySelectorAll('.lx-coll-bar__filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lx-coll-bar__filter').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        activeFilter = btn.dataset.filter || 'all';
+        applyFilter();
+      });
+    });
+
+    /* ── sort dropdown ── */
+    const collSort = document.getElementById('lx-coll-sort');
+    if (collSort) {
+      collSort.addEventListener('change', () => {
+        const val   = collSort.value;
+        const items = Array.from(collGrid.querySelectorAll('.lx-coll-card:not([hidden]), .lx-pcard:not([hidden])'));
+        items.sort((a, b) => {
+          if (val === 'price-asc')  return Number(a.dataset.price) - Number(b.dataset.price);
+          if (val === 'price-desc') return Number(b.dataset.price) - Number(a.dataset.price);
+          if (val === 'title-asc')  return (a.dataset.title || '').localeCompare(b.dataset.title || '');
+          return 0;
+        });
+        items.forEach(item => collGrid.appendChild(item));
+      });
+    }
+
+    /* ── grid / list toggle ── */
+    const btnViewGrid = document.getElementById('lx-view-grid');
+    const btnViewList = document.getElementById('lx-view-list');
+
+    if (btnViewGrid) {
+      btnViewGrid.addEventListener('click', () => {
+        collGrid.classList.remove('lx-pgrid--list', 'is-list');
+        btnViewGrid.classList.add('is-active');
+        if (btnViewList) btnViewList.classList.remove('is-active');
+      });
+    }
+    if (btnViewList) {
+      btnViewList.addEventListener('click', () => {
+        collGrid.classList.add('lx-pgrid--list', 'is-list');
+        btnViewList.classList.add('is-active');
+        if (btnViewGrid) btnViewGrid.classList.remove('is-active');
+      });
+    }
+  }
 });

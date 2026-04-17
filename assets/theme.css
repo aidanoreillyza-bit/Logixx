@@ -1603,7 +1603,7 @@ p  { line-height: 1.7; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .2s ease;
 }
 .lx-coll-card:hover {
   transform: translateY(-8px);
@@ -1611,6 +1611,27 @@ p  { line-height: 1.7; }
   border-color: var(--c-mint);
 }
 .lx-coll-card[hidden] { display: none; }
+.lx-coll-card--hiding {
+  opacity: 0 !important;
+  transform: scale(0.96) translateY(4px) !important;
+  pointer-events: none;
+}
+/* list-view layout (toggled by JS via lx-pgrid--list or is-list) */
+.lx-coll__grid.lx-pgrid--list,
+.lx-coll__grid.is-list {
+  grid-template-columns: 1fr;
+}
+.lx-coll__grid.lx-pgrid--list .lx-coll-card,
+.lx-coll__grid.is-list .lx-coll-card {
+  flex-direction: row;
+}
+.lx-coll__grid.lx-pgrid--list .lx-coll-card__img,
+.lx-coll__grid.is-list .lx-coll-card__img {
+  width: 200px;
+  flex-shrink: 0;
+  height: auto;
+  min-height: 160px;
+}
 
 /* Image area */
 .lx-coll-card__img {
