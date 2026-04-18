@@ -103,12 +103,12 @@
       {% endif %}
 
       <div class="lx-pcard" data-category="{{ cat_key }}"
-        style="background:#fff;border-radius:20px;border:1.5px solid #e5e8ee;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column;"
-        onmouseenter="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(15,31,58,.12)';this.style.borderColor='#00B8D4';"
+        style="background:#fff;border-radius:24px;border:1.5px solid #e5e8ee;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column;"
+        onmouseenter="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(10,22,40,.12)';this.style.borderColor='#00C2B8';"
         onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#e5e8ee';">
 
         <!-- Image -->
-        <div class="lx-pcard__img" style="height:220px;background:linear-gradient(135deg,#ecfdf5,#d1f4e3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        <div class="lx-pcard__img" style="height:240px;background:linear-gradient(135deg,#ecfdf5,#d1f4e3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
           {% if product.featured_image != blank %}
           <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.featured_image.alt | escape | default: product.title | escape }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           {% else %}
@@ -134,13 +134,13 @@
             data-url="{{ product.url }}"
             data-variant="{{ product.selected_or_first_available_variant.id }}"
             data-tags="{{ product.tags | join: ',' | downcase | escape }}"
-            style="background:#fff;color:#0f1f3a;border:none;border-radius:10px;padding:10px 20px;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(8,20,40,.18);">
+            style="background:#fff;color:#0a1628;border:none;border-radius:100px;padding:10px 20px;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(8,20,40,.18);">
             Quick View
           </button>
         </div>
 
         <!-- Body -->
-        <div class="lx-pcard__body" style="padding:18px 20px 0;flex:1;">
+        <div class="lx-pcard__body" style="padding:24px 24px 0;flex:1;">
           <div style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">{{ product.type }}</div>
           <h3 style="font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#0f1f3a;margin-bottom:6px;letter-spacing:-.01em;">{{ product.title }}</h3>
           <!-- Star rating -->
@@ -174,9 +174,9 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
             <form action="/cart/add" method="post">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-              <button type="submit" style="width:100%;padding:11px;background:#00B8D4;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;">Add to Basket</button>
+              <button type="submit" style="width:100%;padding:11px;background:#00C2B8;color:#fff;border:none;border-radius:100px;font-weight:700;font-size:13px;cursor:pointer;">Add to Basket</button>
             </form>
-            <a href="{{ product.url }}" style="display:flex;align-items:center;justify-content:center;padding:11px;background:#fff;color:#0f1f3a;border:1.5px solid #e5e8ee;border-radius:10px;font-weight:600;font-size:13px;text-decoration:none;">View Details</a>
+            <a href="{{ product.url }}" style="display:flex;align-items:center;justify-content:center;padding:11px;background:#fff;color:#0a1628;border:1.5px solid #eaecf0;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;">View Details</a>
           </div>
         </div>
 

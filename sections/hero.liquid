@@ -1,31 +1,37 @@
-<section class="lx-hero" {% if section.settings.image != blank %}style="background-image: url('{{ section.settings.image | img_url: '1600x' }}')"{% endif %}>
+{% assign bg = section.settings.image %}
+<section class="lx-hero"
+  {% if bg != blank %}style="background-image:url('{{ bg | img_url: '1920x' }}')"{% endif %}>
   <div class="lx-hero__orb lx-hero__orb--1" aria-hidden="true"></div>
   <div class="lx-hero__orb lx-hero__orb--2" aria-hidden="true"></div>
   <div class="lx-container">
     <div class="lx-hero__content lx-fade-in">
-      {% if section.settings.badge != blank %}
+
+      {% if section.settings.pill != blank %}
       <div class="lx-hero__badge" aria-label="Badge">
         <span class="lx-hero__badge-dot" aria-hidden="true"></span>
-        {{ section.settings.badge }}
+        {{ section.settings.pill }}
       </div>
       {% endif %}
 
-      <h1>{{ section.settings.heading | newline_to_br }}</h1>
+      <h1>
+        {% if section.settings.line1 != blank %}{{ section.settings.line1 }}<br>{% endif %}
+        {% if section.settings.line2 != blank %}<em>{{ section.settings.line2 }}</em>{% endif %}
+      </h1>
 
-      {% if section.settings.subtext != blank %}
-      <p class="lx-hero__sub">{{ section.settings.subtext }}</p>
+      {% if section.settings.sub != blank %}
+      <p class="lx-hero__sub">{{ section.settings.sub }}</p>
       {% endif %}
 
       <div class="lx-hero__btns">
-        {% if section.settings.btn1_label != blank %}
+        {% if section.settings.btn1 != blank %}
         <a href="{{ section.settings.btn1_url | default: '/collections/all' }}" class="lx-btn lx-btn--mint lx-btn--lg">
-          {{ section.settings.btn1_label }}
+          {{ section.settings.btn1 }}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         {% endif %}
-        {% if section.settings.btn2_label != blank %}
+        {% if section.settings.btn2 != blank %}
         <a href="{{ section.settings.btn2_url | default: '/pages/about' }}" class="lx-btn lx-btn--ghost">
-          {{ section.settings.btn2_label }}
+          {{ section.settings.btn2 }}
         </a>
         {% endif %}
       </div>
@@ -41,6 +47,7 @@
         {% endfor %}
       </div>
       {% endif %}
+
     </div>
   </div>
 </section>
@@ -49,25 +56,21 @@
 {
   "name": "Hero",
   "settings": [
-    {"type":"image_picker","id":"image","label":"Background image"},
-    {"type":"text","id":"badge","label":"Badge text","default":"Trusted UK Fertility Specialists"},
-    {"type":"textarea","id":"heading","label":"Heading","default":"The UK's Leading\nFertility Supplement\nExperts"},
-    {"type":"textarea","id":"subtext","label":"Subtext","default":"Clinically proven supplements to support male and female fertility — trusted by thousands of families across the UK."},
-    {"type":"text","id":"btn1_label","label":"Primary button","default":"Shop Products"},
-    {"type":"url","id":"btn1_url","label":"Primary button URL","default":"/collections/all"},
-    {"type":"text","id":"btn2_label","label":"Secondary button","default":"Learn More"},
-    {"type":"url","id":"btn2_url","label":"Secondary button URL"}
+    {"type":"image_picker","id":"image","label":"Background Image"},
+    {"type":"text","id":"pill","label":"Badge Text","default":"Trusted for Over 10 Years"},
+    {"type":"text","id":"line1","label":"Heading Line 1","default":"Prepared to"},
+    {"type":"text","id":"line2","label":"Heading Line 2 (accent)","default":"begin your journey."},
+    {"type":"textarea","id":"sub","label":"Subtitle","default":"Clinically proven supplements to support male and female fertility — trusted by thousands of families across the UK."},
+    {"type":"text","id":"btn1","label":"Button 1","default":"Shop Now"},
+    {"type":"url","id":"btn1_url","label":"Button 1 Link"},
+    {"type":"text","id":"btn2","label":"Button 2","default":"Learn More"},
+    {"type":"url","id":"btn2_url","label":"Button 2 Link"}
   ],
-  "blocks":[
-    {"type":"trust","name":"Trust item","settings":[{"type":"text","id":"text","label":"Text","default":"Free UK Delivery"}]}
-  ],
-  "presets":[{
-    "name":"Hero",
-    "blocks":[
-      {"type":"trust","settings":{"text":"Free UK Delivery over £50"}},
-      {"type":"trust","settings":{"text":"Clinically Proven Formula"}},
-      {"type":"trust","settings":{"text":"30-Day Returns"}}
-    ]
-  }]
+  "blocks":[{"type":"trust","name":"Trust Item","settings":[{"type":"text","id":"text","label":"Text","default":"Clinically Proven"}]}],
+  "presets":[{"name":"Hero","blocks":[
+    {"type":"trust","settings":{"text":"Clinically Proven"}},
+    {"type":"trust","settings":{"text":"Free UK Delivery £50+"}},
+    {"type":"trust","settings":{"text":"Halal Certified"}}
+  ]}]
 }
 {% endschema %}
