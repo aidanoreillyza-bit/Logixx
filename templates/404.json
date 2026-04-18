@@ -1,4 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "sections": {"main": {"type": "notfound-main"}},
-  "order": ["main"]
+  "sections": {
+    "main": {
+      "type": "notfound-main",
+      "settings": {
+        "heading": "Page not found",
+        "message": "Sorry, the page you were looking for doesn't exist or may have moved.",
+        "btn_label": "Back to Home",
+        "btn_url": "/"
+      }
+    },
+    "why_us_EqVNYN": {
+      "type": "why-us",
+      "blocks": {
+        "card_FJnN3K": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Clinically Proven",
+            "text": "All our products are backed by peer-reviewed clinical studies and recommended by fertility specialists."
+          }
+        },
+        "card_cAbjHB": {
+          "type": "card",
+          "settings": {
+            "icon": "users",
+            "title": "Expert Support",
+            "text": "Our team of fertility specialists are here to guide you through your journey with personalised advice."
+          }
+        },
+        "card_yNYgft": {
+          "type": "card",
+          "settings": {
+            "icon": "truck",
+            "title": "Free UK Delivery",
+            "text": "Free discreet delivery on all UK orders over £50. Delivered in plain packaging for your privacy."
+          }
+        },
+        "card_hKBCzw": {
+          "type": "card",
+          "settings": {
+            "icon": "clock",
+            "title": "Fast Results",
+            "text": "Most customers report noticeable improvements within 8–12 weeks of consistent supplementation."
+          }
+        }
+      },
+      "block_order": [
+        "card_FJnN3K",
+        "card_cAbjHB",
+        "card_yNYgft",
+        "card_hKBCzw"
+      ],
+      "custom_css": [],
+      "name": "Why Us",
+      "settings": {
+        "badge": "Why LogixX",
+        "heading": "The science of fertility,\nthe heart of care",
+        "subtext": "We combine world-class science with compassionate support at every step of your fertility journey."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "why_us_EqVNYN"
+  ]
 }
