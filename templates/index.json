@@ -8,8 +8,9 @@
     "featured-products": {"type": "featured-products"},
     "testimonials": {"type": "testimonials"},
     "news": {"type": "news-preview"},
+    "instagram": {"type": "instagram-feed"},
     "faq-section": {"type": "faq-section"},
     "cta-banner": {"type": "cta-banner"}
   },
-  "order": ["hero","stats-bar","why-us","how-it-works","results","featured-products","testimonials","news","faq-section","cta-banner"]
+  "order": ["hero","stats-bar","why-us","how-it-works","results","featured-products","testimonials","news","instagram","faq-section","cta-banner"]
 }
