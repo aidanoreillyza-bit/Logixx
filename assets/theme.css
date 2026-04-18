@@ -5,6 +5,7 @@
 
 /* ── Custom properties ─────────────────────────────────────── */
 :root {
+  /* Colours */
   --c-navy:      #0a1628;
   --c-navy-dk:   #060e1a;
   --c-navy-lt:   #152035;
@@ -12,10 +13,10 @@
   --c-mint:      #00C2B8;
   --c-mint-l:    #00E5D5;
   --c-mint-dk:   #009990;
-  --c-mint-pale: #dff8f6;
+  --c-mint-pale: #e6fffe;
   --c-off:       #f7f9fc;
-  --c-grey:      var(--c-grey);
-  --c-mid:       #c0c7d2;
+  --c-grey:      #eaecf0;
+  --c-mid:       #c8cdd6;
   --c-text:      #0a1628;
   --c-body:      #3b4758;
   --c-mute:      #6b7485;
@@ -24,15 +25,23 @@
   --c-green:     #009990;
   --c-surface:   #ffffff;
   --c-surface-2: #f7f9fc;
-  --font-head:   'Instrument Serif', Georgia, serif;
-  --font-body:   'Plus Jakarta Sans', -apple-system, sans-serif;
-  --f-sans:      var(--font-body);
-  --r:           100px;
+  /* Typography */
+  --f-serif:     'Instrument Serif', Georgia, serif;
+  --f-sans:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-head:   var(--f-serif);
+  --font-body:   var(--f-sans);
+  /* Radius */
+  --r-xs:        6px;
   --r-sm:        100px;
+  --r:           100px;
   --r-lg:        100px;
+  --r-xl:        24px;
+  --r-full:      100px;
   --radius:      16px;
-  --shadow:      0 4px 24px rgba(0,0,0,.08);
-  --shadow-lg:   0 20px 48px rgba(0,0,0,.14);
+  /* Shadows */
+  --shadow:      0 1px 3px rgba(10,22,40,.04), 0 8px 24px rgba(10,22,40,.05);
+  --shadow-md:   0 4px 16px rgba(10,22,40,.07), 0 12px 36px rgba(10,22,40,.07);
+  --shadow-lg:   0 8px 28px rgba(10,22,40,.09), 0 24px 56px rgba(10,22,40,.11);
   --transition:  .25s ease;
 }
 
