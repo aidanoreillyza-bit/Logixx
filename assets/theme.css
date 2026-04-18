@@ -945,6 +945,11 @@ p  { line-height: 1.7; }
   color: var(--c-navy-dk);
   box-shadow: 0 8px 20px rgba(0,184,212,.3);
 }
+/* ── Product card image link ─────────────────────────────────── */
+.lx-pcard__img-link {
+  display: block;
+}
+
 /* ── List-view layout for .lx-pcard grid ─────────────────────── */
 .lx-pgrid--list {
   grid-template-columns: 1fr;
@@ -1175,6 +1180,30 @@ p  { line-height: 1.7; }
 /* ============================================================
    FOOTER
    ============================================================ */
+.lx-ftr__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lx-ftr__col {
+  display: flex;
+  flex-direction: column;
+}
+.lx-logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--c-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lx-logo-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
 .lx-ftr {
   background: #060f1e;
   padding: 64px 0 0;
@@ -1538,7 +1567,7 @@ p  { line-height: 1.7; }
 /* ── Filter bar ─────────────────────────────────────────────── */
 .lx-coll-bar {
   position: sticky;
-  top: 0;
+  top: 72px;
   z-index: 90;
   background: #fff;
   border-bottom: 1px solid #e5e8ee;
