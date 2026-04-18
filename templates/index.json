@@ -1,16 +1,16 @@
 {
   "sections": {
-    "hero": {"type": "hero"},
-    "stats-bar": {"type": "stats-bar"},
-    "why-us": {"type": "why-us"},
-    "how-it-works": {"type": "how-it-works"},
-    "results": {"type": "results"},
-    "featured-products": {"type": "featured-products"},
-    "testimonials": {"type": "testimonials"},
-    "news": {"type": "news-preview"},
-    "instagram": {"type": "instagram-feed"},
-    "faq-section": {"type": "faq-section"},
-    "cta-banner": {"type": "cta-banner"}
+    "hero":              {"type": "hero",              "settings": {}},
+    "stats-bar":         {"type": "stats-bar",         "settings": {}},
+    "why-us":            {"type": "why-us",            "settings": {}},
+    "how-it-works":      {"type": "how-it-works",      "settings": {}},
+    "results":           {"type": "results",           "settings": {}},
+    "featured-products": {"type": "featured-products", "settings": {}},
+    "testimonials":      {"type": "testimonials",      "settings": {}},
+    "news":              {"type": "news-preview",      "settings": {}},
+    "instagram":         {"type": "instagram-feed",    "settings": {}},
+    "faq-section":       {"type": "faq-section",       "settings": {}},
+    "cta-banner":        {"type": "cta-banner",        "settings": {}}
   },
   "order": ["hero","stats-bar","why-us","how-it-works","results","featured-products","testimonials","news","instagram","faq-section","cta-banner"]
 }
