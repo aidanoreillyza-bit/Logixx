@@ -2079,3 +2079,7 @@ p  { line-height: 1.7; }
   white-space: nowrap;
   border: 0;
 }
+
+/* ── Collection page responsive ──────────────────────────────── */
+@media (max-width: 1024px) { #lx-product-grid { grid-template-columns: repeat(2,1fr) !important; } }
+@media (max-width: 640px) { #lx-product-grid { grid-template-columns: 1fr !important; } .lx-coll [style*="repeat(3"] { grid-template-columns: 1fr !important; } }

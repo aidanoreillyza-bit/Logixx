@@ -1,3 +1,5 @@
+{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
 <!-- ── Hero banner ───────────────────────────────────────────── -->
 <div style="background:linear-gradient(135deg,#081428 0%,#0f2a4a 100%);padding:60px 0;">
   <div style="max-width:1240px;margin:0 auto;padding:0 28px;text-align:center;">
@@ -158,8 +160,7 @@
 
 {% schema %}
 {
-  "name": "Collection",
-  "settings": [],
-  "presets": [{"name": "Collection"}]
+  "name": "Collection Page",
+  "settings": []
 }
 {% endschema %}
