@@ -3,7 +3,8 @@
   {% if bg != blank %}style="background-image:url('{{ bg | img_url: '1920x' }}')"{% endif %}>
   <div class="lx-hero__orb lx-hero__orb--1" aria-hidden="true"></div>
   <div class="lx-hero__orb lx-hero__orb--2" aria-hidden="true"></div>
-  <div class="lx-container">
+  <div class="lx-hero__orb lx-hero__orb--3" aria-hidden="true"></div>
+  <div class="lx-container lx-hero__wrap">
     <div class="lx-hero__content lx-fade-in">
 
       {% if section.settings.pill != blank %}
@@ -49,6 +50,56 @@
       {% endif %}
 
     </div>
+
+    <!-- Visual stats panel — desktop only -->
+    <div class="lx-hero__visual lx-fade-in" aria-hidden="true">
+      <div class="lx-hero__vis-glass">
+
+        <div class="lx-hero__vis-ring-wrap">
+          <svg class="lx-hero__vis-ring-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="80" r="64" stroke="rgba(255,255,255,.06)" stroke-width="12"/>
+            <circle cx="80" cy="80" r="64" stroke="url(#heroRingGrad)" stroke-width="12"
+              stroke-dasharray="402.12" stroke-dashoffset="60.32" stroke-linecap="round"
+              transform="rotate(-90 80 80)"/>
+            <defs>
+              <linearGradient id="heroRingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00C2B8"/>
+                <stop offset="100%" stop-color="#00E5D5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="lx-hero__vis-ring-inner">
+            <div class="lx-hero__vis-ring-num">85%</div>
+            <div class="lx-hero__vis-ring-lbl">Clinical<br>Success Rate</div>
+          </div>
+        </div>
+
+        <div class="lx-hero__vis-metrics">
+          <div class="lx-hero__vis-metric">
+            <div class="lx-hero__vis-metric-val">10,000+</div>
+            <div class="lx-hero__vis-metric-lbl">Families Helped</div>
+          </div>
+          <div class="lx-hero__vis-metric">
+            <div class="lx-hero__vis-metric-stars">★★★★★</div>
+            <div class="lx-hero__vis-metric-val">4.9</div>
+            <div class="lx-hero__vis-metric-lbl">Avg. Rating</div>
+          </div>
+        </div>
+
+        <div class="lx-hero__vis-pills">
+          <div class="lx-hero__vis-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            Halal Certified
+          </div>
+          <div class="lx-hero__vis-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            GMP Certified
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 

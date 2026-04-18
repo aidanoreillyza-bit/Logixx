@@ -10,6 +10,36 @@
     </div>
 
     <div class="lx-testi__grid">
+
+      <div class="lx-testi__summary lx-fade-in" aria-label="Aggregate rating summary">
+        <div class="lx-testi__summary-score" aria-hidden="true">4.9</div>
+        <div class="lx-testi__summary-mid">
+          <div class="lx-testi__summary-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="lx-testi__summary-count">2,400+ verified reviews</div>
+        </div>
+        <div class="lx-testi__summary-bars" aria-hidden="true">
+          <div class="lx-testi__summary-bar">
+            <span class="lx-testi__summary-bar-lbl">5★</span>
+            <div class="lx-testi__summary-bar-track"><div class="lx-testi__summary-bar-fill lx-testi__summary-bar-fill--87"></div></div>
+            <span class="lx-testi__summary-bar-pct">87%</span>
+          </div>
+          <div class="lx-testi__summary-bar">
+            <span class="lx-testi__summary-bar-lbl">4★</span>
+            <div class="lx-testi__summary-bar-track"><div class="lx-testi__summary-bar-fill lx-testi__summary-bar-fill--9"></div></div>
+            <span class="lx-testi__summary-bar-pct">9%</span>
+          </div>
+          <div class="lx-testi__summary-bar">
+            <span class="lx-testi__summary-bar-lbl">3★</span>
+            <div class="lx-testi__summary-bar-track"><div class="lx-testi__summary-bar-fill lx-testi__summary-bar-fill--3"></div></div>
+            <span class="lx-testi__summary-bar-pct">3%</span>
+          </div>
+          <div class="lx-testi__summary-bar">
+            <span class="lx-testi__summary-bar-lbl">2★</span>
+            <div class="lx-testi__summary-bar-track"><div class="lx-testi__summary-bar-fill lx-testi__summary-bar-fill--1"></div></div>
+            <span class="lx-testi__summary-bar-pct">1%</span>
+          </div>
+        </div>
+      </div>
       {% for block in section.blocks %}
         {% if block.type == 'review' %}
         <article class="lx-testi__card lx-fade-in" {{ block.shopify_attributes }}>
