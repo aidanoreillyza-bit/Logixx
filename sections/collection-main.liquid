@@ -226,14 +226,6 @@
   </div>
 </div>
 
-<!-- ── Recently Viewed ─────────────────────────────────────── -->
-<div id="lx-rv-section" hidden style="background:#fff;border-top:1px solid #e5e8ee;padding:48px 0;">
-  <div style="max-width:1240px;margin:0 auto;padding:0 28px;">
-    <h2 style="font-family:'Instrument Serif',serif;font-size:1.75rem;color:#0f1f3a;margin:0 0 24px;">Recently Viewed</h2>
-    <div id="lx-rv-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;"></div>
-  </div>
-</div>
-
 <!-- ── Quick View modal ─────────────────────────────────────── -->
 <div id="lx-qv-overlay" role="dialog" aria-modal="true" aria-labelledby="lx-qv-title">
   <div id="lx-qv-modal">
@@ -371,76 +363,7 @@
 })();
 </script>
 
-<script>
-(function () {
-  var STORAGE_KEY = 'lx_recently_viewed';
-  var MAX_ITEMS   = 8;
-
-  /* ── Build the product catalogue from cards already on the page ── */
-  var catalogue = {};
-  document.querySelectorAll('.lx-qv-btn').forEach(function (btn) {
-    var d = btn.dataset;
-    if (!d.url) return;
-    catalogue[d.url] = {
-      url:        d.url,
-      title:      d.title  || '',
-      type:       d.type   || '',
-      price:      d.price  || '',
-      img:        d.img    || '',
-      imgAlt:     d.imgAlt || ''
-    };
-  });
-
-  /* ── Record every visible product as "viewed" ── */
-  function recordViewed() {
-    var stored = [];
-    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) {}
-    Object.values(catalogue).forEach(function (product) {
-      stored = stored.filter(function (p) { return p.url !== product.url; });
-      stored.unshift(product);
-    });
-    stored = stored.slice(0, MAX_ITEMS);
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stored)); } catch (e) {}
-  }
-
-  /* ── Render previously viewed products (excluding current page's products) ── */
-  function renderViewed() {
-    var stored = [];
-    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) {}
-    var toShow = stored.filter(function (p) { return !catalogue[p.url]; }).slice(0, 4);
-    if (!toShow.length) return;
-
-    var section = document.getElementById('lx-rv-section');
-    var grid    = document.getElementById('lx-rv-grid');
-    if (!section || !grid) return;
-
-    grid.innerHTML = toShow.map(function (p) {
-      var imgHtml = p.img
-        ? '<img src="' + p.img + '" alt="' + p.imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
-        : '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
-      return [
-        '<a href="' + p.url + '" style="display:flex;flex-direction:column;text-decoration:none;background:#fff;border-radius:16px;border:1.5px solid #e5e8ee;overflow:hidden;transition:box-shadow .25s,border-color .25s;"',
-        ' onmouseenter="this.style.boxShadow=\'0 12px 32px rgba(15,31,58,.1)\';this.style.borderColor=\'#00B8D4\';"',
-        ' onmouseleave="this.style.boxShadow=\'\';this.style.borderColor=\'#e5e8ee\';">',
-        '  <div style="height:160px;background:linear-gradient(135deg,#ecfdf5,#d1f4e3);display:flex;align-items:center;justify-content:center;overflow:hidden;">',
-        imgHtml,
-        '  </div>',
-        '  <div style="padding:14px 16px;">',
-        '    <div style="font-size:10px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">' + p.type + '</div>',
-        '    <div style="font-size:14px;font-weight:700;color:#0f1f3a;margin-bottom:6px;line-height:1.3;">' + p.title + '</div>',
-        '    <div style="font-size:16px;font-weight:800;color:#0f1f3a;">' + p.price + '</div>',
-        '  </div>',
-        '</a>'
-      ].join('');
-    }).join('');
-
-    section.hidden = false;
-  }
-
-  recordViewed();
-  renderViewed();
-})();
-</script>
+{% schema %}
 {
   "name": "Collection Page",
   "settings": []
