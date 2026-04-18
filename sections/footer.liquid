@@ -85,15 +85,15 @@
         </nav>
         {% endif %}
         {% if section.settings.address != blank or section.settings.phone != blank %}
-        <div style="margin-top:20px;">
+        <div class="lx-ftr__contact">
           {% if section.settings.address != blank %}
-          <p style="color:rgba(255,255,255,.4);font-size:12px;line-height:1.6;margin-bottom:8px;">{{ section.settings.address }}</p>
+          <p class="lx-ftr__contact-addr">{{ section.settings.address }}</p>
           {% endif %}
           {% if section.settings.phone != blank %}
-          <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' }}" style="color:rgba(255,255,255,.4);font-size:12px;display:block;margin-bottom:4px;text-decoration:none;">{{ section.settings.phone }}</a>
+          <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' }}" class="lx-ftr__contact-link">{{ section.settings.phone }}</a>
           {% endif %}
           {% if section.settings.email != blank %}
-          <a href="mailto:{{ section.settings.email }}" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">{{ section.settings.email }}</a>
+          <a href="mailto:{{ section.settings.email }}" class="lx-ftr__contact-link">{{ section.settings.email }}</a>
           {% endif %}
         </div>
         {% endif %}

@@ -1,94 +1,35 @@
 {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
-<style>
-  .lx-qv-btn {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    opacity: 0;
-    transition: opacity .25s, transform .25s;
-    white-space: nowrap;
-    pointer-events: none;
-  }
-  .lx-pcard:hover .lx-qv-btn {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-  }
-  #lx-qv-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(8,20,40,.72);
-    z-index: 9000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  #lx-qv-overlay.is-open {
-    display: flex;
-  }
-  #lx-qv-modal {
-    background: #fff;
-    border-radius: 20px;
-    max-width: 820px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    position: relative;
-    box-shadow: 0 32px 80px rgba(8,20,40,.3);
-  }
-  @media (max-width: 600px) {
-    #lx-qv-modal { grid-template-columns: 1fr; }
-  }
-</style>
-
-<!-- ── Hero banner ───────────────────────────────────────────── -->
-<div style="background:linear-gradient(135deg,#081428 0%,#0f2a4a 100%);padding:60px 0;">
-  <div style="max-width:1240px;margin:0 auto;padding:0 28px;text-align:center;">
-    <h1 style="font-family:'Instrument Serif',serif;font-size:3rem;color:#fff;margin:0 0 12px;">Shop All Products</h1>
-    <p style="color:rgba(255,255,255,.65);font-size:1rem;margin:0 0 28px;">Clinically proven fertility supplements and diagnostics</p>
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
-      <span style="border:1px solid rgba(0,184,212,.3);background:rgba(0,184,212,.1);color:#00B8D4;padding:6px 16px;border-radius:100px;font-size:13px;">Free UK Delivery £50+</span>
-      <span style="border:1px solid rgba(0,184,212,.3);background:rgba(0,184,212,.1);color:#00B8D4;padding:6px 16px;border-radius:100px;font-size:13px;">Clinically Proven</span>
-      <span style="border:1px solid rgba(0,184,212,.3);background:rgba(0,184,212,.1);color:#00B8D4;padding:6px 16px;border-radius:100px;font-size:13px;">Halal Certified</span>
+<!-- ── Collection hero ──────────────────────────────────────── -->
+<div class="lx-coll-hero">
+  <div class="lx-container">
+    <h1>{{ collection.title | default: 'Shop All Products' }}</h1>
+    <p class="lx-coll-hero__desc">{{ collection.description | default: 'Clinically proven fertility supplements and diagnostics' | strip_html }}</p>
+    <div class="lx-coll-hero__pills">
+      <span class="lx-coll-hero__pill">Free UK Delivery £50+</span>
+      <span class="lx-coll-hero__pill">Clinically Proven</span>
+      <span class="lx-coll-hero__pill">Halal Certified</span>
     </div>
   </div>
 </div>
 
-<!-- ── Filter bar ────────────────────────────────────────────── -->
-<div style="background:#fff;border-bottom:1px solid #e5e8ee;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-  <div id="lx-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;" role="group" aria-label="Filter products">
-    <button type="button" class="lx-pf-btn lx-pf-btn--active" data-filter="all"
-      style="padding:8px 18px;border-radius:100px;border:1.5px solid #00B8D4;background:#00B8D4;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">
-      All Products
-    </button>
-    <button type="button" class="lx-pf-btn" data-filter="male"
-      style="padding:8px 18px;border-radius:100px;border:1.5px solid #e5e8ee;background:#fff;color:#0f1f3a;font-size:13px;font-weight:600;cursor:pointer;">
-      For Him
-    </button>
-    <button type="button" class="lx-pf-btn" data-filter="female"
-      style="padding:8px 18px;border-radius:100px;border:1.5px solid #e5e8ee;background:#fff;color:#0f1f3a;font-size:13px;font-weight:600;cursor:pointer;">
-      For Her
-    </button>
-    <button type="button" class="lx-pf-btn" data-filter="diagnostics"
-      style="padding:8px 18px;border-radius:100px;border:1.5px solid #e5e8ee;background:#fff;color:#0f1f3a;font-size:13px;font-weight:600;cursor:pointer;">
-      Diagnostics
-    </button>
+<!-- ── Filter bar ───────────────────────────────────────────── -->
+<div class="lx-coll-bar">
+  <div class="lx-coll-bar__filters" role="group" aria-label="Filter products">
+    <button type="button" class="lx-coll-bar__filter is-active" data-filter="all">All Products</button>
+    <button type="button" class="lx-coll-bar__filter" data-filter="male">For Him</button>
+    <button type="button" class="lx-coll-bar__filter" data-filter="female">For Her</button>
+    <button type="button" class="lx-coll-bar__filter" data-filter="diagnostics">Diagnostics</button>
   </div>
-  <span style="font-size:13px;color:#6b7485;white-space:nowrap;">{{ collection.products_count }} products</span>
+  <span class="lx-coll-bar__count">{{ collection.products_count }} products</span>
 </div>
 
-<!-- ── Product grid ──────────────────────────────────────────── -->
-<div style="background:#fafbfc;padding:48px 0;">
-  <div style="max-width:1240px;margin:0 auto;padding:0 28px;">
+<!-- ── Product grid ─────────────────────────────────────────── -->
+<div class="lx-coll">
+  <div class="lx-container">
 
     {% if collection.products.size > 0 %}
-    <div id="lx-pcard-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+    <div id="lx-pcard-grid" class="lx-coll__grid">
 
       {% for product in collection.products limit: 24 %}
       {% assign cat_tags = product.tags | join: ',' | downcase %}
@@ -102,25 +43,26 @@
         {% assign cat_key = 'male' %}
       {% endif %}
 
-      <div class="lx-pcard" data-category="{{ cat_key }}"
-        style="background:#fff;border-radius:24px;border:1.5px solid #e5e8ee;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column;"
-        onmouseenter="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(10,22,40,.12)';this.style.borderColor='#00C2B8';"
-        onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#e5e8ee';">
+      <div class="lx-coll-card" data-category="{{ cat_key }}">
 
-        <!-- Image -->
-        <div class="lx-pcard__img" style="height:240px;background:linear-gradient(135deg,#ecfdf5,#d1f4e3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        <div class="lx-coll-card__img">
           {% if product.featured_image != blank %}
-          <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.featured_image.alt | escape | default: product.title | escape }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img
+            src="{{ product.featured_image | img_url: '600x' }}"
+            alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
           {% else %}
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <svg class="lx-coll-card__img-placeholder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
           {% endif %}
           {% if product.compare_at_price > product.price %}
-          <span style="position:absolute;top:12px;right:12px;background:#ff4757;color:#fff;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;">SALE</span>
+          <span class="lx-coll-card__badge-sale">SALE</span>
           {% endif %}
           {% if product.tags contains 'bestseller' %}
-          <span style="position:absolute;top:12px;left:12px;background:rgba(0,184,212,.1);color:#00B8D4;border:1px solid rgba(0,184,212,.3);padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;">Best Seller</span>
+          <span class="lx-coll-card__badge-best">Best Seller</span>
           {% endif %}
-          <!-- Quick View button -->
           <button type="button" class="lx-qv-btn"
             data-title="{{ product.title | escape }}"
             data-type="{{ product.type | escape }}"
@@ -133,93 +75,99 @@
             data-img-alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
             data-url="{{ product.url }}"
             data-variant="{{ product.selected_or_first_available_variant.id }}"
-            data-tags="{{ product.tags | join: ',' | downcase | escape }}"
-            style="background:#fff;color:#0a1628;border:none;border-radius:100px;padding:10px 20px;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(8,20,40,.18);">
+            data-tags="{{ product.tags | join: ',' | downcase | escape }}">
             Quick View
           </button>
         </div>
 
-        <!-- Body -->
-        <div class="lx-pcard__body" style="padding:24px 24px 0;flex:1;">
-          <div style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">{{ product.type }}</div>
-          <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;color:#0f1f3a;margin-bottom:6px;letter-spacing:-.01em;">{{ product.title }}</h3>
-          <!-- Star rating -->
-          <div style="display:flex;align-items:center;gap:4px;margin-bottom:8px;">
-            <span style="color:#f5a623;font-size:14px;letter-spacing:1px;" aria-label="5 out of 5 stars">★★★★★</span>
-            <span style="font-size:12px;color:#6b7485;">(5.0)</span>
+        <div class="lx-coll-card__body">
+          {% if product.type != blank %}
+          <div class="lx-coll-card__cat">{{ product.type }}</div>
+          {% endif %}
+          <a href="{{ product.url }}" class="lx-coll-card__title">{{ product.title }}</a>
+          <div class="lx-coll-card__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
+            <span>(5.0)</span>
           </div>
-          <p style="font-size:13px;color:#6b7485;line-height:1.6;margin-bottom:0;">{{ product.description | strip_html | truncate: 100 }}</p>
-        </div>
-
-        <!-- Footer -->
-        <div class="lx-pcard__foot" style="padding:16px 20px 20px;">
-          <!-- Stock indicator -->
+          {% if product.description != blank %}
+          <p class="lx-coll-card__desc">{{ product.description | strip_html | truncate: 100 }}</p>
+          {% endif %}
           {% if product.available %}
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-            <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;"></span>
-            <span style="font-size:12px;font-weight:600;color:#22c55e;">In Stock</span>
+          <div class="lx-qv-stock lx-qv-stock--in">
+            <span class="lx-qv-stock__dot"></span>
+            <span>In Stock</span>
           </div>
           {% else %}
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-            <span style="width:8px;height:8px;border-radius:50%;background:#9ca3af;display:inline-block;flex-shrink:0;"></span>
-            <span style="font-size:12px;font-weight:600;color:#9ca3af;">Out of Stock</span>
+          <div class="lx-qv-stock lx-qv-stock--out">
+            <span class="lx-qv-stock__dot"></span>
+            <span>Out of Stock</span>
           </div>
           {% endif %}
-          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px;">
-            <span style="font-size:24px;font-weight:800;color:#0f1f3a;">{{ product.price | money }}</span>
+          <div class="lx-coll-card__price-row">
+            <span class="lx-coll-card__price">{{ product.price | money }}</span>
             {% if product.compare_at_price > product.price %}
-            <span style="font-size:14px;color:#6b7485;text-decoration:line-through;">{{ product.compare_at_price | money }}</span>
+            <span class="lx-coll-card__compare">{{ product.compare_at_price | money }}</span>
+            {% assign saving = product.compare_at_price | minus: product.price %}
+            <span class="lx-coll-card__save">Save {{ saving | money }}</span>
             {% endif %}
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="lx-coll-card__actions">
             <form action="/cart/add" method="post">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-              <button type="submit" style="width:100%;padding:11px;background:#00C2B8;color:#fff;border:none;border-radius:100px;font-weight:700;font-size:13px;cursor:pointer;">Add to Basket</button>
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="lx-coll-card__add" {% unless product.available %}disabled{% endunless %}>
+                {% if product.available %}Add to Basket{% else %}Sold Out{% endif %}
+              </button>
             </form>
-            <a href="{{ product.url }}" style="display:flex;align-items:center;justify-content:center;padding:11px;background:#fff;color:#0a1628;border:1.5px solid #eaecf0;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;">View Details</a>
+            <a href="{{ product.url }}" class="lx-coll-card__view">View Details</a>
           </div>
         </div>
 
       </div>
 
       {% if forloop.index == 2 %}
-      </div><!-- /lx-pcard-grid row 1 -->
+      </div>
 
-      <!-- ── Bundle suggestion banner ────────────────────────── -->
-      <div style="background:linear-gradient(135deg,#081428 0%,#0f2a4a 100%);border-radius:20px;padding:36px 40px;margin:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+      <div class="lx-bundle">
         <div>
-          <div style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Bundle &amp; Save</div>
-          <h2 style="font-family:'Instrument Serif',serif;font-size:1.75rem;color:#fff;margin:0 0 8px;">Boost your results — try a complete bundle</h2>
-          <p style="font-size:14px;color:rgba(255,255,255,.65);margin:0;">Combine supplements and diagnostics for up to <strong style="color:#00B8D4;">20% off</strong> your order.</p>
+          <div class="lx-bundle__label">Bundle &amp; Save</div>
+          <h2>Boost your results — try a complete bundle</h2>
+          <p>Combine supplements and diagnostics for up to <strong class="lx-bundle__hl">20% off</strong> your order.</p>
         </div>
-        <a href="/collections/bundles" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#00B8D4;color:#fff;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
+        <a href="/collections/bundles" class="lx-bundle__btn">
           Shop Bundles
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:0">
+      <div class="lx-coll__grid">
       {% endif %}
 
       {% endfor %}
 
     </div>
 
-    <!-- Empty state shown by JS when all cards are filtered out -->
-    <div id="lx-pcard-empty" hidden style="text-align:center;padding:80px 0;">
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1.5" style="margin-bottom:20px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <h2 style="font-size:24px;font-weight:700;color:#0f1f3a;margin-bottom:8px;">No products found</h2>
-      <p style="color:#6b7485;margin-bottom:20px;">Try a different filter to see more products.</p>
-      <button type="button" onclick="document.querySelector('.lx-pf-btn[data-filter=all]').click();" style="padding:12px 28px;background:#00B8D4;color:#fff;border:none;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer;">Show All Products</button>
+    <div id="lx-pcard-empty" class="lx-coll__empty" hidden>
+      <div class="lx-coll__empty-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <h2>No products found</h2>
+      <p>Try a different filter to see more products.</p>
+      <button type="button" class="lx-btn lx-btn--mint" onclick="document.querySelector('.lx-coll-bar__filter[data-filter=all]').click();">Show All Products</button>
     </div>
 
     {% else %}
-    <!-- Collection is empty in Shopify -->
-    <div style="text-align:center;padding:80px 0;">
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1.5" style="margin-bottom:20px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <h2 style="font-size:24px;font-weight:700;color:#0f1f3a;margin-bottom:8px;">No products found</h2>
-      <p style="color:#6b7485;margin-bottom:20px;">Products coming soon.</p>
-      <a href="/" style="display:inline-block;padding:12px 28px;background:#00B8D4;color:#fff;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;">Go Home</a>
+    <div class="lx-coll__empty">
+      <div class="lx-coll__empty-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <h2>No products found</h2>
+      <p>Products coming soon.</p>
+      <a href="/" class="lx-btn lx-btn--mint">Go Home</a>
     </div>
     {% endif %}
 
@@ -227,36 +175,33 @@
 </div>
 
 <!-- ── Quick View modal ─────────────────────────────────────── -->
-<div id="lx-qv-overlay" role="dialog" aria-modal="true" aria-labelledby="lx-qv-title">
-  <div id="lx-qv-modal">
-    <!-- Image panel -->
-    <div id="lx-qv-img-wrap" style="background:linear-gradient(135deg,#ecfdf5,#d1f4e3);border-radius:20px 0 0 20px;display:flex;align-items:center;justify-content:center;min-height:340px;overflow:hidden;position:relative;">
-      <img id="lx-qv-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;">
-      <svg id="lx-qv-img-placeholder" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+<div id="lx-qv-overlay" class="lx-qv-overlay" role="dialog" aria-modal="true" aria-labelledby="lx-qv-title">
+  <div id="lx-qv-modal" class="lx-qv-modal">
+    <div id="lx-qv-img-wrap" class="lx-qv-img">
+      <img id="lx-qv-img" src="" alt="" hidden>
+      <svg id="lx-qv-img-placeholder" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--c-mint)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
     </div>
-    <!-- Content panel -->
-    <div style="padding:36px 32px;display:flex;flex-direction:column;gap:12px;position:relative;">
-      <button id="lx-qv-close" type="button" aria-label="Close quick view"
-        style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:#6b7485;line-height:1;">
+    <div class="lx-qv-body">
+      <button id="lx-qv-close" type="button" class="lx-qv-close" aria-label="Close quick view">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
-      <div id="lx-qv-type" style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.08em;"></div>
-      <h2 id="lx-qv-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:700;color:#0f1f3a;margin:0;letter-spacing:-.01em;"></h2>
-      <div style="display:flex;align-items:center;gap:4px;">
-        <span style="color:#f5a623;font-size:14px;letter-spacing:1px;" aria-label="5 out of 5 stars">★★★★★</span>
-        <span style="font-size:12px;color:#6b7485;">(5.0)</span>
+      <div id="lx-qv-type" class="lx-qv-type"></div>
+      <h2 id="lx-qv-title" class="lx-qv-title"></h2>
+      <div class="lx-qv-stars">
+        <span class="lx-qv-stars__gold" aria-label="5 out of 5 stars">★★★★★</span>
+        <span class="lx-qv-stars__label">(5.0)</span>
       </div>
-      <p id="lx-qv-desc" style="font-size:13px;color:#6b7485;line-height:1.7;margin:0;"></p>
-      <div id="lx-qv-stock" style="display:flex;align-items:center;gap:6px;"></div>
-      <div style="display:flex;align-items:baseline;gap:10px;">
-        <span id="lx-qv-price" style="font-size:26px;font-weight:800;color:#0f1f3a;"></span>
-        <span id="lx-qv-compare" style="font-size:14px;color:#6b7485;text-decoration:line-through;display:none;"></span>
+      <p id="lx-qv-desc" class="lx-qv-desc"></p>
+      <div id="lx-qv-stock" class="lx-qv-stock"></div>
+      <div class="lx-qv-price-row">
+        <span id="lx-qv-price" class="lx-qv-price"></span>
+        <span id="lx-qv-compare" class="lx-qv-compare" hidden></span>
       </div>
-      <form id="lx-qv-form" action="/cart/add" method="post" style="display:flex;gap:8px;margin-top:4px;">
+      <form id="lx-qv-form" class="lx-qv-form" action="/cart/add" method="post">
         <input type="hidden" id="lx-qv-variant" name="id" value="">
         <input type="hidden" name="quantity" value="1">
-        <button type="submit" style="flex:1;padding:13px;background:#00B8D4;color:#fff;border:none;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer;">Add to Basket</button>
-        <a id="lx-qv-details" href="#" style="display:flex;align-items:center;justify-content:center;padding:13px 18px;background:#fff;color:#0f1f3a;border:1.5px solid #e5e8ee;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;white-space:nowrap;">View Details</a>
+        <button type="submit" class="lx-qv-add">Add to Basket</button>
+        <a id="lx-qv-details" href="#" class="lx-qv-details">View Details</a>
       </form>
     </div>
   </div>
@@ -264,8 +209,8 @@
 
 <script>
 (function () {
-  var filterBtns = document.querySelectorAll('.lx-pf-btn');
-  var cards = document.querySelectorAll('.lx-pcard');
+  var filterBtns = document.querySelectorAll('.lx-coll-bar__filter');
+  var cards = document.querySelectorAll('.lx-coll-card');
   var emptyState = document.getElementById('lx-pcard-empty');
 
   function applyFilter(filter) {
@@ -273,7 +218,7 @@
     cards.forEach(function (card) {
       var cat = (card.dataset.category || '').toLowerCase();
       var show = filter === 'all' || cat === filter;
-      card.style.display = show ? '' : 'none';
+      card.hidden = !show;
       if (show) visible++;
     });
     if (emptyState) emptyState.hidden = visible > 0;
@@ -281,14 +226,8 @@
 
   filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) {
-        b.style.background = '#fff';
-        b.style.color = '#0f1f3a';
-        b.style.borderColor = '#e5e8ee';
-      });
-      btn.style.background = '#00B8D4';
-      btn.style.color = '#fff';
-      btn.style.borderColor = '#00B8D4';
+      filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
       applyFilter(btn.dataset.filter || 'all');
     });
   });
@@ -298,7 +237,6 @@
 <script>
 (function () {
   var overlay  = document.getElementById('lx-qv-overlay');
-  var modal    = document.getElementById('lx-qv-modal');
   var closeBtn = document.getElementById('lx-qv-close');
   var imgEl    = document.getElementById('lx-qv-img');
   var imgPH    = document.getElementById('lx-qv-img-placeholder');
@@ -315,26 +253,28 @@
     var compare = document.getElementById('lx-qv-compare');
     if (d.hasCompare === '1') {
       compare.textContent = d.compare;
-      compare.style.display = '';
+      compare.hidden = false;
     } else {
-      compare.style.display = 'none';
+      compare.hidden = true;
     }
 
     var stock = document.getElementById('lx-qv-stock');
     if (d.available === '1') {
-      stock.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;"></span><span style="font-size:12px;font-weight:600;color:#22c55e;">In Stock</span>';
+      stock.className = 'lx-qv-stock lx-qv-stock--in';
+      stock.innerHTML = '<span class="lx-qv-stock__dot"></span><span>In Stock</span>';
     } else {
-      stock.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#9ca3af;display:inline-block;flex-shrink:0;"></span><span style="font-size:12px;font-weight:600;color:#9ca3af;">Out of Stock</span>';
+      stock.className = 'lx-qv-stock lx-qv-stock--out';
+      stock.innerHTML = '<span class="lx-qv-stock__dot"></span><span>Out of Stock</span>';
     }
 
     if (d.img) {
       imgEl.src = d.img;
       imgEl.alt = d.imgAlt || '';
-      imgEl.style.display = '';
-      imgPH.style.display = 'none';
+      imgEl.hidden = false;
+      imgPH.hidden = true;
     } else {
-      imgEl.style.display = 'none';
-      imgPH.style.display = '';
+      imgEl.hidden = true;
+      imgPH.hidden = false;
     }
 
     overlay.classList.add('is-open');

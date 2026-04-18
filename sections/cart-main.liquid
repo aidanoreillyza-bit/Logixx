@@ -17,7 +17,7 @@
         <tbody>
           {% for item in cart.items %}
           <tr>
-            <td style="width:100px;">
+            <td class="lx-cart__img-col">
               {% if item.image != blank %}
               <div class="lx-cart__item-img">
                 <img
@@ -45,7 +45,7 @@
             </td>
             <td>{{ item.price | money }}</td>
             <td>
-              <div class="lx-qty" style="border-color:var(--c-grey);">
+              <div class="lx-qty">
                 <button type="button" class="lx-qty__btn" data-qty="-" aria-label="Decrease">−</button>
                 <input
                   type="number"
@@ -64,7 +64,7 @@
         </tbody>
       </table>
 
-      <div style="display:flex;justify-content:flex-end;margin-top:8px;gap:12px;flex-wrap:wrap;">
+      <div class="lx-cart__actions">
         <button type="submit" name="update" class="lx-btn lx-btn--ghost-navy lx-btn--sm">
           {{ 'cart.general.update' | t | default: 'Update Basket' }}
         </button>
@@ -79,7 +79,7 @@
         </div>
         {% else %}
         {% assign remaining = 5000 | minus: cart.total_price %}
-        <p style="font-size:13px;color:var(--c-mute);">
+        <p class="lx-cart__subtotal-note">
           Spend {{ remaining | money }} more for free UK delivery
         </p>
         {% endif %}
@@ -88,7 +88,7 @@
           <span>{{ 'cart.general.subtotal' | t | default: 'Subtotal' }}</span>
           <strong>{{ cart.total_price | money }}</strong>
         </div>
-        <p style="font-size:12px;color:var(--c-mute);">Taxes and shipping calculated at checkout</p>
+        <p class="lx-cart__subtotal-note lx-cart__subtotal-note--sm">Taxes and shipping calculated at checkout</p>
         <button type="submit" name="checkout" class="lx-cart__checkout-btn">
           {{ 'cart.general.checkout' | t | default: 'Proceed to Checkout' }}
           <span aria-hidden="true"> →</span>

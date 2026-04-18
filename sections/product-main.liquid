@@ -58,8 +58,8 @@
           In Stock — Ready to dispatch
         </div>
         {% else %}
-        <div class="lx-pdp__stock" style="color:var(--c-red);">
-          <span style="width:8px;height:8px;border-radius:50%;background:var(--c-red);display:inline-block;" aria-hidden="true"></span>
+        <div class="lx-pdp__stock lx-pdp__stock--out">
+          <span class="lx-pdp__stock-dot" aria-hidden="true"></span>
           Currently Out of Stock
         </div>
         {% endif %}
@@ -68,8 +68,8 @@
         <form action="/cart/add" method="post" class="lx-pdp__add-form">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-          <label for="lx-pdp-qty" style="font-size:13px;font-weight:600;color:var(--c-navy);display:block;margin-bottom:8px;">Quantity</label>
-          <div class="lx-qty" style="margin-bottom:16px;">
+          <label for="lx-pdp-qty" class="lx-pdp__qty-label">Quantity</label>
+          <div class="lx-qty">
             <button type="button" class="lx-qty__btn" data-qty="-" aria-label="Decrease quantity">−</button>
             <input
               type="number"
