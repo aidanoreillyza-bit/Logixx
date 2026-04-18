@@ -4,10 +4,11 @@
     "stats-bar": {"type": "stats-bar"},
     "why-us": {"type": "why-us"},
     "how-it-works": {"type": "how-it-works"},
+    "results": {"type": "results"},
     "featured-products": {"type": "featured-products"},
     "testimonials": {"type": "testimonials"},
     "faq-section": {"type": "faq-section"},
     "cta-banner": {"type": "cta-banner"}
   },
-  "order": ["hero","stats-bar","why-us","how-it-works","featured-products","testimonials","faq-section","cta-banner"]
+  "order": ["hero","stats-bar","why-us","how-it-works","results","featured-products","testimonials","faq-section","cta-banner"]
 }
