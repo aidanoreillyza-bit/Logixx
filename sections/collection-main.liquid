@@ -117,6 +117,26 @@
         </div>
 
       </div>
+
+      {% if forloop.index == 2 %}
+      </div><!-- /lx-pcard-grid row 1 -->
+
+      <!-- ── Bundle suggestion banner ────────────────────────── -->
+      <div style="background:linear-gradient(135deg,#081428 0%,#0f2a4a 100%);border-radius:20px;padding:36px 40px;margin:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Bundle &amp; Save</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-size:1.75rem;color:#fff;margin:0 0 8px;">Boost your results — try a complete bundle</h2>
+          <p style="font-size:14px;color:rgba(255,255,255,.65);margin:0;">Combine supplements and diagnostics for up to <strong style="color:#00B8D4;">20% off</strong> your order.</p>
+        </div>
+        <a href="/collections/bundles" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#00B8D4;color:#fff;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
+          Shop Bundles
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:0">
+      {% endif %}
+
       {% endfor %}
 
     </div>
