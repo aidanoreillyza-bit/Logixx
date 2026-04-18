@@ -142,7 +142,7 @@
         <!-- Body -->
         <div class="lx-pcard__body" style="padding:24px 24px 0;flex:1;">
           <div style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">{{ product.type }}</div>
-          <h3 style="font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#0f1f3a;margin-bottom:6px;letter-spacing:-.01em;">{{ product.title }}</h3>
+          <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;color:#0f1f3a;margin-bottom:6px;letter-spacing:-.01em;">{{ product.title }}</h3>
           <!-- Star rating -->
           <div style="display:flex;align-items:center;gap:4px;margin-bottom:8px;">
             <span style="color:#f5a623;font-size:14px;letter-spacing:1px;" aria-label="5 out of 5 stars">★★★★★</span>
@@ -192,7 +192,7 @@
           <h2 style="font-family:'Instrument Serif',serif;font-size:1.75rem;color:#fff;margin:0 0 8px;">Boost your results — try a complete bundle</h2>
           <p style="font-size:14px;color:rgba(255,255,255,.65);margin:0;">Combine supplements and diagnostics for up to <strong style="color:#00B8D4;">20% off</strong> your order.</p>
         </div>
-        <a href="/collections/bundles" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#00B8D4;color:#fff;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
+        <a href="/collections/bundles" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#00B8D4;color:#fff;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
           Shop Bundles
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -210,7 +210,7 @@
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1.5" style="margin-bottom:20px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       <h2 style="font-size:24px;font-weight:700;color:#0f1f3a;margin-bottom:8px;">No products found</h2>
       <p style="color:#6b7485;margin-bottom:20px;">Try a different filter to see more products.</p>
-      <button type="button" onclick="document.querySelector('.lx-pf-btn[data-filter=all]').click();" style="padding:12px 28px;background:#00B8D4;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;">Show All Products</button>
+      <button type="button" onclick="document.querySelector('.lx-pf-btn[data-filter=all]').click();" style="padding:12px 28px;background:#00B8D4;color:#fff;border:none;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer;">Show All Products</button>
     </div>
 
     {% else %}
@@ -219,7 +219,7 @@
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00B8D4" stroke-width="1.5" style="margin-bottom:20px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       <h2 style="font-size:24px;font-weight:700;color:#0f1f3a;margin-bottom:8px;">No products found</h2>
       <p style="color:#6b7485;margin-bottom:20px;">Products coming soon.</p>
-      <a href="/" style="display:inline-block;padding:12px 28px;background:#00B8D4;color:#fff;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;">Go Home</a>
+      <a href="/" style="display:inline-block;padding:12px 28px;background:#00B8D4;color:#fff;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;">Go Home</a>
     </div>
     {% endif %}
 
@@ -241,7 +241,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
       <div id="lx-qv-type" style="font-size:11px;font-weight:700;color:#00B8D4;text-transform:uppercase;letter-spacing:.08em;"></div>
-      <h2 id="lx-qv-title" style="font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:#0f1f3a;margin:0;letter-spacing:-.01em;"></h2>
+      <h2 id="lx-qv-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:700;color:#0f1f3a;margin:0;letter-spacing:-.01em;"></h2>
       <div style="display:flex;align-items:center;gap:4px;">
         <span style="color:#f5a623;font-size:14px;letter-spacing:1px;" aria-label="5 out of 5 stars">★★★★★</span>
         <span style="font-size:12px;color:#6b7485;">(5.0)</span>
@@ -255,8 +255,8 @@
       <form id="lx-qv-form" action="/cart/add" method="post" style="display:flex;gap:8px;margin-top:4px;">
         <input type="hidden" id="lx-qv-variant" name="id" value="">
         <input type="hidden" name="quantity" value="1">
-        <button type="submit" style="flex:1;padding:13px;background:#00B8D4;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;">Add to Basket</button>
-        <a id="lx-qv-details" href="#" style="display:flex;align-items:center;justify-content:center;padding:13px 18px;background:#fff;color:#0f1f3a;border:1.5px solid #e5e8ee;border-radius:10px;font-weight:600;font-size:13px;text-decoration:none;white-space:nowrap;">View Details</a>
+        <button type="submit" style="flex:1;padding:13px;background:#00B8D4;color:#fff;border:none;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer;">Add to Basket</button>
+        <a id="lx-qv-details" href="#" style="display:flex;align-items:center;justify-content:center;padding:13px 18px;background:#fff;color:#0f1f3a;border:1.5px solid #e5e8ee;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;white-space:nowrap;">View Details</a>
       </form>
     </div>
   </div>
