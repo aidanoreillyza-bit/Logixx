@@ -104,7 +104,7 @@
           <span class="lx-cart-badge" aria-hidden="true">{{ cart.item_count }}</span>
           {% endif %}
         </a>
-        <a href="/collections/all" class="lx-shop-cta lx-btn lx-btn--mint lx-btn--sm" aria-label="{{ section.settings.cta_label }}">
+        <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lx-shop-cta lx-btn lx-btn--mint lx-btn--sm" aria-label="{{ section.settings.cta_label }}">
           {{ section.settings.cta_label }}
         </a>
         <button class="lx-hdr__burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="lx-mobile-drawer">
@@ -152,7 +152,7 @@
     </a>
   </div>
   <div class="lx-drawer__footer">
-    <a href="/collections/all" class="lx-shop-cta lx-btn lx-btn--mint" style="justify-content:center;">{{ section.settings.cta_label }}</a>
+    <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lx-shop-cta lx-btn lx-btn--mint" style="justify-content:center;">{{ section.settings.cta_label }}</a>
     <a href="/cart" class="lx-btn lx-btn--ghost" style="justify-content:center;">View Basket ({{ cart.item_count }})</a>
     <div class="lx-drawer__contact">
       <a href="tel:{{ section.settings.phone | default: '+441189011747' | replace: ' ', '' }}">

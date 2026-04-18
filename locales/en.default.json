@@ -24,8 +24,8 @@
       "title": "Your Basket",
       "empty": "Your basket is currently empty.",
       "remove": "Remove",
-      "update": "Update",
-      "checkout": "Checkout",
+      "update": "Update Basket",
+      "checkout": "Proceed to Checkout",
       "subtotal": "Subtotal"
     }
   }

@@ -90,7 +90,7 @@
           <p style="color:rgba(255,255,255,.4);font-size:12px;line-height:1.6;margin-bottom:8px;">{{ section.settings.address }}</p>
           {% endif %}
           {% if section.settings.phone != blank %}
-          <a href="tel:{{ section.settings.phone | replace: ' ', '' }}" style="color:rgba(255,255,255,.4);font-size:12px;display:block;margin-bottom:4px;text-decoration:none;">{{ section.settings.phone }}</a>
+          <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' }}" style="color:rgba(255,255,255,.4);font-size:12px;display:block;margin-bottom:4px;text-decoration:none;">{{ section.settings.phone }}</a>
           {% endif %}
           {% if section.settings.email != blank %}
           <a href="mailto:{{ section.settings.email }}" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">{{ section.settings.email }}</a>
