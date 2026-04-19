@@ -1383,7 +1383,9 @@ p  { line-height: 1.7; }
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--c-grey);
 }
 .lx-pcard__price {
   font-size: 20px;
@@ -1403,7 +1405,7 @@ p  { line-height: 1.7; }
   padding: 3px 8px;
   border-radius: 50px;
 }
-.lx-pcard__add-form { margin-top: auto; }
+.lx-pcard__add-form { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--c-grey); }
 .lx-pcard__add-btn {
   width: 100%;
   padding: 12px 20px;
@@ -1851,7 +1853,7 @@ p  { line-height: 1.7; }
 .lx-pdp__buy {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 .lx-pdp__breadcrumb {
   display: flex;
@@ -1881,6 +1883,9 @@ p  { line-height: 1.7; }
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-grey);
+  margin-top: 4px;
 }
 .lx-pdp__price {
   font-size: 2rem;
@@ -1967,7 +1972,14 @@ p  { line-height: 1.7; }
 }
 .lx-qty input[type="number"]::-webkit-outer-spin-button,
 .lx-qty input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
-.lx-pdp__add-form { display: flex; flex-direction: column; gap: 12px; }
+.lx-pdp__add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-grey);
+  margin-top: 4px;
+}
 .lx-pdp__add-btn {
   width: 100%;
   padding: 16px 32px;
@@ -1993,6 +2005,9 @@ p  { line-height: 1.7; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-grey);
+  margin-top: 4px;
 }
 .lx-pdp__trust-item {
   display: flex;
@@ -2386,6 +2401,9 @@ p  { line-height: 1.7; }
   align-items: baseline;
   gap: 8px;
   flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--c-grey);
+  margin-top: 4px;
 }
 .lx-coll-card__price {
   font-family: var(--font-body);
@@ -2412,9 +2430,15 @@ p  { line-height: 1.7; }
   display: flex;
   gap: 8px;
   margin-top: 4px;
+  align-items: stretch;
+}
+.lx-coll-card__actions form {
+  flex: 1;
+  display: flex;
 }
 .lx-coll-card__add {
   flex: 1;
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2459,6 +2483,7 @@ p  { line-height: 1.7; }
   text-decoration: none;
   transition: border-color .2s, color .2s, transform .2s;
   white-space: nowrap;
+  align-self: stretch;
 }
 .lx-coll-card__view:hover {
   border-color: var(--c-mint);

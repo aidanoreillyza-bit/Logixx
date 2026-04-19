@@ -96,6 +96,14 @@
           {% if product.description != blank %}
           <p class="lx-coll-card__desc">{{ product.description | strip_html | truncate: 100 }}</p>
           {% endif %}
+          <div class="lx-coll-card__price-row">
+            <span class="lx-coll-card__price">{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}
+            <span class="lx-coll-card__compare">{{ product.compare_at_price | money }}</span>
+            {% assign saving = product.compare_at_price | minus: product.price %}
+            <span class="lx-coll-card__save">Save {{ saving | money }}</span>
+            {% endif %}
+          </div>
           {% if product.available %}
           <div class="lx-qv-stock lx-qv-stock--in">
             <span class="lx-qv-stock__dot"></span>
@@ -107,14 +115,6 @@
             <span>Out of Stock</span>
           </div>
           {% endif %}
-          <div class="lx-coll-card__price-row">
-            <span class="lx-coll-card__price">{{ product.price | money }}</span>
-            {% if product.compare_at_price > product.price %}
-            <span class="lx-coll-card__compare">{{ product.compare_at_price | money }}</span>
-            {% assign saving = product.compare_at_price | minus: product.price %}
-            <span class="lx-coll-card__save">Save {{ saving | money }}</span>
-            {% endif %}
-          </div>
           <div class="lx-coll-card__actions">
             <form action="/cart/add" method="post">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
