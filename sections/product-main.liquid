@@ -146,27 +146,47 @@
         {% endif %}
         {% if section.settings.ingredients != blank %}
         <div class="lx-pdp-tab-panel{% if first_tab == 'ingredients' %} active{% endif %}" role="tabpanel" data-panel="ingredients">
-          {% assign ing_rows = section.settings.ingredients | newline_to_br | split: '<br />' %}
-          <table class="lx-ing-table">
-            <thead>
-              <tr>
-                <th>Ingredient</th>
-                <th>Per Serving</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for row in ing_rows %}
-                {% assign row_clean = row | strip %}
-                {% if row_clean != blank %}
-                  {% assign cols = row_clean | split: '|' %}
-                  <tr>
-                    <td>{{ cols[0] | strip }}</td>
-                    <td>{% if cols[1] != blank %}{{ cols[1] | strip }}{% endif %}</td>
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
+          <div class="lx-ing-wrap">
+            <div class="lx-ing-header">
+              <div class="lx-ing-header__title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+                Nutritional Information
+              </div>
+              <span class="lx-ing-header__note">Per serving</span>
+            </div>
+            {% assign ing_rows = section.settings.ingredients | newline_to_br | split: '<br />' %}
+            <table class="lx-ing-table">
+              <thead>
+                <tr>
+                  <th>Ingredient</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in ing_rows %}
+                  {% assign row_clean = row | strip %}
+                  {% if row_clean != blank %}
+                    {% assign cols = row_clean | split: '|' %}
+                    <tr>
+                      <td>
+                        <span class="lx-ing-dot" aria-hidden="true"></span>
+                        {{ cols[0] | strip }}
+                      </td>
+                      <td>
+                        {% if cols[1] != blank %}
+                        <span class="lx-ing-badge">{{ cols[1] | strip }}</span>
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="lx-ing-footer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              Values are per recommended daily serving. Results may vary.
+            </div>
+          </div>
         </div>
         {% endif %}
         {% if section.settings.how_to_use != blank %}
