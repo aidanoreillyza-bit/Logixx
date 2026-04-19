@@ -21,9 +21,73 @@
         "blog": "",
         "heading": "From our <em>blog</em>"
       }
+    },
+    "about_timeline_74FPEt": {
+      "type": "about-timeline",
+      "blocks": {
+        "milestone_64rBqC": {
+          "type": "milestone",
+          "settings": {
+            "year": "2008",
+            "label": "Founded",
+            "title": "LogixX Fertility established",
+            "body": "Founded with a singular goal: to make advanced fertility diagnostics and treatments accessible to everyone. Our founding team brought together clinicians, scientists, and patient advocates."
+          }
+        },
+        "milestone_pJHdMx": {
+          "type": "milestone",
+          "settings": {
+            "year": "2013",
+            "label": "Product Launch",
+            "title": "Proxeed range introduced",
+            "body": "After five years of clinical development, the Proxeed supplement range launched — backed by peer-reviewed studies demonstrating measurable improvements in sperm motility and morphology."
+          }
+        },
+        "milestone_3GyCDx": {
+          "type": "milestone",
+          "settings": {
+            "year": "2018",
+            "label": "Partnership",
+            "title": "Testhim partnership formed",
+            "body": "LogixX joined forces with Testhim to become the UK's leading advanced fertility diagnostic partnership, combining at-home testing with clinical-grade analysis and personalised treatment pathways."
+          }
+        },
+        "milestone_4Lgb3R": {
+          "type": "milestone",
+          "settings": {
+            "year": "2021",
+            "label": "Innovation",
+            "title": "LensHooke X1 PRO launches",
+            "body": "We introduced the LensHooke X1 PRO — the world's first CASA-grade home sperm analysis device — putting clinical accuracy in the hands of patients for the first time."
+          }
+        },
+        "milestone_QHFQCj": {
+          "type": "milestone",
+          "settings": {
+            "year": "2024",
+            "label": "Milestone",
+            "title": "10,000+ families supported",
+            "body": "A landmark moment: more than 10,000 families across the UK and beyond have now started or grown their families with the help of LogixX products, tests, and specialist guidance."
+          }
+        }
+      },
+      "block_order": [
+        "milestone_64rBqC",
+        "milestone_pJHdMx",
+        "milestone_3GyCDx",
+        "milestone_4Lgb3R",
+        "milestone_QHFQCj"
+      ],
+      "name": "About Timeline",
+      "settings": {
+        "badge": "Our Story",
+        "heading": "A decade of advancing <em>fertility science</em>",
+        "subtext": "From a single product to an end-to-end fertility platform — here is how LogixX grew."
+      }
     }
   },
   "order": [
+    "about_timeline_74FPEt",
     "main",
     "news_preview_YY76Qf"
   ]
