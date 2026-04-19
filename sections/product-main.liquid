@@ -1,5 +1,6 @@
 <section class="lx-pdp">
   <div class="lx-container">
+
     <div class="lx-pdp__grid">
 
       <!-- Image column (sticky) -->
@@ -40,6 +41,11 @@
         <div class="lx-pdp__cat">{{ product.type }}</div>
         {% endif %}
         <h1 class="lx-pdp__title">{{ product.title }}</h1>
+
+        <!-- Tagline -->
+        {% if section.settings.tagline != blank %}
+        <p class="lx-pdp__tagline">{{ section.settings.tagline }}</p>
+        {% endif %}
 
         <!-- Price -->
         <div class="lx-pdp__price-box">
@@ -107,28 +113,89 @@
           {% endfor %}
         </div>
 
-        <!-- Description -->
-        {% if product.description != blank %}
-        <div class="lx-pdp__desc">
-          <h3>Product Description</h3>
+      </div>
+    </div>
+
+    <!-- Product detail tabs -->
+    {% assign has_about = false %}
+    {% if product.description != blank %}{% assign has_about = true %}{% endif %}
+    {% assign first_tab = 'about' %}
+    {% if has_about == false and section.settings.ingredients != blank %}{% assign first_tab = 'ingredients' %}{% endif %}
+
+    <div class="lx-pdp-tabs">
+      <div class="lx-pdp-tab-nav" role="tablist" aria-label="Product details">
+        {% if has_about %}
+        <button class="lx-pdp-tab-btn{% if first_tab == 'about' %} active{% endif %}" role="tab" aria-selected="{% if first_tab == 'about' %}true{% else %}false{% endif %}" data-tab="about">About</button>
+        {% endif %}
+        {% if section.settings.ingredients != blank %}
+        <button class="lx-pdp-tab-btn{% if first_tab == 'ingredients' %} active{% endif %}" role="tab" aria-selected="{% if first_tab == 'ingredients' %}true{% else %}false{% endif %}" data-tab="ingredients">Ingredients</button>
+        {% endif %}
+        {% if section.settings.how_to_use != blank %}
+        <button class="lx-pdp-tab-btn" role="tab" aria-selected="false" data-tab="how-to-use">How to Use</button>
+        {% endif %}
+        {% if section.settings.clinical_note != blank %}
+        <button class="lx-pdp-tab-btn" role="tab" aria-selected="false" data-tab="clinical">Clinical Evidence</button>
+        {% endif %}
+      </div>
+
+      <div class="lx-pdp-tab-panels">
+        {% if has_about %}
+        <div class="lx-pdp-tab-panel{% if first_tab == 'about' %} active{% endif %}" role="tabpanel" data-panel="about">
           <div class="lx-rte">{{ product.description }}</div>
         </div>
         {% endif %}
-
+        {% if section.settings.ingredients != blank %}
+        <div class="lx-pdp-tab-panel{% if first_tab == 'ingredients' %} active{% endif %}" role="tabpanel" data-panel="ingredients">
+          <div class="lx-rte lx-pdp-ingredients">{{ section.settings.ingredients | newline_to_br }}</div>
+        </div>
+        {% endif %}
+        {% if section.settings.how_to_use != blank %}
+        <div class="lx-pdp-tab-panel" role="tabpanel" data-panel="how-to-use">
+          <div class="lx-rte">{{ section.settings.how_to_use | newline_to_br }}</div>
+        </div>
+        {% endif %}
+        {% if section.settings.clinical_note != blank %}
+        <div class="lx-pdp-tab-panel" role="tabpanel" data-panel="clinical">
+          <div class="lx-rte">{{ section.settings.clinical_note | newline_to_br }}</div>
+        </div>
+        {% endif %}
       </div>
     </div>
+
   </div>
 </section>
+
+<script>
+(function () {
+  var btns   = document.querySelectorAll('.lx-pdp-tab-btn');
+  var panels = document.querySelectorAll('.lx-pdp-tab-panel');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = this.dataset.tab;
+      btns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+      var panel = document.querySelector('[data-panel="' + target + '"]');
+      if (panel) panel.classList.add('active');
+    }.bind(btn));
+  });
+}());
+</script>
 
 {% schema %}
 {
   "name": "Product",
-  "settings":[
+  "settings": [
+    {"type":"text","id":"tagline","label":"Tagline","default":"Clinically proven fertility support — formulated for results."},
     {"type":"text","id":"trust_1","label":"Trust item 1","default":"Free UK Delivery"},
     {"type":"text","id":"trust_2","label":"Trust item 2","default":"Discreet Packaging"},
     {"type":"text","id":"trust_3","label":"Trust item 3","default":"Clinically Proven"},
-    {"type":"text","id":"trust_4","label":"Trust item 4","default":"30-Day Returns"}
+    {"type":"text","id":"trust_4","label":"Trust item 4","default":"30-Day Returns"},
+    {"type":"textarea","id":"ingredients","label":"Ingredients","default":"L-Carnitine Fumarate 1000mg\nCoenzyme Q10 200mg\nVitamin E (as d-alpha tocopherol) 30mg\nZinc (as zinc gluconate) 15mg\nFolic Acid 400µg\nSelenium 55µg\nVitamin B12 2.4µg"},
+    {"type":"textarea","id":"how_to_use","label":"How to Use","default":"Take 2 sachets daily — one in the morning and one in the evening.\n\nMix each sachet with 200ml of water or juice. Best taken with food.\n\nFor best results, use consistently for a minimum of 90 days."},
+    {"type":"textarea","id":"clinical_note","label":"Clinical Evidence","default":"Proxeed has been validated in multiple peer-reviewed clinical trials. Studies demonstrate significant improvements in sperm count, motility, progressive motility and normal morphology after a 90-day supplementation period.\n\nL-Carnitine Fumarate and the antioxidant complex in Proxeed are protected by patents and are not found in generic fertility supplements."}
   ],
-  "presets":[{"name":"Product"}]
+  "presets": [{"name": "Product"}]
 }
 {% endschema %}
