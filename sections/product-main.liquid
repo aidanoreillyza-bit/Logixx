@@ -155,33 +155,38 @@
               <span class="lx-ing-header__note">Per serving</span>
             </div>
             {% assign ing_rows = section.settings.ingredients | newline_to_br | split: '<br />' %}
-            <table class="lx-ing-table">
-              <thead>
-                <tr>
-                  <th>Ingredient</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for row in ing_rows %}
-                  {% assign row_clean = row | strip %}
-                  {% if row_clean != blank %}
-                    {% assign cols = row_clean | split: '|' %}
-                    <tr>
-                      <td>
-                        <span class="lx-ing-dot" aria-hidden="true"></span>
-                        {{ cols[0] | strip }}
-                      </td>
-                      <td>
-                        {% if cols[1] != blank %}
-                        <span class="lx-ing-badge">{{ cols[1] | strip }}</span>
-                        {% endif %}
-                      </td>
-                    </tr>
-                  {% endif %}
-                {% endfor %}
-              </tbody>
-            </table>
+            <div class="lx-ing-scroll">
+              <table class="lx-ing-table">
+                <colgroup><col><col></colgroup>
+                <thead>
+                  <tr>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in ing_rows %}
+                    {% assign row_clean = row | strip %}
+                    {% if row_clean != blank %}
+                      {% assign cols = row_clean | split: '|' %}
+                      <tr>
+                        <td>
+                          <div class="lx-ing-name">
+                            <span class="lx-ing-dot" aria-hidden="true"></span>
+                            {{ cols[0] | strip }}
+                          </div>
+                        </td>
+                        <td>
+                          {% if cols[1] != blank %}
+                          <span class="lx-ing-badge">{{ cols[1] | strip }}</span>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
             <div class="lx-ing-footer">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
               Values are per recommended daily serving. Results may vary.
