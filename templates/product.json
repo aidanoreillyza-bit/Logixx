@@ -1,21 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
-      "type": "product-main"
+      "type": "product-main",
+      "settings": {
+        "tagline": "Clinically proven fertility support — formulated for results.",
+        "trust_1": "Free UK Delivery",
+        "trust_2": "Discreet Packaging",
+        "trust_3": "Clinically Proven",
+        "trust_4": "30-Day Returns",
+        "ingredients": "L-Carnitine Fumarate | 1000mg\nCoenzyme Q10 | 200mg\nVitamin E (d-alpha tocopherol) | 30mg\nZinc | 15mg\nFolic Acid | 400µg\nSelenium | 55µg\nVitamin B12 | 2.4µg",
+        "how_to_use": "Take 2 sachets daily — one in the morning and one in the evening.\n\nMix each sachet with 200ml of water or juice. Best taken with food.\n\nFor best results, use consistently for a minimum of 90 days.",
+        "clinical_note": "Proxeed has been validated in multiple peer-reviewed clinical trials. Studies demonstrate significant improvements in sperm count, motility, progressive motility and normal morphology after a 90-day supplementation period.\n\nL-Carnitine Fumarate and the antioxidant complex in Proxeed are protected by patents and are not found in generic fertility supplements."
+      }
     },
     "compare": {
       "type": "comparison",
-      "settings": {
-        "badge": "The Proxeed Difference",
-        "heading": "How does this product\ncompare to the rest?",
-        "subtext": "Most fertility supplements are generic multi-vitamins with no clinical backing. Proxeed is different — formulated specifically for fertility, with peer-reviewed evidence to prove it.",
-        "col_generic": "Generic Supplement",
-        "col_brand": "Proxeed",
-        "col_brand_badge": "Recommended",
-        "cta_label": "Add to Basket",
-        "cta_url": "",
-        "cta_note": "Clinically proven · Halal certified · Free UK delivery over £50"
-      },
       "blocks": {
         "row_1": {
           "type": "row",
@@ -82,17 +90,30 @@
           }
         }
       },
-      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5", "row_6", "row_7", "row_8"]
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "badge": "The Proxeed Difference",
+        "heading": "How does this product\ncompare to the rest?",
+        "subtext": "Most fertility supplements are generic multi-vitamins with no clinical backing. Proxeed is different — formulated specifically for fertility, with peer-reviewed evidence to prove it.",
+        "col_generic": "Generic Supplement",
+        "col_brand": "Proxeed",
+        "col_brand_badge": "Recommended",
+        "cta_label": "Add to Basket",
+        "cta_url": "",
+        "cta_note": "Clinically proven · Halal certified · Free UK delivery over £50"
+      }
     },
     "results": {
       "type": "results",
-      "settings": {
-        "label": "Clinical Evidence",
-        "heading": "Proven results,\nnot just promises",
-        "desc": "Proxeed Plus has been validated in peer-reviewed clinical studies showing significant improvements across all key sperm parameters.",
-        "card_title": "Proxeed Plus — Clinical Study Results",
-        "card_pill": "90-Day Trial"
-      },
       "blocks": {
         "stat_1": {
           "type": "stat",
@@ -119,17 +140,21 @@
           }
         }
       },
-      "block_order": ["stat_1", "stat_2", "stat_3"]
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ],
+      "settings": {
+        "label": "Clinical Evidence",
+        "heading": "Proven results,\nnot just promises",
+        "desc": "Proxeed Plus has been validated in peer-reviewed clinical studies showing significant improvements across all key sperm parameters.",
+        "card_title": "Proxeed Plus — Clinical Study Results",
+        "card_pill": "90-Day Trial"
+      }
     },
     "how_it_works": {
       "type": "how-it-works",
-      "settings": {
-        "badge": "The Process",
-        "heading": "How it works",
-        "subtext": "Four simple steps to support your fertility journey",
-        "cta_label": "Add to Basket",
-        "cta_url": ""
-      },
       "blocks": {
         "step_1": {
           "type": "step",
@@ -160,14 +185,22 @@
           }
         }
       },
-      "block_order": ["step_1", "step_2", "step_3", "step_4"]
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "badge": "The Process",
+        "heading": "How it works",
+        "subtext": "Four simple steps to support your fertility journey",
+        "cta_label": "Add to Basket",
+        "cta_url": ""
+      }
     },
     "testimonials": {
       "type": "testimonials",
-      "settings": {
-        "badge": "Customer Stories",
-        "heading": "Real people.\nReal results."
-      },
       "blocks": {
         "review_1": {
           "type": "review",
@@ -202,15 +235,19 @@
           }
         }
       },
-      "block_order": ["review_1", "review_2", "review_3", "review_4"]
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ],
+      "settings": {
+        "badge": "Customer Stories",
+        "heading": "Real people.\nReal results."
+      }
     },
     "faq": {
       "type": "faq-section",
-      "settings": {
-        "badge": "FAQ",
-        "heading": "Frequently asked questions",
-        "subtext": "Can't find your answer? Contact us at info@logixxpharma.com"
-      },
       "blocks": {
         "faq_1": {
           "type": "item",
@@ -255,8 +292,27 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6"]
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ],
+      "settings": {
+        "badge": "FAQ",
+        "heading": "Frequently asked questions",
+        "subtext": "Can't find your answer? Contact us at info@logixxpharma.com"
+      }
     }
   },
-  "order": ["main", "compare", "results", "how_it_works", "testimonials", "faq"]
+  "order": [
+    "main",
+    "compare",
+    "results",
+    "how_it_works",
+    "testimonials",
+    "faq"
+  ]
 }
