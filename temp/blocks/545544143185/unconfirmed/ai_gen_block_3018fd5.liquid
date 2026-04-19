@@ -5,102 +5,195 @@
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
+  /* ── Wrapper ────────────────────────────────────────────── */
   .ai-timeline-{{ ai_gen_id }} {
     display: block;
     width: {{ block.settings.desktop_width_percent }}%;
     max-width: 100%;
     margin: 0 auto;
-    padding: {{ block.settings.section_padding }}px 20px;
+    padding: {{ block.settings.section_padding }}px 32px;
     background-color: {{ block.settings.background_color }};
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    overflow: hidden;
   }
 
+  /* Decorative radial blobs */
+  .ai-timeline-{{ ai_gen_id }}::before,
+  .ai-timeline-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .ai-timeline-{{ ai_gen_id }}::before {
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(0,194,184,.07) 0%, transparent 65%);
+    top: -180px; left: -180px;
+  }
+  .ai-timeline-{{ ai_gen_id }}::after {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(51,102,217,.06) 0%, transparent 65%);
+    bottom: -140px; right: -140px;
+  }
+
+  /* ── Container ──────────────────────────────────────────── */
   .ai-timeline-container-{{ ai_gen_id }} {
     position: relative;
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
   }
 
+  /* ── Track line ─────────────────────────────────────────── */
   .ai-timeline-line-{{ ai_gen_id }} {
     position: absolute;
     left: 30px;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background-color: {{ block.settings.line_inactive_color }};
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,.06) 0%,
+      rgba(0,194,184,.18) 50%,
+      rgba(255,255,255,.06) 100%
+    );
+    border-radius: 2px;
   }
 
+  /* ── Progress fill ──────────────────────────────────────── */
   .ai-timeline-line-progress-{{ ai_gen_id }} {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 0;
-    background-color: {{ block.settings.line_active_color }};
+    background: linear-gradient(
+      180deg,
+      {{ block.settings.line_active_color }} 0%,
+      {{ block.settings.line_active_color }}bb 100%
+    );
+    box-shadow: 0 0 10px {{ block.settings.line_active_color }}55;
     transition: height 0.3s ease;
+    border-radius: 2px;
   }
 
+  /* ── Timeline item ──────────────────────────────────────── */
   .ai-timeline-item-{{ ai_gen_id }} {
     position: relative;
     padding-left: 80px;
     padding-bottom: {{ block.settings.item_spacing }}px;
-    opacity: 0.4;
-    transition: opacity 0.5s ease;
+    opacity: 0.32;
+    transform: translateX(-10px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
   }
 
   .ai-timeline-item-{{ ai_gen_id }}.active {
     opacity: 1;
+    transform: translateX(0);
   }
 
+  /* ── Dot ────────────────────────────────────────────────── */
   .ai-timeline-dot-{{ ai_gen_id }} {
     position: absolute;
     left: 20px;
-    top: 8px;
-    width: 24px;
-    height: 24px;
+    top: 10px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    background-color: {{ block.settings.dot_inactive_color }};
-    border: 3px solid {{ block.settings.background_color }};
+    background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.2);
     transition: all 0.5s ease;
     z-index: 2;
+    backdrop-filter: blur(4px);
   }
 
   .ai-timeline-item-{{ ai_gen_id }}.active .ai-timeline-dot-{{ ai_gen_id }} {
-    background-color: {{ block.settings.dot_active_color }};
-    transform: scale(1.3);
-    box-shadow: 0 0 0 4px {{ block.settings.dot_active_color }}33;
+    background: linear-gradient(135deg, {{ block.settings.dot_active_color }} 0%, {{ block.settings.dot_active_color }}cc 100%);
+    border-color: {{ block.settings.dot_active_color }};
+    transform: scale(1.15);
+    box-shadow:
+      0 0 0 6px {{ block.settings.dot_active_color }}22,
+      0 0 18px {{ block.settings.dot_active_color }}44;
   }
 
+  /* ── Glass card ─────────────────────────────────────────── */
   .ai-timeline-content-{{ ai_gen_id }} {
-    background-color: {{ block.settings.card_background_color }};
+    background: rgba(255,255,255,.04);
     padding: {{ block.settings.card_padding }}px;
     border-radius: {{ block.settings.card_border_radius }}px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255,255,255,.07);
+    backdrop-filter: blur(8px);
+    transition: background .5s ease, border-color .5s ease, box-shadow .5s ease;
+    position: relative;
+    overflow: hidden;
   }
 
+  /* Subtle inner sheen */
+  .ai-timeline-content-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.03) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .ai-timeline-item-{{ ai_gen_id }}.active .ai-timeline-content-{{ ai_gen_id }} {
+    background: rgba(0,194,184,.07);
+    border-color: rgba(0,194,184,.22);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,.28),
+      0 0 0 1px rgba(0,194,184,.15);
+  }
+
+  /* ── Date ───────────────────────────────────────────────── */
   .ai-timeline-date-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: {{ block.settings.date_font_size }}px;
     color: {{ block.settings.date_color }};
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
 
+  .ai-timeline-date-{{ ai_gen_id }}::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: {{ block.settings.date_color }};
+    opacity: .7;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  /* ── Title ──────────────────────────────────────────────── */
   .ai-timeline-title-{{ ai_gen_id }} {
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: {{ block.settings.title_font_size }}px;
     color: {{ block.settings.title_color }};
-    font-weight: 700;
-    margin: 0 0 12px 0;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    letter-spacing: -.01em;
   }
 
+  /* ── Description ────────────────────────────────────────── */
   .ai-timeline-description-{{ ai_gen_id }} {
     font-size: {{ block.settings.description_font_size }}px;
     color: {{ block.settings.description_color }};
-    line-height: 1.6;
+    line-height: 1.72;
     margin: 0;
   }
 
+  /* ── Responsive ─────────────────────────────────────────── */
   @media screen and (max-width: 749px) {
     .ai-timeline-{{ ai_gen_id }} {
       width: 100%;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     .ai-timeline-line-{{ ai_gen_id }} {
@@ -108,13 +201,13 @@
     }
 
     .ai-timeline-item-{{ ai_gen_id }} {
-      padding-left: 60px;
+      padding-left: 56px;
     }
 
     .ai-timeline-dot-{{ ai_gen_id }} {
       left: 10px;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
     }
   }
 {% endstyle %}
@@ -331,55 +424,55 @@
       "type": "color",
       "id": "background_color",
       "label": "Background",
-      "default": "#ffffff"
+      "default": "#0a1628"
     },
     {
       "type": "color",
       "id": "line_inactive_color",
       "label": "Line inactive",
-      "default": "#e0e0e0"
+      "default": "#1e3050"
     },
     {
       "type": "color",
       "id": "line_active_color",
       "label": "Line active",
-      "default": "#000f9f"
+      "default": "#00C2B8"
     },
     {
       "type": "color",
       "id": "dot_inactive_color",
       "label": "Dot inactive",
-      "default": "#cccccc"
+      "default": "#1e3050"
     },
     {
       "type": "color",
       "id": "dot_active_color",
       "label": "Dot active",
-      "default": "#000f9f"
+      "default": "#00C2B8"
     },
     {
       "type": "color",
       "id": "card_background_color",
       "label": "Card background",
-      "default": "#f9f9f9"
+      "default": "#0d1e36"
     },
     {
       "type": "color",
       "id": "date_color",
       "label": "Date text",
-      "default": "#666666"
+      "default": "#00C2B8"
     },
     {
       "type": "color",
       "id": "title_color",
       "label": "Title text",
-      "default": "#000000"
+      "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "description_color",
       "label": "Description text",
-      "default": "#333333"
+      "default": "#8fa4c0"
     },
     {
       "type": "header",
@@ -393,17 +486,17 @@
       "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 20
+      "default": 24
     },
     {
       "type": "range",
       "id": "card_border_radius",
       "label": "Card border radius",
       "min": 0,
-      "max": 20,
+      "max": 24,
       "step": 2,
       "unit": "px",
-      "default": 8
+      "default": 16
     },
     {
       "type": "header",
@@ -417,7 +510,7 @@
       "max": 20,
       "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 11
     },
     {
       "type": "range",
@@ -427,7 +520,7 @@
       "max": 32,
       "step": 2,
       "unit": "px",
-      "default": 20
+      "default": 22
     },
     {
       "type": "range",
