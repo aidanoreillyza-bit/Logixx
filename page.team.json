@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-team",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
