@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "intro": {
+      "type": "about-intro",
+      "settings": {
+        "badge": "About Us",
+        "heading": "We are LogixX Fertility",
+        "subtext": "The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care.",
+        "vision_title": "Our Vision",
+        "vision_text": "LogixX Fertility aims to be the best advanced (male-focused) fertility diagnostic and treatment company in the world.",
+        "mission_title": "Our Mission",
+        "mission_text": "LogixX Fertility in partnership with Testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience.",
+        "tagline": "You never walk alone."
+      }
+    },
+    "stats": {
+      "type": "stats-bar",
+      "settings": {},
+      "blocks": {
+        "stat-1": {"type": "stat", "settings": {"number": "10,000+", "label": "Families Helped"}},
+        "stat-2": {"type": "stat", "settings": {"number": "15+", "label": "Years Experience"}},
+        "stat-3": {"type": "stat", "settings": {"number": "98%", "label": "Patient Satisfaction"}},
+        "stat-4": {"type": "stat", "settings": {"number": "85%", "label": "Clinical Success Rate"}}
+      },
+      "block_order": ["stat-1", "stat-2", "stat-3", "stat-4"]
+    },
+    "timeline": {
+      "type": "about-timeline",
+      "settings": {
+        "badge": "Our Story",
+        "heading": "A decade of advancing fertility science",
+        "subtext": "From a single product to an end-to-end fertility platform — here is how LogixX grew."
+      },
+      "blocks": {
+        "m-1": {
+          "type": "milestone",
+          "settings": {
+            "year": "2008",
+            "label": "Founded",
+            "title": "LogixX Fertility established",
+            "body": "Founded with a singular goal: to make advanced fertility diagnostics and treatments accessible to everyone. Our founding team brought together clinicians, scientists, and patient advocates."
+          }
+        },
+        "m-2": {
+          "type": "milestone",
+          "settings": {
+            "year": "2013",
+            "label": "Product Launch",
+            "title": "Proxeed range introduced",
+            "body": "After five years of clinical development, the Proxeed supplement range launched — backed by peer-reviewed studies demonstrating measurable improvements in sperm motility and morphology."
+          }
+        },
+        "m-3": {
+          "type": "milestone",
+          "settings": {
+            "year": "2018",
+            "label": "Partnership",
+            "title": "Testhim partnership formed",
+            "body": "LogixX joined forces with Testhim to become the UK's leading advanced fertility diagnostic partnership, combining at-home testing with clinical-grade analysis and personalised treatment pathways."
+          }
+        },
+        "m-4": {
+          "type": "milestone",
+          "settings": {
+            "year": "2021",
+            "label": "Innovation",
+            "title": "LensHooke X1 PRO launches",
+            "body": "We introduced the LensHooke X1 PRO — the world's first CASA-grade home sperm analysis device — putting clinical accuracy in the hands of patients for the first time."
+          }
+        },
+        "m-5": {
+          "type": "milestone",
+          "settings": {
+            "year": "2024",
+            "label": "Milestone",
+            "title": "10,000+ families supported",
+            "body": "A landmark moment: more than 10,000 families across the UK and beyond have now started or grown their families with the help of LogixX products, tests, and specialist guidance."
+          }
+        }
+      },
+      "block_order": ["m-1", "m-2", "m-3", "m-4", "m-5"]
+    },
+    "team": {
+      "type": "about-team",
+      "settings": {
+        "badge": "Our Team",
+        "heading": "The experts behind every result",
+        "subtext": "Clinicians, scientists, and patient advocates united by one mission — helping families grow.",
+        "cta_label": "Meet the full fertility team",
+        "cta_url": "/pages/fertility-team"
+      },
+      "blocks": {
+        "tm-1": {
+          "type": "member",
+          "settings": {
+            "name": "Dr Sarah Mitchell",
+            "role": "Clinical Director & Co-Founder",
+            "department": "Medical",
+            "bio": "Reproductive endocrinologist with 20+ years experience. Leads our clinical research programme and protocol development."
+          }
+        },
+        "tm-2": {
+          "type": "member",
+          "settings": {
+            "name": "Prof. James Hartley",
+            "role": "Head of Andrology",
+            "department": "Science",
+            "bio": "Published author of over 40 peer-reviewed papers on male fertility. Oversees our diagnostic innovation pipeline."
+          }
+        },
+        "tm-3": {
+          "type": "member",
+          "settings": {
+            "name": "Dr Aoife O'Brien",
+            "role": "Senior Fertility Specialist",
+            "department": "Clinical",
+            "bio": "Expert in female hormone health and fertility preservation. Guides personalised patient care pathways."
+          }
+        },
+        "tm-4": {
+          "type": "member",
+          "settings": {
+            "name": "Tom Gallagher",
+            "role": "Chief Executive Officer",
+            "department": "Leadership",
+            "bio": "Healthcare entrepreneur with a decade in medtech. Drives LogixX's commercial strategy and patient access mission."
+          }
+        }
+      },
+      "block_order": ["tm-1", "tm-2", "tm-3", "tm-4"]
+    },
+    "trust": {
+      "type": "brand-trust",
+      "settings": {
+        "label": "Trusted & Certified"
+      },
+      "blocks": {
+        "t-1": {"type": "item", "settings": {"icon": "shield", "label": "Halal Certified"}},
+        "t-2": {"type": "item", "settings": {"icon": "check-circle", "label": "GMP Certified"}},
+        "t-3": {"type": "item", "settings": {"icon": "globe", "label": "15+ Years Experience"}},
+        "t-4": {"type": "item", "settings": {"icon": "book", "label": "Peer-Reviewed Science"}},
+        "t-5": {"type": "item", "settings": {"icon": "truck", "label": "Free UK Delivery £50+"}},
+        "t-6": {"type": "item", "settings": {"icon": "package", "label": "Discreet Packaging"}}
+      },
+      "block_order": ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "badge": "Patient Stories",
+        "heading": "Real people.\nReal results."
+      },
+      "blocks": {
+        "r-1": {
+          "type": "review",
+          "settings": {
+            "quote": "My partner and I tried for over 2 years. After Proxeed Plus — we're now proud parents of baby Mia.",
+            "name": "Nick, 41",
+            "detail": "Verified Customer"
+          }
+        },
+        "r-2": {
+          "type": "review",
+          "settings": {
+            "quote": "If you've been trying and can't conceive, get checked out and take action. We now have our perfect child.",
+            "name": "James",
+            "detail": "Verified Customer"
+          }
+        },
+        "r-3": {
+          "type": "review",
+          "settings": {
+            "quote": "After taking Proxeed Women, six months later I was pregnant. Now I have a beautiful baby girl.",
+            "name": "Hannah, 35",
+            "detail": "Verified Customer"
+          }
+        }
+      },
+      "block_order": ["r-1", "r-2", "r-3"]
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "badge": "Start Your Journey",
+        "heading": "Ready to take the next step?",
+        "subtext": "Speak with our team, explore our products, or get tested today. We're here every step of the way.",
+        "btn1_label": "Shop Products",
+        "btn1_url": "/collections/all",
+        "btn2_label": "Contact Us",
+        "btn2_url": "/pages/contact",
+        "phone": "+44 (0) 1189 011 747",
+        "email": "info@logixxpharma.com"
+      }
+    }
+  },
+  "order": ["intro", "stats", "timeline", "team", "trust", "testimonials", "cta"]
+}

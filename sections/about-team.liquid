@@ -1,0 +1,290 @@
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT TEAM  —  Team member cards grid
+     ══════════════════════════════════════════════════════════ -->
+<section class="lx-team">
+  <div class="lx-container">
+
+    <div class="lx-section-head lx-fade-in">
+      {% if section.settings.badge != blank %}
+      <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+      <p>{{ section.settings.subtext }}</p>
+      {% endif %}
+    </div>
+
+    <div class="lx-team__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'member' %}
+        <article class="lx-team__card lx-fade-in" {{ block.shopify_attributes }}>
+
+          <div class="lx-team__photo-wrap">
+            {% if block.settings.photo != blank %}
+            <img
+              src="{{ block.settings.photo | img_url: '400x400', crop: 'face' }}"
+              alt="{{ block.settings.name }}"
+              class="lx-team__photo"
+              loading="lazy"
+              width="400"
+              height="400">
+            {% else %}
+            <!-- initials placeholder -->
+            <div class="lx-team__initials" aria-hidden="true">
+              {{ block.settings.name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, '' }}
+            </div>
+            {% endif %}
+            {% if block.settings.department != blank %}
+            <span class="lx-team__dept">{{ block.settings.department }}</span>
+            {% endif %}
+          </div>
+
+          <div class="lx-team__info">
+            <h3 class="lx-team__name">{{ block.settings.name }}</h3>
+            {% if block.settings.role != blank %}
+            <p class="lx-team__role">{{ block.settings.role }}</p>
+            {% endif %}
+            {% if block.settings.bio != blank %}
+            <p class="lx-team__bio">{{ block.settings.bio }}</p>
+            {% endif %}
+            {% if block.settings.linkedin != blank %}
+            <a href="{{ block.settings.linkedin }}" class="lx-team__linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of {{ block.settings.name }}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.554v-5.569c0-1.328-.028-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.94v5.666H9.354V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+            {% endif %}
+          </div>
+
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.cta_label != blank %}
+    <div class="lx-team__cta lx-fade-in">
+      <a href="{{ section.settings.cta_url | default: '/pages/fertility-team' }}" class="lx-btn lx-btn--ghost-navy">
+        {{ section.settings.cta_label }}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   ABOUT TEAM
+   ══════════════════════════════════════════════════════════ */
+.lx-team {
+  padding: 96px 0;
+  background: #fff;
+}
+
+/* ── Grid ─────────────────────────────────────────────────── */
+.lx-team__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1024px) {
+  .lx-team__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .lx-team__grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+}
+@media (max-width: 440px) {
+  .lx-team__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.lx-team__card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1.5px solid rgba(69,186,232,.14);
+  box-shadow: 0 2px 14px rgba(10,22,40,.04);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.lx-team__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(10,22,40,.09);
+  border-color: rgba(69,186,232,.28);
+}
+
+/* ── Photo / initials ─────────────────────────────────────── */
+.lx-team__photo-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, rgba(69,186,232,.06) 0%, rgba(69,186,232,.12) 100%);
+  overflow: hidden;
+}
+
+.lx-team__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform .5s ease;
+}
+.lx-team__card:hover .lx-team__photo {
+  transform: scale(1.04);
+}
+
+.lx-team__initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #45bae8;
+  letter-spacing: -.03em;
+  background: linear-gradient(135deg, rgba(69,186,232,.08) 0%, rgba(69,186,232,.16) 100%);
+}
+
+.lx-team__dept {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #45bae8;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  padding: 4px 12px;
+  border: 1px solid rgba(69,186,232,.2);
+}
+
+/* ── Info ─────────────────────────────────────────────────── */
+.lx-team__info {
+  padding: 22px 24px 24px;
+}
+
+.lx-team__name {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-navy, #0a1628);
+  margin: 0 0 4px;
+  line-height: 1.25;
+}
+
+.lx-team__role {
+  font-size: .82rem;
+  font-weight: 600;
+  color: #45bae8;
+  letter-spacing: .02em;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.lx-team__bio {
+  font-size: .87rem;
+  color: var(--c-body, #3b4758);
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+
+.lx-team__linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--c-navy, #0a1628);
+  border: 1.5px solid rgba(10,22,40,.12);
+  border-radius: 50px;
+  padding: 5px 14px;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.lx-team__linkedin:hover {
+  background: #0a1628;
+  color: #fff;
+  border-color: #0a1628;
+}
+
+/* ── CTA row ──────────────────────────────────────────────── */
+.lx-team__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Team",
+  "settings": [
+    {"type":"text","id":"badge","label":"Badge","default":"Our Team"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"The experts behind <em>every result</em>"},
+    {"type":"textarea","id":"subtext","label":"Subtext","default":"Clinicians, scientists, and patient advocates united by one mission — helping families grow."},
+    {"type":"text","id":"cta_label","label":"CTA Button Label","default":"Meet the full fertility team"},
+    {"type":"url","id":"cta_url","label":"CTA Button URL","default":"/pages/fertility-team"}
+  ],
+  "blocks": [{
+    "type": "member",
+    "name": "Team Member",
+    "settings": [
+      {"type":"image_picker","id":"photo","label":"Photo"},
+      {"type":"text","id":"name","label":"Name","default":"Dr Jane Smith"},
+      {"type":"text","id":"role","label":"Role / Title","default":"Clinical Director"},
+      {"type":"text","id":"department","label":"Department badge","default":"Medical"},
+      {"type":"textarea","id":"bio","label":"Short Bio","default":"A brief description of this team member's background and expertise."},
+      {"type":"text","id":"linkedin","label":"LinkedIn URL (optional)"}
+    ]
+  }],
+  "presets": [{
+    "name": "About Team",
+    "blocks": [
+      {
+        "type": "member",
+        "settings": {
+          "name": "Dr Sarah Mitchell",
+          "role": "Clinical Director & Co-Founder",
+          "department": "Medical",
+          "bio": "Reproductive endocrinologist with 20+ years experience. Leads our clinical research programme and protocol development."
+        }
+      },
+      {
+        "type": "member",
+        "settings": {
+          "name": "Prof. James Hartley",
+          "role": "Head of Andrology",
+          "department": "Science",
+          "bio": "Published author of over 40 peer-reviewed papers on male fertility. Oversees our diagnostic innovation pipeline."
+        }
+      },
+      {
+        "type": "member",
+        "settings": {
+          "name": "Dr Aoife O'Brien",
+          "role": "Senior Fertility Specialist",
+          "department": "Clinical",
+          "bio": "Expert in female hormone health and fertility preservation. Guides personalised patient care pathways."
+        }
+      },
+      {
+        "type": "member",
+        "settings": {
+          "name": "Tom Gallagher",
+          "role": "Chief Executive Officer",
+          "department": "Leadership",
+          "bio": "Healthcare entrepreneur with a decade in medtech. Drives LogixX's commercial strategy and patient access mission."
+        }
+      }
+    ]
+  }]
+}
+{% endschema %}
