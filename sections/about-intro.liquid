@@ -1,15 +1,16 @@
 <!-- ══════════════════════════════════════════════════════════
-     ABOUT INTRO  —  Clean open layout (reference-image style)
+     ABOUT INTRO  —  Hero + Vision/Mission premium cards
      ══════════════════════════════════════════════════════════ -->
 <section class="lx-about">
 
-  <!-- ── Header ─────────────────────────────────────────────── -->
-  <div class="lx-about__head">
-    <!-- decorative swoosh shapes (pure CSS) -->
-    <div class="lx-about__swoosh lx-about__swoosh--1" aria-hidden="true"></div>
-    <div class="lx-about__swoosh lx-about__swoosh--2" aria-hidden="true"></div>
+  <!-- ── Dark-navy hero ──────────────────────────────────────── -->
+  <div class="lx-about__hero">
+    <div class="lx-about__orb lx-about__orb--1" aria-hidden="true"></div>
+    <div class="lx-about__orb lx-about__orb--2" aria-hidden="true"></div>
+    <div class="lx-about__orb lx-about__orb--3" aria-hidden="true"></div>
 
-    <div class="lx-container lx-about__head-inner lx-fade-in">
+    <div class="lx-container lx-about__hero-inner lx-fade-in">
+
       {% if section.settings.badge != blank %}
       <div class="lx-about__badge">
         <span class="lx-about__badge-dot" aria-hidden="true"></span>
@@ -18,125 +19,126 @@
       {% endif %}
 
       {% if section.settings.heading != blank %}
-      <h2 class="lx-about__heading">{{ section.settings.heading | newline_to_br }}</h2>
+      <h1 class="lx-about__heading">{{ section.settings.heading | newline_to_br }}</h1>
       {% endif %}
 
       {% if section.settings.subtext != blank %}
       <p class="lx-about__sub">{{ section.settings.subtext }}</p>
       {% endif %}
+
+      {% if section.settings.tagline != blank %}
+      <div class="lx-about__tagline-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l9.8-9.8a5.5 5.5 0 0 0 0-7.8z"/>
+        </svg>
+        &ldquo;{{ section.settings.tagline }}&rdquo;
+      </div>
+      {% endif %}
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="lx-about__scroll" aria-hidden="true">
+      <div class="lx-about__scroll-dot"></div>
     </div>
   </div>
 
-  <!-- ── Feature rows ────────────────────────────────────────── -->
-  <div class="lx-about__features">
-    <div class="lx-container">
+  <!-- ── Vision / Mission cards ─────────────────────────────── -->
+  <div class="lx-about__pillars">
+    <div class="lx-container lx-about__pillars-grid">
 
       <!-- Vision -->
-      <div class="lx-about__feat lx-fade-in">
-        <div class="lx-about__feat-icon" aria-hidden="true">
-          <!-- eye icon -->
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="lx-about__pillar lx-about__pillar--vision lx-fade-in">
+        <div class="lx-about__pillar-icon-wrap" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
             <circle cx="12" cy="12" r="3"/>
           </svg>
         </div>
-        <div class="lx-about__feat-content">
-          <h3 class="lx-about__feat-title">{{ section.settings.vision_title | default: 'Our Vision' }}</h3>
-          <p class="lx-about__feat-body">{{ section.settings.vision_text }}</p>
-        </div>
+        <div class="lx-about__pillar-accent" aria-hidden="true"></div>
+        <h2 class="lx-about__pillar-title">{{ section.settings.vision_title | default: 'Our Vision' }}</h2>
+        <p class="lx-about__pillar-body">{{ section.settings.vision_text }}</p>
       </div>
 
-      <!-- divider -->
-      <div class="lx-about__feat-sep" aria-hidden="true"></div>
-
       <!-- Mission -->
-      <div class="lx-about__feat lx-fade-in">
-        <div class="lx-about__feat-icon" aria-hidden="true">
-          <!-- target icon -->
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="lx-about__pillar lx-about__pillar--mission lx-fade-in">
+        <div class="lx-about__pillar-icon-wrap" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
             <circle cx="12" cy="12" r="6"/>
             <circle cx="12" cy="12" r="2"/>
           </svg>
         </div>
-        <div class="lx-about__feat-content">
-          <h3 class="lx-about__feat-title">{{ section.settings.mission_title | default: 'Our Mission' }}</h3>
-          <p class="lx-about__feat-body">{{ section.settings.mission_text }}</p>
-        </div>
+        <div class="lx-about__pillar-accent" aria-hidden="true"></div>
+        <h2 class="lx-about__pillar-title">{{ section.settings.mission_title | default: 'Our Mission' }}</h2>
+        <p class="lx-about__pillar-body">{{ section.settings.mission_text }}</p>
       </div>
 
     </div>
   </div>
-
-  <!-- ── Tagline strip ────────────────────────────────────────── -->
-  {% if section.settings.tagline != blank %}
-  <div class="lx-about__tagline-wrap">
-    <div class="lx-container">
-      <div class="lx-about__tagline lx-fade-in">
-        <span class="lx-about__tagline-deco" aria-hidden="true">"</span>
-        <p class="lx-about__tagline-text">{{ section.settings.tagline }}</p>
-        <span class="lx-about__tagline-deco lx-about__tagline-deco--end" aria-hidden="true">"</span>
-      </div>
-    </div>
-  </div>
-  {% endif %}
 
 </section>
 
 <style>
 /* ══════════════════════════════════════════════════════════
-   ABOUT INTRO  —  Clean open layout
+   ABOUT INTRO — Hero + Premium pillar cards
    ══════════════════════════════════════════════════════════ */
 
-/* ── Header ──────────────────────────────────────────────── */
-.lx-about__head {
+/* ── Hero ────────────────────────────────────────────────── */
+.lx-about__hero {
   position: relative;
-  background: #fff;
+  background: var(--c-navy, #0a1628);
   overflow: hidden;
-  padding: 52px 0 44px;
+  padding: 96px 0 108px;
   text-align: center;
 }
 
-/* Decorative swoosh blobs — pure CSS border-radius shapes */
-.lx-about__swoosh {
+/* Decorative orbs (mirrors hero.liquid) */
+.lx-about__orb {
   position: absolute;
-  pointer-events: none;
   border-radius: 50%;
-  opacity: .25;
+  pointer-events: none;
+  filter: blur(80px);
 }
-.lx-about__swoosh--1 {
-  width: 480px; height: 480px;
-  background: radial-gradient(circle at 30% 40%, rgba(0,194,184,.12) 0%, transparent 70%);
-  top: -180px; left: -140px;
+.lx-about__orb--1 {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(0,194,184,.18) 0%, transparent 70%);
+  top: -200px; left: -180px;
 }
-.lx-about__swoosh--2 {
-  width: 360px; height: 360px;
-  background: radial-gradient(circle at 70% 60%, rgba(0,194,184,.09) 0%, transparent 70%);
-  bottom: -120px; right: -100px;
+.lx-about__orb--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(69,186,232,.13) 0%, transparent 70%);
+  top: -100px; right: -140px;
+}
+.lx-about__orb--3 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(0,194,184,.10) 0%, transparent 70%);
+  bottom: -80px; left: 50%;
+  transform: translateX(-50%);
 }
 
-.lx-about__head-inner {
+.lx-about__hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
-/* badge */
+/* Badge */
 .lx-about__badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0,194,184,.1);
-  border: 1px solid rgba(0,194,184,.28);
+  background: rgba(0,194,184,.12);
+  border: 1px solid rgba(0,194,184,.3);
   border-radius: 50px;
   padding: 6px 18px;
-  color: var(--c-mint-dk, #009990);
-  font-size: 12px;
+  color: var(--c-mint, #00C2B8);
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 .lx-about__badge-dot {
   width: 7px; height: 7px;
@@ -145,149 +147,182 @@
   animation: lx-pulse 2s ease-in-out infinite;
 }
 
-/* heading — navy bold, mint on accent word (set via newline) */
+/* Heading */
 .lx-about__heading {
   font-family: var(--font-head);
-  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
-  color: var(--c-navy, #0a1628);
-  line-height: 1.15;
-  margin: 0 0 14px;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: #fff;
+  line-height: 1.12;
   font-weight: 800;
+  margin: 0 0 20px;
+  letter-spacing: -.02em;
 }
-/* Wrap the company name in <em> in Shopify to get teal colour */
 .lx-about__heading em {
   font-style: normal;
-  color: var(--c-mint, #00C2B8);
-}
-
-/* sub */
-.lx-about__sub {
-  font-size: .97rem;
-  color: #4a5568;
-  line-height: 1.65;
-  margin: 0;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ── Feature rows ────────────────────────────────────────── */
-.lx-about__features {
-  background: #fff;
-  padding: 36px 0 44px;
-}
-
-.lx-about__feat {
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
-  padding: 0 0 0 0;
-}
-@media (max-width: 600px) {
-  .lx-about__feat { flex-direction: column; gap: 16px; }
-}
-
-/* icon circle — cleaner, no box */
-.lx-about__feat-icon {
-  flex-shrink: 0;
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid rgba(0,194,184,.25);
-  color: var(--c-mint, #00C2B8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 3px 10px rgba(0,194,184,.10);
-  margin-top: 3px;
-}
-
-/* content */
-.lx-about__feat-content {
-  flex: 1;
-  border-left: 3px solid var(--c-mint, #00C2B8);
-  padding-left: 24px;
-}
-
-.lx-about__feat-title {
-  font-family: var(--font-head);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--c-navy, #0a1628);
-  margin: 0 0 7px;
-  letter-spacing: -.01em;
-}
-
-.lx-about__feat-body {
-  font-size: .95rem;
-  color: #4a5568;
-  line-height: 1.75;
-  margin: 0;
-}
-
-/* separator between Vision and Mission */
-.lx-about__feat-sep {
-  height: 1px;
-  background: linear-gradient(90deg, var(--c-mint, #00C2B8) 0%, transparent 100%);
-  opacity: .2;
-  margin: 24px 0;
-}
-
-/* ── Tagline strip ────────────────────────────────────────── */
-.lx-about__tagline-wrap {
-  background: #fff;
-  padding: 0 0 44px;
-}
-
-.lx-about__tagline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--c-navy, #0a1628) 0%, var(--c-navy-lt, #152035) 100%);
-  border-radius: 16px;
-  padding: 28px 40px;
-  position: relative;
-  overflow: hidden;
-}
-.lx-about__tagline::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,194,184,.07) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.lx-about__tagline-deco {
-  font-family: Georgia, serif;
-  font-size: 3.2rem;
-  line-height: .7;
-  color: var(--c-mint, #00C2B8);
-  opacity: .3;
-  user-select: none;
-  flex-shrink: 0;
-  position: relative; z-index: 1;
-}
-.lx-about__tagline-deco--end { align-self: flex-end; }
-
-.lx-about__tagline-text {
-  font-family: var(--font-head);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  margin: 0 16px;
-  line-height: 1.4;
-  position: relative; z-index: 1;
-  background: linear-gradient(90deg, #fff 30%, var(--c-mint, #00C2B8) 100%);
+  background: linear-gradient(90deg, var(--c-mint, #00C2B8) 0%, #45bae8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-@media (max-width: 600px) {
-  .lx-about__head { padding: 40px 0 32px; }
-  .lx-about__tagline { padding: 22px 20px; }
-  .lx-about__tagline-deco { font-size: 2.5rem; }
+/* Subtext */
+.lx-about__sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.7;
+  margin: 0 auto 32px;
+  max-width: 580px;
+}
+
+/* Tagline pill */
+.lx-about__tagline-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50px;
+  padding: 10px 22px;
+  color: rgba(255,255,255,.85);
+  font-size: .92rem;
+  font-style: italic;
+  font-weight: 500;
+}
+.lx-about__tagline-pill svg {
+  color: var(--c-mint, #00C2B8);
+  flex-shrink: 0;
+}
+
+/* Scroll indicator */
+.lx-about__scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px; height: 38px;
+  border: 2px solid rgba(255,255,255,.2);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+.lx-about__scroll-dot {
+  width: 4px; height: 8px;
+  background: var(--c-mint, #00C2B8);
+  border-radius: 4px;
+  animation: lx-about-scroll 1.8s ease-in-out infinite;
+}
+@keyframes lx-about-scroll {
+  0%   { opacity: 1; transform: translateY(0); }
+  70%  { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+/* ── Pillars (Vision / Mission) ───────────────────────────── */
+.lx-about__pillars {
+  background: #f7f9fc;
+  padding: 72px 0 80px;
+}
+
+.lx-about__pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 680px) {
+  .lx-about__pillars-grid { grid-template-columns: 1fr; }
+  .lx-about__pillars { padding: 52px 0 56px; }
+}
+
+/* Card */
+.lx-about__pillar {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  border: 1.5px solid rgba(69,186,232,.14);
+  box-shadow: 0 4px 24px rgba(10,22,40,.06);
+  padding: 40px 36px 36px;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.lx-about__pillar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(10,22,40,.1);
+  border-color: rgba(0,194,184,.3);
+}
+
+/* Top accent bar */
+.lx-about__pillar-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 24px 24px 0 0;
+}
+.lx-about__pillar--vision .lx-about__pillar-accent {
+  background: linear-gradient(90deg, var(--c-mint, #00C2B8) 0%, rgba(0,194,184,.2) 100%);
+}
+.lx-about__pillar--mission .lx-about__pillar-accent {
+  background: linear-gradient(90deg, #45bae8 0%, rgba(69,186,232,.2) 100%);
+}
+
+/* Corner glow */
+.lx-about__pillar::after {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.lx-about__pillar--vision::after {
+  background: radial-gradient(circle, rgba(0,194,184,.08) 0%, transparent 70%);
+}
+.lx-about__pillar--mission::after {
+  background: radial-gradient(circle, rgba(69,186,232,.08) 0%, transparent 70%);
+}
+
+/* Icon */
+.lx-about__pillar-icon-wrap {
+  width: 60px; height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.lx-about__pillar--vision .lx-about__pillar-icon-wrap {
+  background: rgba(0,194,184,.1);
+  color: var(--c-mint, #00C2B8);
+  border: 1.5px solid rgba(0,194,184,.2);
+}
+.lx-about__pillar--mission .lx-about__pillar-icon-wrap {
+  background: rgba(69,186,232,.1);
+  color: #45bae8;
+  border: 1.5px solid rgba(69,186,232,.2);
+}
+
+/* Title */
+.lx-about__pillar-title {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--c-navy, #0a1628);
+  margin: 0 0 14px;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+
+/* Body */
+.lx-about__pillar-body {
+  font-size: .97rem;
+  color: var(--c-body, #3b4758);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .lx-about__hero { padding: 72px 0 84px; }
+  .lx-about__pillar { padding: 32px 24px 28px; }
 }
 </style>
 
@@ -298,14 +333,13 @@
     {"type":"text","id":"badge","label":"Badge","default":"About Us"},
     {"type":"textarea","id":"heading","label":"Heading","default":"We are LogixX Fertility"},
     {"type":"textarea","id":"subtext","label":"Subtext","default":"The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care."},
+    {"type":"text","id":"tagline","label":"Tagline","default":"You never walk alone."},
     {"type":"header","content":"Vision"},
     {"type":"text","id":"vision_title","label":"Vision Title","default":"Our Vision"},
-    {"type":"textarea","id":"vision_text","label":"Vision Text","default":"LogixX Fertility aims to be the best advanced (male focussed) fertility diagnostic and treatment company."},
+    {"type":"textarea","id":"vision_text","label":"Vision Text","default":"LogixX Fertility aims to be the best advanced (male-focused) fertility diagnostic and treatment company in the world."},
     {"type":"header","content":"Mission"},
     {"type":"text","id":"mission_title","label":"Mission Title","default":"Our Mission"},
-    {"type":"textarea","id":"mission_text","label":"Mission Text","default":"LogixX Fertility in partnership with testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience."},
-    {"type":"header","content":"Tagline"},
-    {"type":"text","id":"tagline","label":"Tagline","default":"You never walk alone."}
+    {"type":"textarea","id":"mission_text","label":"Mission Text","default":"LogixX Fertility in partnership with Testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience."}
   ],
   "presets": [{"name": "About Intro"}]
 }

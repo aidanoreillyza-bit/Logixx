@@ -6,11 +6,11 @@
         "badge": "About Us",
         "heading": "We are LogixX Fertility",
         "subtext": "The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care.",
+        "tagline": "You never walk alone.",
         "vision_title": "Our Vision",
         "vision_text": "LogixX Fertility aims to be the best advanced (male-focused) fertility diagnostic and treatment company in the world.",
         "mission_title": "Our Mission",
-        "mission_text": "LogixX Fertility in partnership with Testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience.",
-        "tagline": "You never walk alone."
+        "mission_text": "LogixX Fertility in partnership with Testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience."
       }
     },
     "stats": {
@@ -23,6 +23,65 @@
         "stat-4": {"type": "stat", "settings": {"number": "85%", "label": "Clinical Success Rate"}}
       },
       "block_order": ["stat-1", "stat-2", "stat-3", "stat-4"]
+    },
+    "why": {
+      "type": "why-us",
+      "settings": {
+        "badge": "Our Values",
+        "heading": "The science of fertility,\nthe heart of care",
+        "subtext": "Everything we do is guided by three core principles — rigorous science, compassionate support, and unwavering commitment to patient outcomes."
+      },
+      "blocks": {
+        "w-1": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Clinically Proven",
+            "text": "All our products and diagnostic tools are backed by peer-reviewed clinical research and recommended by leading fertility specialists worldwide."
+          }
+        },
+        "w-2": {
+          "type": "card",
+          "settings": {
+            "icon": "users",
+            "title": "Expert-Led Care",
+            "text": "Our multidisciplinary team of reproductive endocrinologists, andrologists, and patient advocates ensures every person receives personalised, evidence-based guidance."
+          }
+        },
+        "w-3": {
+          "type": "card",
+          "settings": {
+            "icon": "clock",
+            "title": "Trusted for 15+ Years",
+            "text": "Since 2008, we have been at the forefront of fertility innovation — helping over 10,000 families and continuously advancing diagnostic and treatment standards."
+          }
+        },
+        "w-4": {
+          "type": "card",
+          "settings": {
+            "icon": "truck",
+            "title": "End-to-End Support",
+            "text": "From at-home testing to clinical-grade analysis and treatment plans, we provide a complete fertility pathway so you never have to navigate it alone."
+          }
+        }
+      },
+      "block_order": ["w-1", "w-2", "w-3", "w-4"]
+    },
+    "results": {
+      "type": "results",
+      "settings": {
+        "label": "Clinical Evidence",
+        "heading": "Proven results,\nnot just promises",
+        "desc": "Proxeed Plus has been validated in peer-reviewed clinical studies showing significant improvements across all key sperm parameters in just 90 days.",
+        "card_title": "Proxeed Plus — Clinical Study Results",
+        "card_pill": "90-Day Trial"
+      },
+      "blocks": {
+        "rs-1": {"type": "stat", "settings": {"number": "85%", "title": "Clinical success rate", "sub": "Across peer-reviewed studies"}},
+        "rs-2": {"type": "stat", "settings": {"number": "10,000+", "title": "Families helped", "sub": "Across the UK & Ireland"}},
+        "rs-3": {"type": "stat", "settings": {"number": "90 days", "title": "Full treatment cycle", "sub": "Aligned to sperm maturation"}}
+      },
+      "block_order": ["rs-1", "rs-2", "rs-3"]
     },
     "timeline": {
       "type": "about-timeline",
@@ -193,5 +252,5 @@
       }
     }
   },
-  "order": ["intro", "stats", "timeline", "team", "trust", "testimonials", "cta"]
+  "order": ["intro", "stats", "why", "results", "timeline", "team", "trust", "testimonials", "cta"]
 }
