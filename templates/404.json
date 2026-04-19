@@ -9,13 +9,18 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "notfound-main",
+    "about_intro_dAAVpz": {
+      "type": "about-intro",
+      "name": "About Intro",
       "settings": {
-        "heading": "Page not found",
-        "message": "Sorry, the page you were looking for doesn't exist or may have moved.",
-        "btn_label": "Back to Home",
-        "btn_url": "/"
+        "badge": "About Us",
+        "heading": "We are LogixX Fertility",
+        "subtext": "The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care.",
+        "vision_title": "Our Vision",
+        "vision_text": "LogixX Fertility aims to be the best advanced (male focussed) fertility diagnostic and treatment company.",
+        "mission_title": "Our Mission",
+        "mission_text": "LogixX Fertility in partnership with testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience.",
+        "tagline": "You never walk alone."
       }
     },
     "why_us_EqVNYN": {
@@ -132,22 +137,62 @@
       ],
       "settings": {}
     },
-    "results_xi4zQE": {
-      "type": "results",
-      "name": "Results",
-      "settings": {}
-    },
     "how_it_works_HjcUUk": {
       "type": "how-it-works",
       "name": "How It Works",
-      "settings": {}
+      "settings": {
+        "badge": "The Process",
+        "heading": "How it works",
+        "subtext": "Four simple steps to support your fertility journey",
+        "cta_label": "Shop Products",
+        "cta_url": ""
+      }
+    },
+    "hero_jjKbPP": {
+      "type": "hero",
+      "blocks": {
+        "trust_kLxCkq": {
+          "type": "trust",
+          "settings": {
+            "text": "Clinically Proven"
+          }
+        },
+        "trust_i8NkEw": {
+          "type": "trust",
+          "settings": {
+            "text": "Free UK Delivery £50+"
+          }
+        },
+        "trust_WXA68R": {
+          "type": "trust",
+          "settings": {
+            "text": "Halal Certified"
+          }
+        }
+      },
+      "block_order": [
+        "trust_kLxCkq",
+        "trust_i8NkEw",
+        "trust_WXA68R"
+      ],
+      "name": "Hero",
+      "settings": {
+        "pill": "Trusted for Over 10 Years",
+        "line1": "Prepared to",
+        "line2": "begin your journey.",
+        "sub": "Clinically proven supplements to support male and female fertility — trusted by thousands of families across the UK.",
+        "btn1": "Shop Now",
+        "btn1_url": "",
+        "btn2": "Learn More",
+        "btn2_url": ""
+      }
     }
   },
   "order": [
-    "main",
+    "hero_jjKbPP",
+    "about_intro_dAAVpz",
     "why_us_EqVNYN",
     "17765938422ec6d28b",
-    "results_xi4zQE",
     "how_it_works_HjcUUk"
   ]
 }
