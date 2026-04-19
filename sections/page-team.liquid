@@ -1,3 +1,246 @@
+<!-- ══════════════════════════════════════════════════════════
+     PAGE-TEAM  —  Management Team  (hardcoded, no page.content)
+     ══════════════════════════════════════════════════════════ -->
+
+<!-- ── Page Hero ──────────────────────────────────────────────────── -->
+<section class="lx-page-team-hero">
+  <div class="lx-container">
+    <div class="lx-page-team-hero__inner lx-fade-in">
+      <span class="lx-badge lx-badge--mint">Our Management</span>
+      <h1>The team driving <em>LogixX forward</em></h1>
+      <p>Meet the leadership behind our mission to redefine fertility diagnostics and patient care.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Team Grid ──────────────────────────────────────────────────── -->
+<section class="lx-mgmt">
+  <div class="lx-container">
+    <div class="lx-mgmt__grid">
+
+      <!-- Michael Close -->
+      <article class="lx-mgmt__card lx-fade-in">
+        <div class="lx-mgmt__photo-wrap">
+          <div class="lx-mgmt__initials" aria-hidden="true">MC</div>
+          <span class="lx-mgmt__dept">Leadership</span>
+        </div>
+        <div class="lx-mgmt__info">
+          <h2 class="lx-mgmt__name">Michael Close</h2>
+          <p class="lx-mgmt__role">Chief Executive Officer</p>
+          <p class="lx-mgmt__bio">
+            A seasoned healthcare entrepreneur with over a decade of experience building and scaling medtech ventures across Europe. Michael leads LogixX's commercial strategy, investor relations and patient-access mission — translating cutting-edge science into products that genuinely improve lives.
+          </p>
+        </div>
+      </article>
+
+      <!-- Professor Ralf Henkel -->
+      <article class="lx-mgmt__card lx-fade-in">
+        <div class="lx-mgmt__photo-wrap">
+          <div class="lx-mgmt__initials" aria-hidden="true">RH</div>
+          <span class="lx-mgmt__dept">Science</span>
+        </div>
+        <div class="lx-mgmt__info">
+          <h2 class="lx-mgmt__name">Professor Ralf Henkel</h2>
+          <p class="lx-mgmt__role">Chief Scientific Officer</p>
+          <p class="lx-mgmt__bio">
+            World-renowned reproductive biologist and author of more than 200 peer-reviewed publications on male fertility and oxidative stress. Professor Henkel oversees LogixX's clinical research programme, product development pipeline and scientific partnerships with leading universities and fertility clinics.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────────────── -->
+<section class="lx-mgmt-cta">
+  <div class="lx-container">
+    <div class="lx-mgmt-cta__inner lx-fade-in">
+      <span class="lx-badge lx-badge--navy">Get in Touch</span>
+      <h2>Partner with the experts in<br><em>fertility science</em></h2>
+      <p class="lx-mgmt-cta__sub">Whether you're a clinician, researcher, or investor — we'd love to hear from you.</p>
+      <div class="lx-mgmt-cta__btns">
+        <a href="/pages/contact" class="lx-btn lx-btn--mint lx-btn--lg">Contact Us</a>
+        <a href="/collections/all" class="lx-btn lx-btn--ghost">Explore Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   PAGE-TEAM STYLES
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.lx-page-team-hero {
+  padding: 96px 0 72px;
+  background: linear-gradient(160deg, #f0f8ff 0%, #fff 60%);
+  text-align: center;
+}
+.lx-page-team-hero__inner { max-width: 700px; margin: 0 auto; }
+.lx-page-team-hero__inner h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--c-navy, #0a1628);
+  margin: 16px 0 20px;
+  line-height: 1.15;
+}
+.lx-page-team-hero__inner h1 em { color: var(--c-blue, #45bae8); font-style: italic; }
+.lx-page-team-hero__inner p {
+  font-size: 1.1rem;
+  color: var(--c-body, #3b4758);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ── Grid section ─────────────────────────────────────────── */
+.lx-mgmt {
+  padding: 72px 0 96px;
+  background: #fff;
+}
+.lx-mgmt__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .lx-mgmt__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.lx-mgmt__card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1.5px solid rgba(69,186,232,.14);
+  box-shadow: 0 2px 14px rgba(10,22,40,.04);
+  overflow: hidden;
+  transition: transform var(--transition, .25s ease), box-shadow var(--transition, .25s ease), border-color var(--transition, .25s ease);
+  position: relative;
+}
+.lx-mgmt__card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-mint, #00C2B8) 0%, #45bae8 100%);
+  opacity: 0;
+  transition: opacity var(--transition, .25s ease);
+  border-radius: 0 0 20px 20px;
+}
+.lx-mgmt__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(10,22,40,.09);
+  border-color: rgba(69,186,232,.28);
+}
+.lx-mgmt__card:hover::after { opacity: 1; }
+
+/* ── Photo / initials ─────────────────────────────────────── */
+.lx-mgmt__photo-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, rgba(69,186,232,.06) 0%, rgba(69,186,232,.12) 100%);
+  overflow: hidden;
+}
+.lx-mgmt__initials {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #45bae8;
+  letter-spacing: -.03em;
+  background: linear-gradient(145deg, #e8f6fd 0%, #d0eef9 50%, #c4e8f6 100%);
+}
+.lx-mgmt__initials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, rgba(69,186,232,.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.lx-mgmt__dept {
+  position: absolute;
+  bottom: 12px; left: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #45bae8;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  padding: 4px 12px;
+  border: 1px solid rgba(69,186,232,.2);
+}
+
+/* ── Info ─────────────────────────────────────────────────── */
+.lx-mgmt__info { padding: 28px 28px 32px; }
+.lx-mgmt__name {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--c-navy, #0a1628);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+.lx-mgmt__role {
+  font-size: .85rem;
+  font-weight: 700;
+  color: #45bae8;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.lx-mgmt__bio {
+  font-size: .92rem;
+  color: var(--c-body, #3b4758);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── CTA ──────────────────────────────────────────────────── */
+.lx-mgmt-cta {
+  padding: 96px 0;
+  background: var(--c-navy, #0a1628);
+  text-align: center;
+}
+.lx-mgmt-cta__inner { max-width: 640px; margin: 0 auto; }
+.lx-mgmt-cta__inner h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 16px 0 20px;
+  line-height: 1.2;
+}
+.lx-mgmt-cta__inner h2 em { color: var(--c-mint, #00C2B8); font-style: italic; }
+.lx-mgmt-cta__sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.75);
+  line-height: 1.65;
+  margin: 0 0 36px;
+}
+.lx-mgmt-cta__btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style>
+
 {% schema %}
-{"name":"Management Team","blocks":[{"type":"member","name":"Team Member","settings":[{"type":"image_picker","id":"photo","label":"Photo"},{"type":"text","id":"name","label":"Full Name","default":"Dr. John Smith"},{"type":"text","id":"title","label":"Job Title","default":"Chief Executive Officer"},{"type":"textarea","id":"bio","label":"Bio","default":"A leading expert in reproductive medicine with over 20 years of experience in fertility diagnostics and treatment."},{"type":"url","id":"linkedin","label":"LinkedIn URL"}]}],"presets":[{"name":"Management Team","blocks":[{"type":"member","settings":{"name":"Dr. John Smith","title":"Chief Executive Officer","bio":"A leading expert in reproductive medicine with over 20 years of experience."}},{"type":"member","settings":{"name":"Dr. Sarah Johnson","title":"Medical Director","bio":"Specialist in male fertility and andrology with extensive clinical research experience."}},{"type":"member","settings":{"name":"Prof. James Williams","title":"Chief Scientific Officer","bio":"World-renowned reproductive biologist and author of over 100 peer-reviewed publications."}}]}]}
+{
+  "name": "Management Team",
+  "settings": [],
+  "presets": [{"name": "Management Team"}]
+}
 {% endschema %}
