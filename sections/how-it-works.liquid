@@ -2,48 +2,38 @@
   <div class="lx-container">
 
     <div class="lx-section-head lx-fade-in">
-      <span class="lx-badge lx-badge--navy">The Process</span>
-      <h2>How it <em>works</em></h2>
-      <p>Four simple steps to support your fertility journey</p>
+      {% if section.settings.badge != blank %}
+      <span class="lx-badge lx-badge--navy">{{ section.settings.badge }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+      <p>{{ section.settings.subtext }}</p>
+      {% endif %}
     </div>
 
     <div class="lx-hiw__steps lx-fade-in">
-
-      <div class="lx-hiw__step">
-        <div class="lx-hiw__num"><span>1</span></div>
-        <div class="lx-hiw__title">Get Tested</div>
-        <p class="lx-hiw__body">Start with CASA-grade semen analysis using LensHooke X1 PRO for a full picture of sperm health.</p>
+      {% assign step_blocks = section.blocks | where: 'type', 'step' %}
+      {% for block in step_blocks %}
+      <div class="lx-hiw__step" {{ block.shopify_attributes }}>
+        <div class="lx-hiw__num"><span>{{ forloop.index }}</span></div>
+        <div class="lx-hiw__title">{{ block.settings.title }}</div>
+        <p class="lx-hiw__body">{{ block.settings.body }}</p>
       </div>
-
+      {% unless forloop.last %}
       <div class="lx-hiw__connector" aria-hidden="true"></div>
-
-      <div class="lx-hiw__step">
-        <div class="lx-hiw__num"><span>2</span></div>
-        <div class="lx-hiw__title">Assess Stress</div>
-        <p class="lx-hiw__body">MiOXSYS identifies oxidative stress — a factor in up to 40% of male infertility cases.</p>
-      </div>
-
-      <div class="lx-hiw__connector" aria-hidden="true"></div>
-
-      <div class="lx-hiw__step">
-        <div class="lx-hiw__num"><span>3</span></div>
-        <div class="lx-hiw__title">Supplement</div>
-        <p class="lx-hiw__body">Proxeed provides targeted nutrients across a 90-day sperm maturation cycle for measurable results.</p>
-      </div>
-
-      <div class="lx-hiw__connector" aria-hidden="true"></div>
-
-      <div class="lx-hiw__step">
-        <div class="lx-hiw__num"><span>4</span></div>
-        <div class="lx-hiw__title">Monitor Progress</div>
-        <p class="lx-hiw__body">Track improvements alongside lifestyle changes and professional guidance from our team.</p>
-      </div>
-
+      {% endunless %}
+      {% endfor %}
     </div>
 
+    {% if section.settings.cta_label != blank %}
     <div class="lx-hiw__cta lx-fade-in">
-      <a href="/collections/all" class="lx-btn lx-btn--mint lx-btn--lg">Shop Products</a>
+      <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lx-btn lx-btn--mint lx-btn--lg">
+        {{ section.settings.cta_label }}
+      </a>
     </div>
+    {% endif %}
 
   </div>
 </section>
@@ -51,7 +41,31 @@
 {% schema %}
 {
   "name": "How It Works",
-  "settings": [],
-  "presets": [{"name": "How It Works"}]
+  "settings": [
+    {"type":"text","id":"badge","label":"Badge","default":"The Process"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"How it works"},
+    {"type":"textarea","id":"subtext","label":"Subtext","default":"Four simple steps to support your fertility journey"},
+    {"type":"text","id":"cta_label","label":"CTA Button Label","default":"Shop Products"},
+    {"type":"url","id":"cta_url","label":"CTA Button URL"}
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {"type":"text","id":"title","label":"Step Title","default":"Step"},
+        {"type":"textarea","id":"body","label":"Step Description","default":"Description of this step."}
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "How It Works",
+    "blocks": [
+      {"type":"step","settings":{"title":"Get Tested","body":"Start with CASA-grade semen analysis using LensHooke X1 PRO for a full picture of sperm health."}},
+      {"type":"step","settings":{"title":"Assess Stress","body":"MiOXSYS identifies oxidative stress — a factor in up to 40% of male infertility cases."}},
+      {"type":"step","settings":{"title":"Supplement","body":"Proxeed provides targeted nutrients across a 90-day sperm maturation cycle for measurable results."}},
+      {"type":"step","settings":{"title":"Monitor Progress","body":"Track improvements alongside lifestyle changes and professional guidance from our team."}}
+    ]
+  }]
 }
 {% endschema %}

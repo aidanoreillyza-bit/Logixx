@@ -2,75 +2,72 @@
   <div class="lx-container">
 
     <div class="lx-section-head lx-fade-in">
-      <span class="lx-badge lx-badge--mint">The Proxeed Difference</span>
-      <h2>Why Proxeed outperforms<br><em>generic supplements</em></h2>
-      <p>Not all fertility supplements are equal. Proxeed's clinically formulated ingredients deliver results that generic multi-vitamins simply cannot match.</p>
+      {% if section.settings.badge != blank %}
+      <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+      <p>{{ section.settings.subtext }}</p>
+      {% endif %}
     </div>
 
     <div class="lx-compare__wrap lx-fade-in">
-      <div class="lx-compare__table" role="table" aria-label="Proxeed vs generic supplement comparison">
+      <div class="lx-compare__table" role="table" aria-label="{{ section.settings.col_brand | default: 'Our brand' }} vs {{ section.settings.col_generic | default: 'Generic supplement' }} comparison">
 
         <div class="lx-compare__head-row" role="row">
           <div class="lx-compare__th lx-compare__th--feat" role="columnheader">Features</div>
           <div class="lx-compare__th lx-compare__th--generic" role="columnheader">
             <div class="lx-compare__th-icon lx-compare__th-icon--bad" aria-hidden="true">✕</div>
-            Generic Supplement
+            {{ section.settings.col_generic | default: 'Generic Supplement' }}
           </div>
           <div class="lx-compare__th lx-compare__th--proxeed" role="columnheader">
-            <span class="lx-badge lx-badge--mint">Recommended</span>
-            Proxeed Plus
+            {% if section.settings.col_brand_badge != blank %}
+            <span class="lx-badge lx-badge--mint">{{ section.settings.col_brand_badge }}</span>
+            {% endif %}
+            {{ section.settings.col_brand | default: 'Proxeed Plus' }}
           </div>
         </div>
 
-        <div class="lx-compare__row" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Clinically tested for sperm parameters</div>
-          <div class="lx-compare__td lx-compare__td--no" role="cell"><span class="lx-compare__no" aria-label="No">✕</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
-
-        <div class="lx-compare__row" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Halal certified</div>
-          <div class="lx-compare__td lx-compare__td--no" role="cell"><span class="lx-compare__no" aria-label="No">✕</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
-
-        <div class="lx-compare__row" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Patented L-Carnitine Fumarate</div>
-          <div class="lx-compare__td lx-compare__td--no" role="cell"><span class="lx-compare__no" aria-label="No">✕</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
-
-        <div class="lx-compare__row" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Antioxidant protection complex</div>
-          <div class="lx-compare__td lx-compare__td--maybe" role="cell"><span class="lx-compare__maybe" aria-label="Partial">~</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
-
-        <div class="lx-compare__row" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Peer-reviewed clinical evidence</div>
-          <div class="lx-compare__td lx-compare__td--no" role="cell"><span class="lx-compare__no" aria-label="No">✕</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
-
-        <div class="lx-compare__row" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Free UK delivery on £50+</div>
-          <div class="lx-compare__td lx-compare__td--no" role="cell"><span class="lx-compare__no" aria-label="No">✕</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
-
-        <div class="lx-compare__row lx-compare__row--last" role="row">
-          <div class="lx-compare__td lx-compare__td--feat" role="cell">Expert fertility specialist support</div>
-          <div class="lx-compare__td lx-compare__td--no" role="cell"><span class="lx-compare__no" aria-label="No">✕</span></div>
-          <div class="lx-compare__td lx-compare__td--yes" role="cell"><span class="lx-compare__yes" aria-label="Yes">✓</span></div>
-        </div>
+        {% for block in section.blocks %}
+          {% if block.type == 'row' %}
+          {% assign is_last = false %}
+          {% if forloop.last %}{% assign is_last = true %}{% endif %}
+          <div class="lx-compare__row{% if is_last %} lx-compare__row--last{% endif %}" role="row" {{ block.shopify_attributes }}>
+            <div class="lx-compare__td lx-compare__td--feat" role="cell">{{ block.settings.feature }}</div>
+            <div class="lx-compare__td lx-compare__td--{% if block.settings.generic == 'yes' %}yes{% elsif block.settings.generic == 'partial' %}maybe{% else %}no{% endif %}" role="cell">
+              {% if block.settings.generic == 'yes' %}
+                <span class="lx-compare__yes" aria-label="Yes">✓</span>
+              {% elsif block.settings.generic == 'partial' %}
+                <span class="lx-compare__maybe" aria-label="Partial">~</span>
+              {% else %}
+                <span class="lx-compare__no" aria-label="No">✕</span>
+              {% endif %}
+            </div>
+            <div class="lx-compare__td lx-compare__td--{% if block.settings.brand == 'yes' %}yes{% elsif block.settings.brand == 'partial' %}maybe{% else %}no{% endif %}" role="cell">
+              {% if block.settings.brand == 'yes' %}
+                <span class="lx-compare__yes" aria-label="Yes">✓</span>
+              {% elsif block.settings.brand == 'partial' %}
+                <span class="lx-compare__maybe" aria-label="Partial">~</span>
+              {% else %}
+                <span class="lx-compare__no" aria-label="No">✕</span>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
 
       </div>
 
       <div class="lx-compare__cta">
-        <a href="/collections/all" class="lx-btn lx-btn--mint lx-btn--lg">Shop Proxeed
+        <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lx-btn lx-btn--mint lx-btn--lg">
+          {{ section.settings.cta_label | default: 'Shop Now' }}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <p class="lx-compare__cta-note">Clinically proven · Halal certified · Free UK delivery over £50</p>
+        {% if section.settings.cta_note != blank %}
+        <p class="lx-compare__cta-note">{{ section.settings.cta_note }}</p>
+        {% endif %}
       </div>
     </div>
 
@@ -80,7 +77,47 @@
 {% schema %}
 {
   "name": "Comparison",
-  "settings": [],
-  "presets": [{"name": "Comparison"}]
+  "settings": [
+    {"type":"text","id":"badge","label":"Badge","default":"The Proxeed Difference"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"Why Proxeed outperforms\ngeneric supplements"},
+    {"type":"textarea","id":"subtext","label":"Subtext","default":"Not all fertility supplements are equal. Proxeed's clinically formulated ingredients deliver results that generic multi-vitamins simply cannot match."},
+    {"type":"text","id":"col_generic","label":"Competitor Column Name","default":"Generic Supplement"},
+    {"type":"text","id":"col_brand","label":"Brand Column Name","default":"Proxeed Plus"},
+    {"type":"text","id":"col_brand_badge","label":"Brand Column Badge","default":"Recommended"},
+    {"type":"text","id":"cta_label","label":"CTA Button Label","default":"Shop Proxeed"},
+    {"type":"url","id":"cta_url","label":"CTA Button URL"},
+    {"type":"text","id":"cta_note","label":"CTA Note","default":"Clinically proven · Halal certified · Free UK delivery over £50"}
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        {"type":"text","id":"feature","label":"Feature","default":"Clinically tested"},
+        {
+          "type":"select","id":"generic","label":"Generic column",
+          "options":[{"value":"no","label":"No (✕)"},{"value":"partial","label":"Partial (~)"},{"value":"yes","label":"Yes (✓)"}],
+          "default":"no"
+        },
+        {
+          "type":"select","id":"brand","label":"Brand column",
+          "options":[{"value":"no","label":"No (✕)"},{"value":"partial","label":"Partial (~)"},{"value":"yes","label":"Yes (✓)"}],
+          "default":"yes"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Comparison",
+    "blocks": [
+      {"type":"row","settings":{"feature":"Clinically tested for sperm parameters","generic":"no","brand":"yes"}},
+      {"type":"row","settings":{"feature":"Halal certified","generic":"no","brand":"yes"}},
+      {"type":"row","settings":{"feature":"Patented L-Carnitine Fumarate","generic":"no","brand":"yes"}},
+      {"type":"row","settings":{"feature":"Antioxidant protection complex","generic":"partial","brand":"yes"}},
+      {"type":"row","settings":{"feature":"Peer-reviewed clinical evidence","generic":"no","brand":"yes"}},
+      {"type":"row","settings":{"feature":"Free UK delivery on £50+","generic":"no","brand":"yes"}},
+      {"type":"row","settings":{"feature":"Expert fertility specialist support","generic":"no","brand":"yes"}}
+    ]
+  }]
 }
 {% endschema %}

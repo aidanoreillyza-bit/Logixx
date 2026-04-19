@@ -1,14 +1,120 @@
 <section class="lx-results">
-  <div class="lx-results__inner">
-    <h2 class="lx-results__heading">Real Results</h2>
-    <p class="lx-results__subheading">See what our customers have achieved.</p>
+  <div class="lx-container">
+    <div class="lx-results__grid">
+
+      <!-- Left: heading + stat blocks -->
+      <div class="lx-fade-in">
+        {% if section.settings.label != blank %}
+        <div class="lx-results__label">{{ section.settings.label }}</div>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+        <h2 class="lx-results__heading">{{ section.settings.heading | newline_to_br }}</h2>
+        {% endif %}
+        {% if section.settings.desc != blank %}
+        <p class="lx-results__desc">{{ section.settings.desc }}</p>
+        {% endif %}
+
+        <div class="lx-results__stats">
+          {% for block in section.blocks %}
+            {% if block.type == 'stat' %}
+            <div class="lx-results__stat" {{ block.shopify_attributes }}>
+              <div class="lx-results__stat-num">{{ block.settings.number }}</div>
+              <div>
+                <div class="lx-results__stat-title">{{ block.settings.title }}</div>
+                {% if block.settings.sub != blank %}
+                <div class="lx-results__stat-sub">{{ block.settings.sub }}</div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right: before/after clinical data card -->
+      <div class="lx-results__card lx-fade-in">
+        <div class="lx-results__card-head">
+          <div class="lx-results__card-title">{{ section.settings.card_title | default: 'Proxeed Plus — Clinical Study Results' }}</div>
+          <div class="lx-results__card-pill">{{ section.settings.card_pill | default: '90-Day Trial' }}</div>
+        </div>
+
+        <div class="lx-results__cols">
+          <span class="lx-results__col-label">Parameter</span>
+          <span class="lx-results__col-label">Before</span>
+          <span class="lx-results__col-label">After 3 months</span>
+        </div>
+
+        <div class="lx-results__row">
+          <div class="lx-results__row-vals">
+            <span class="lx-results__row-name">Total Sperm Count</span>
+            <span class="lx-results__row-before">Low</span>
+            <span class="lx-results__row-after">+63%</span>
+          </div>
+          <div class="lx-results__bar"><div class="lx-results__bar-fill lx-results__bar-fill--37 lx-results__bar-fill--w63"></div></div>
+        </div>
+
+        <div class="lx-results__row">
+          <div class="lx-results__row-vals">
+            <span class="lx-results__row-name">Sperm Motility</span>
+            <span class="lx-results__row-before">Low</span>
+            <span class="lx-results__row-after">+48%</span>
+          </div>
+          <div class="lx-results__bar"><div class="lx-results__bar-fill lx-results__bar-fill--30 lx-results__bar-fill--w48"></div></div>
+        </div>
+
+        <div class="lx-results__row">
+          <div class="lx-results__row-vals">
+            <span class="lx-results__row-name">Progressive Motility</span>
+            <span class="lx-results__row-before">Low</span>
+            <span class="lx-results__row-after">+50%</span>
+          </div>
+          <div class="lx-results__bar"><div class="lx-results__bar-fill lx-results__bar-fill--29 lx-results__bar-fill--w50"></div></div>
+        </div>
+
+        <div class="lx-results__row">
+          <div class="lx-results__row-vals">
+            <span class="lx-results__row-name">Normal Morphology</span>
+            <span class="lx-results__row-before">Low</span>
+            <span class="lx-results__row-after">+80%</span>
+          </div>
+          <div class="lx-results__bar"><div class="lx-results__bar-fill lx-results__bar-fill--40 lx-results__bar-fill--w80"></div></div>
+        </div>
+
+        <p class="lx-results__disclaimer">* Data based on peer-reviewed clinical studies of Proxeed Plus over a 90-day supplementation period. Individual results may vary.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
   "name": "Results",
-  "settings": [],
-  "presets": [{"name": "Results"}]
+  "settings": [
+    {"type":"text","id":"label","label":"Section Label","default":"Clinical Evidence"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"Proven results,\nnot just promises"},
+    {"type":"textarea","id":"desc","label":"Description","default":"Proxeed Plus has been validated in peer-reviewed clinical studies showing significant improvements across all key sperm parameters."},
+    {"type":"text","id":"card_title","label":"Data Card Title","default":"Proxeed Plus — Clinical Study Results"},
+    {"type":"text","id":"card_pill","label":"Data Card Pill","default":"90-Day Trial"}
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {"type":"text","id":"number","label":"Number","default":"85%"},
+        {"type":"text","id":"title","label":"Title","default":"Clinical success rate"},
+        {"type":"text","id":"sub","label":"Sub-text","default":"Across peer-reviewed studies"}
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Results",
+    "blocks": [
+      {"type":"stat","settings":{"number":"85%","title":"Clinical success rate","sub":"Across peer-reviewed studies"}},
+      {"type":"stat","settings":{"number":"10,000+","title":"Families helped","sub":"Across the UK"}},
+      {"type":"stat","settings":{"number":"90 days","title":"Full treatment cycle","sub":"Aligned to sperm maturation"}}
+    ]
+  }]
 }
 {% endschema %}

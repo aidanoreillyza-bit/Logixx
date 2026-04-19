@@ -4,15 +4,15 @@
     "brandtrust":   {"type": "brand-trust",       "settings": {}},
     "statsbar":     {"type": "stats-bar",         "settings": {}},
     "whyus":        {"type": "why-us",            "settings": {}},
-    "comparison":   {"type": "comparison",        "settings": {}},
     "howitworks":   {"type": "how-it-works",      "settings": {}},
     "results":      {"type": "results",           "settings": {}},
+    "comparison":   {"type": "comparison",        "settings": {}},
     "products":     {"type": "featured-products", "settings": {}},
     "testimonials": {"type": "testimonials",      "settings": {}},
+    "faq":          {"type": "faq-section",       "settings": {}},
     "news":         {"type": "news-preview",      "settings": {}},
     "instagram":    {"type": "instagram-feed",    "settings": {}},
-    "faq":          {"type": "faq-section",       "settings": {}},
     "cta":          {"type": "cta-banner",        "settings": {}}
   },
-  "order": ["hero","brandtrust","statsbar","whyus","comparison","howitworks","results","products","testimonials","news","instagram","faq","cta"]
+  "order": ["hero","brandtrust","statsbar","whyus","howitworks","results","comparison","products","testimonials","faq","news","instagram","cta"]
 }
