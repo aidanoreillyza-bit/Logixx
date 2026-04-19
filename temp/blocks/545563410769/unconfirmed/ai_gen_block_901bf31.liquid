@@ -1,6 +1,416 @@
+{% doc %}
+  @prompt
+    make moving with our Partners 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-partners-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    overflow: hidden;
+  }
+
+  .ai-partners-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-partners-heading-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-partners-track-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ai-partners-track-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.logo_spacing }}px;
+    width: max-content;
+  }
+
+  .ai-partners-track-{{ ai_gen_id }}.moving {
+    animation: ai-partners-scroll-{{ ai_gen_id }} {{ block.settings.animation_speed }}s linear infinite;
+  }
+
+  .ai-partners-logo-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: {{ block.settings.logo_width }}px;
+    height: {{ block.settings.logo_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.logo_background }};
+    border-radius: {{ block.settings.logo_border_radius }}px;
+    padding: {{ block.settings.logo_padding }}px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-partners-logo-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-partners-logo-{{ ai_gen_id }} img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale({{ block.settings.logo_grayscale }}%);
+    opacity: {{ block.settings.logo_opacity }};
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  .ai-partners-logo-{{ ai_gen_id }}:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .ai-partners-logo-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-partners-logo-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  @keyframes ai-partners-scroll-{{ ai_gen_id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-partners-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-partners-logo-{{ ai_gen_id }} {
+      width: calc({{ block.settings.logo_width }}px * 0.7);
+      height: calc({{ block.settings.logo_height }}px * 0.7);
+    }
+  }
+{% endstyle %}
+
+<partners-carousel-{{ ai_gen_id }} class="ai-partners-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-partners-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-partners-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-partners-track-wrapper-{{ ai_gen_id }}">
+      <div class="ai-partners-track-{{ ai_gen_id }}" data-speed="{{ block.settings.animation_speed }}">
+        {% for i in (1..8) %}
+          {% assign logo_key = 'partner_logo_' | append: i %}
+          {% assign logo = block.settings[logo_key] %}
+          
+          {% if logo != blank %}
+            <div class="ai-partners-logo-{{ ai_gen_id }}">
+              <img
+                src="{{ logo | image_url: width: 400 }}"
+                alt="{{ logo.alt | escape }}"
+                loading="lazy"
+                width="400"
+                height="200"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</partners-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class PartnersCarousel{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.track = null;
+        this.logos = [];
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-partners-track-{{ ai_gen_id }}');
+        this.logos = Array.from(this.querySelectorAll('.ai-partners-logo-{{ ai_gen_id }}'));
+        
+        if (this.logos.length > 0) {
+          this.duplicateLogos();
+          this.startAnimation();
+        }
+      }
+
+      duplicateLogos() {
+        const clone = this.track.cloneNode(true);
+        const cloneLogos = clone.querySelectorAll('.ai-partners-logo-{{ ai_gen_id }}');
+        cloneLogos.forEach(logo => {
+          this.track.appendChild(logo);
+        });
+      }
+
+      startAnimation() {
+        this.track.classList.add('moving');
+      }
+    }
+
+    customElements.define('partners-carousel-{{ ai_gen_id }}', PartnersCarousel{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Moving partners",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Partners"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading spacing",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Partner logos"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_1",
+      "label": "Partner logo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_2",
+      "label": "Partner logo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_3",
+      "label": "Partner logo 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_4",
+      "label": "Partner logo 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_5",
+      "label": "Partner logo 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_6",
+      "label": "Partner logo 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_7",
+      "label": "Partner logo 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "partner_logo_8",
+      "label": "Partner logo 8"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Animation speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Logo style"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "label": "Logo spacing",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_padding",
+      "label": "Logo padding",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "logo_border_radius",
+      "label": "Logo border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "logo_grayscale",
+      "label": "Logo grayscale",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "Logo opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.6
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "logo_background",
+      "label": "Logo background",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "presets": [
+    {
+      "name": "Moving partners"
+    }
+  ]
+}
 {% endschema %}
