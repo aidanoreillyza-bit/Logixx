@@ -305,6 +305,18 @@
         "heading": "Frequently asked questions",
         "subtext": "Can't find your answer? Contact us at info@logixxpharma.com"
       }
+    },
+    "featured_products_T8QgyV": {
+      "type": "featured-products",
+      "name": "Featured Products",
+      "settings": {
+        "badge": "Our Products",
+        "heading": "Clinically proven fertility\nsupplements & diagnostics",
+        "subtext": "Formulated by fertility specialists and backed by clinical research.",
+        "collection": "",
+        "limit": 6,
+        "view_all_url": "shopify://collections/all"
+      }
     }
   },
   "order": [
@@ -313,6 +325,7 @@
     "results",
     "how_it_works",
     "testimonials",
-    "faq"
+    "faq",
+    "featured_products_T8QgyV"
   ]
 }
