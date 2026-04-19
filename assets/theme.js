@@ -51,18 +51,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 4. Scroll fade-in
-  const fadeEls = document.querySelectorAll('.lx-fade-in');
-  if (fadeEls.length && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    fadeEls.forEach(el => io.observe(el));
+  function initFadeIn(root) {
+    const fadeEls = (root || document).querySelectorAll('.lx-fade-in:not(.visible)');
+    if (!fadeEls.length) return;
+    // In the Shopify theme editor reveal immediately so sections are never invisible
+    if (window.Shopify && window.Shopify.designMode) {
+      fadeEls.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px 60px 0px' });
+      fadeEls.forEach(el => io.observe(el));
+    } else {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    }
   }
+  initFadeIn();
+
+  // Re-run when the theme editor loads/reorders a section
+  document.addEventListener('shopify:section:load', e => initFadeIn(e.target));
+  document.addEventListener('shopify:section:reorder', () => initFadeIn());
 
   // 5. Qty buttons
   document.querySelectorAll('[data-qty]').forEach(btn => {

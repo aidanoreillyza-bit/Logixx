@@ -1,7 +1,7 @@
 <!-- ══════════════════════════════════════════════════════════
      ABOUT INTRO  —  Clean open layout (reference-image style)
      ══════════════════════════════════════════════════════════ -->
-<section class="lx-about lx-fade-in">
+<section class="lx-about">
 
   <!-- ── Header ─────────────────────────────────────────────── -->
   <div class="lx-about__head">
@@ -9,7 +9,7 @@
     <div class="lx-about__swoosh lx-about__swoosh--1" aria-hidden="true"></div>
     <div class="lx-about__swoosh lx-about__swoosh--2" aria-hidden="true"></div>
 
-    <div class="lx-container lx-about__head-inner">
+    <div class="lx-container lx-about__head-inner lx-fade-in">
       {% if section.settings.badge != blank %}
       <div class="lx-about__badge">
         <span class="lx-about__badge-dot" aria-hidden="true"></span>
@@ -32,7 +32,7 @@
     <div class="lx-container">
 
       <!-- Vision -->
-      <div class="lx-about__feat">
+      <div class="lx-about__feat lx-fade-in">
         <div class="lx-about__feat-icon" aria-hidden="true">
           <!-- eye icon -->
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -50,7 +50,7 @@
       <div class="lx-about__feat-sep" aria-hidden="true"></div>
 
       <!-- Mission -->
-      <div class="lx-about__feat">
+      <div class="lx-about__feat lx-fade-in">
         <div class="lx-about__feat-icon" aria-hidden="true">
           <!-- target icon -->
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@
   {% if section.settings.tagline != blank %}
   <div class="lx-about__tagline-wrap">
     <div class="lx-container">
-      <div class="lx-about__tagline">
+      <div class="lx-about__tagline lx-fade-in">
         <span class="lx-about__tagline-deco" aria-hidden="true">"</span>
         <p class="lx-about__tagline-text">{{ section.settings.tagline }}</p>
         <span class="lx-about__tagline-deco lx-about__tagline-deco--end" aria-hidden="true">"</span>
