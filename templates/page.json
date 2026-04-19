@@ -9,17 +9,18 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page-main",
-      "name": "About us",
-      "settings": {}
-    },
-    "news_preview_YY76Qf": {
-      "type": "news-preview",
-      "name": "News Preview",
+    "about_intro_xBaBwD": {
+      "type": "about-intro",
+      "name": "About Intro",
       "settings": {
-        "blog": "",
-        "heading": "From our <em>blog</em>"
+        "badge": "About Us",
+        "heading": "We are LogixX Fertility",
+        "subtext": "The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care.",
+        "tagline": "You never walk alone.",
+        "vision_title": "Our Vision",
+        "vision_text": "LogixX Fertility aims to be the best advanced (male-focused) fertility diagnostic and treatment company in the world.",
+        "mission_title": "Our Mission",
+        "mission_text": "LogixX Fertility in partnership with Testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience."
       }
     },
     "about_timeline_74FPEt": {
@@ -84,11 +85,24 @@
         "heading": "A decade of advancing <em>fertility science</em>",
         "subtext": "From a single product to an end-to-end fertility platform — here is how LogixX grew."
       }
+    },
+    "news_preview_YY76Qf": {
+      "type": "news-preview",
+      "name": "News Preview",
+      "settings": {
+        "blog": "",
+        "heading": "From our <em>blog</em>"
+      }
+    },
+    "1776630316d70f8046": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
+    "about_intro_xBaBwD",
     "about_timeline_74FPEt",
-    "main",
-    "news_preview_YY76Qf"
+    "news_preview_YY76Qf",
+    "1776630316d70f8046"
   ]
 }
