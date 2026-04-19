@@ -67,10 +67,87 @@
         "heading": "The science of fertility,\nthe heart of care",
         "subtext": "We combine world-class science with compassionate support at every step of your fertility journey."
       }
+    },
+    "17765938422ec6d28b": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5146de7_GdiP9c": {
+          "type": "ai_gen_block_5146de7",
+          "settings": {
+            "desktop_width_percent": 100,
+            "section_padding": 60,
+            "item_spacing": 60,
+            "background_color": "#ffffff",
+            "line_position": 40,
+            "line_width": 2,
+            "line_color": "#e0e0e0",
+            "line_active_color": "#000f9f",
+            "dot_size": 16,
+            "dot_border_width": 4,
+            "dot_glow_size": 8,
+            "dot_color": "#cccccc",
+            "dot_active_color": "#000f9f",
+            "card_background": "#f9f9f9",
+            "card_padding": 20,
+            "card_border_radius": 8,
+            "card_border_width": 3,
+            "card_border_color": "#e0e0e0",
+            "card_border_active_color": "#000f9f",
+            "date_font_size": 14,
+            "date_color": "#666666",
+            "title_font_size": 20,
+            "title_color": "#000000",
+            "description_font_size": 15,
+            "description_color": "#333333",
+            "item_1_enabled": true,
+            "item_1_date": "January 2020",
+            "item_1_title": "Our story begins",
+            "item_1_description": "We started our journey with a simple idea and a passion for creativity.",
+            "item_2_enabled": true,
+            "item_2_date": "June 2021",
+            "item_2_title": "First milestone",
+            "item_2_description": "Reached our first major achievement and expanded our offerings.",
+            "item_3_enabled": true,
+            "item_3_date": "March 2022",
+            "item_3_title": "Growing together",
+            "item_3_description": "Our community grew and we launched new workshops and products.",
+            "item_4_enabled": true,
+            "item_4_date": "September 2023",
+            "item_4_title": "Innovation phase",
+            "item_4_description": "Introduced cutting-edge tools and techniques to our craft community.",
+            "item_5_enabled": true,
+            "item_5_date": "April 2024",
+            "item_5_title": "Award recognition",
+            "item_5_description": "Honoured with industry awards for excellence in craft supplies.",
+            "item_6_enabled": true,
+            "item_6_date": "Today",
+            "item_6_title": "Looking forward",
+            "item_6_description": "Continuing to inspire makers and storytellers with premium supplies."
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5146de7_GdiP9c"
+      ],
+      "settings": {}
+    },
+    "results_xi4zQE": {
+      "type": "results",
+      "name": "Results",
+      "settings": {}
+    },
+    "how_it_works_HjcUUk": {
+      "type": "how-it-works",
+      "name": "How It Works",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "why_us_EqVNYN"
+    "why_us_EqVNYN",
+    "17765938422ec6d28b",
+    "results_xi4zQE",
+    "how_it_works_HjcUUk"
   ]
 }
