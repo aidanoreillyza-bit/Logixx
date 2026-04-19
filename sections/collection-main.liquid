@@ -2,13 +2,32 @@
 
 <!-- ── Collection hero ──────────────────────────────────────── -->
 <div class="lx-coll-hero">
-  <div class="lx-container">
+  <div class="lx-coll-hero__bg" aria-hidden="true"></div>
+  <div class="lx-container lx-coll-hero__inner">
+    <span class="lx-badge lx-badge--mint" style="margin-bottom:16px">The Proxeed Collection</span>
     <h1>{{ collection.title | default: 'Shop All Products' }}</h1>
-    <p class="lx-coll-hero__desc">{{ collection.description | default: 'Clinically proven fertility supplements and diagnostics' | strip_html }}</p>
+    <p class="lx-coll-hero__desc">{{ collection.description | default: 'Clinically proven fertility supplements and diagnostics — formulated for results.' | strip_html }}</p>
     <div class="lx-coll-hero__pills">
-      <span class="lx-coll-hero__pill">Free UK Delivery £50+</span>
-      <span class="lx-coll-hero__pill">Clinically Proven</span>
-      <span class="lx-coll-hero__pill">Halal Certified</span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Free UK Delivery £50+
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Clinically Proven
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Halal Certified
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        30-Day Returns
+      </span>
+      <span class="lx-coll-hero__pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Expert Support
+      </span>
     </div>
   </div>
 </div>
@@ -21,7 +40,16 @@
     <button type="button" class="lx-coll-bar__filter" data-filter="female">For Her</button>
     <button type="button" class="lx-coll-bar__filter" data-filter="diagnostics">Diagnostics</button>
   </div>
-  <span class="lx-coll-bar__count">{{ collection.products_count }} products</span>
+  <div class="lx-coll-bar__right">
+    <span class="lx-coll-bar__count" id="lx-count-label">{{ collection.products_count }} products</span>
+    <a href="{{ collection.url }}?sort_by=price-ascending" class="lx-coll-bar__sort-link{% if sort_by == 'price-ascending' %} is-active{% endif %}">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+      Price ↑
+    </a>
+    <a href="{{ collection.url }}?sort_by=price-descending" class="lx-coll-bar__sort-link{% if sort_by == 'price-descending' %} is-active{% endif %}">
+      Price ↓
+    </a>
+  </div>
 </div>
 
 <!-- ── Product grid ─────────────────────────────────────────── -->
@@ -57,12 +85,21 @@
           {% else %}
           <svg class="lx-coll-card__img-placeholder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
           {% endif %}
-          {% if product.compare_at_price > product.price %}
-          <span class="lx-coll-card__badge-sale">SALE</span>
-          {% endif %}
-          {% if product.tags contains 'bestseller' %}
-          <span class="lx-coll-card__badge-best">Best Seller</span>
-          {% endif %}
+
+          <!-- Badges -->
+          <div class="lx-coll-card__badges">
+            {% if product.compare_at_price > product.price %}
+            <span class="lx-coll-card__badge lx-coll-card__badge--sale">SALE</span>
+            {% endif %}
+            {% if product.tags contains 'bestseller' %}
+            <span class="lx-coll-card__badge lx-coll-card__badge--best">Best Seller</span>
+            {% endif %}
+            {% if product.tags contains 'new' %}
+            <span class="lx-coll-card__badge lx-coll-card__badge--new">New</span>
+            {% endif %}
+          </div>
+
+          <!-- Quick View -->
           <button type="button" class="lx-qv-btn"
             data-title="{{ product.title | escape }}"
             data-type="{{ product.type | escape }}"
@@ -76,26 +113,49 @@
             data-url="{{ product.url }}"
             data-variant="{{ product.selected_or_first_available_variant.id }}"
             data-tags="{{ product.tags | join: ',' | downcase | escape }}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             Quick View
           </button>
         </div>
 
         <div class="lx-coll-card__body">
+          <!-- Category label -->
           {% if product.type != blank %}
           <div class="lx-coll-card__cat">{{ product.type }}</div>
           {% endif %}
+
+          <!-- Title -->
           <a href="{{ product.url }}" class="lx-coll-card__title">{{ product.title }}</a>
+
+          <!-- Stars -->
           <div class="lx-coll-card__stars" aria-label="5 out of 5 stars">
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/></svg>
-            <span>(5.0)</span>
+            <span>5.0 · <span class="lx-coll-card__review-count">124 reviews</span></span>
           </div>
+
+          <!-- Description -->
           {% if product.description != blank %}
-          <p class="lx-coll-card__desc">{{ product.description | strip_html | truncate: 100 }}</p>
+          <p class="lx-coll-card__desc">{{ product.description | strip_html | truncate: 90 }}</p>
           {% endif %}
+
+          <!-- Key benefits chips -->
+          <div class="lx-coll-card__chips">
+            {% if cat_tags contains 'clinically' or cat_tags contains 'clinical' %}
+            <span class="lx-coll-card__chip">Clinically Tested</span>
+            {% endif %}
+            {% if cat_tags contains 'halal' %}
+            <span class="lx-coll-card__chip">Halal Certified</span>
+            {% endif %}
+            {% if cat_tags contains 'patented' %}
+            <span class="lx-coll-card__chip">Patented Formula</span>
+            {% endif %}
+          </div>
+
+          <!-- Price row -->
           <div class="lx-coll-card__price-row">
             <span class="lx-coll-card__price">{{ product.price | money }}</span>
             {% if product.compare_at_price > product.price %}
@@ -104,10 +164,12 @@
             <span class="lx-coll-card__save">Save {{ saving | money }}</span>
             {% endif %}
           </div>
+
+          <!-- Stock -->
           {% if product.available %}
           <div class="lx-qv-stock lx-qv-stock--in">
             <span class="lx-qv-stock__dot"></span>
-            <span>In Stock</span>
+            <span>In Stock — ships in 1–2 days</span>
           </div>
           {% else %}
           <div class="lx-qv-stock lx-qv-stock--out">
@@ -115,15 +177,20 @@
             <span>Out of Stock</span>
           </div>
           {% endif %}
+
+          <!-- Actions -->
           <div class="lx-coll-card__actions">
-            <form action="/cart/add" method="post">
+            <form action="/cart/add" method="post" class="lx-coll-card__add-form">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="lx-coll-card__add" {% unless product.available %}disabled{% endunless %}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 {% if product.available %}Add to Basket{% else %}Sold Out{% endif %}
               </button>
             </form>
-            <a href="{{ product.url }}" class="lx-coll-card__view">View Details</a>
+            <a href="{{ product.url }}" class="lx-coll-card__view" aria-label="View details for {{ product.title | escape }}">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </a>
           </div>
         </div>
 
@@ -133,10 +200,27 @@
       </div>
 
       <div class="lx-bundle">
-        <div>
-          <div class="lx-bundle__label">Bundle &amp; Save</div>
-          <h2>Boost your results — try a complete bundle</h2>
-          <p>Combine supplements and diagnostics for up to <strong class="lx-bundle__hl">20% off</strong> your order.</p>
+        <div class="lx-bundle__text">
+          <div class="lx-bundle__label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Bundle &amp; Save up to 20%
+          </div>
+          <h2>Boost your results with a complete bundle</h2>
+          <p>Pair supplements with diagnostics and unlock <strong class="lx-bundle__hl">up to 20% off</strong> — plus free UK delivery.</p>
+          <ul class="lx-bundle__perks">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Clinically formulated combination
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Free priority shipping on bundles
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              30-day money-back guarantee
+            </li>
+          </ul>
         </div>
         <a href="/collections/bundles" class="lx-bundle__btn">
           Shop Bundles
@@ -174,6 +258,50 @@
   </div>
 </div>
 
+<!-- ── Trust stripe ─────────────────────────────────────────── -->
+<div class="lx-shop-trust">
+  <div class="lx-container">
+    <div class="lx-shop-trust__grid">
+      <div class="lx-shop-trust__item">
+        <div class="lx-shop-trust__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <strong>Clinically Proven</strong>
+          <span>Peer-reviewed evidence for every formula</span>
+        </div>
+      </div>
+      <div class="lx-shop-trust__item">
+        <div class="lx-shop-trust__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8zM1 16h15"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div>
+          <strong>Free UK Delivery</strong>
+          <span>On all orders over £50</span>
+        </div>
+      </div>
+      <div class="lx-shop-trust__item">
+        <div class="lx-shop-trust__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <strong>30-Day Returns</strong>
+          <span>Easy no-quibble returns policy</span>
+        </div>
+      </div>
+      <div class="lx-shop-trust__item">
+        <div class="lx-shop-trust__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <strong>Expert Support</strong>
+          <span>Fertility specialists on hand</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── Quick View modal ─────────────────────────────────────── -->
 <div id="lx-qv-overlay" class="lx-qv-overlay" role="dialog" aria-modal="true" aria-labelledby="lx-qv-title">
   <div id="lx-qv-modal" class="lx-qv-modal">
@@ -189,7 +317,7 @@
       <h2 id="lx-qv-title" class="lx-qv-title"></h2>
       <div class="lx-qv-stars">
         <span class="lx-qv-stars__gold" aria-label="5 out of 5 stars">★★★★★</span>
-        <span class="lx-qv-stars__label">(5.0)</span>
+        <span class="lx-qv-stars__label">5.0 · 124 reviews</span>
       </div>
       <p id="lx-qv-desc" class="lx-qv-desc"></p>
       <div id="lx-qv-stock" class="lx-qv-stock"></div>
@@ -212,6 +340,7 @@
   var filterBtns = document.querySelectorAll('.lx-coll-bar__filter');
   var cards = document.querySelectorAll('.lx-coll-card');
   var emptyState = document.getElementById('lx-pcard-empty');
+  var countLabel = document.getElementById('lx-count-label');
 
   function applyFilter(filter) {
     var visible = 0;
@@ -222,6 +351,7 @@
       if (show) visible++;
     });
     if (emptyState) emptyState.hidden = visible > 0;
+    if (countLabel) countLabel.textContent = visible + ' product' + (visible !== 1 ? 's' : '');
   }
 
   filterBtns.forEach(function (btn) {
@@ -261,7 +391,7 @@
     var stock = document.getElementById('lx-qv-stock');
     if (d.available === '1') {
       stock.className = 'lx-qv-stock lx-qv-stock--in';
-      stock.innerHTML = '<span class="lx-qv-stock__dot"></span><span>In Stock</span>';
+      stock.innerHTML = '<span class="lx-qv-stock__dot"></span><span>In Stock — ships in 1–2 days</span>';
     } else {
       stock.className = 'lx-qv-stock lx-qv-stock--out';
       stock.innerHTML = '<span class="lx-qv-stock__dot"></span><span>Out of Stock</span>';
