@@ -1,30 +1,44 @@
 <section class="lx-hiw">
+  <!-- background decorative blobs -->
+  <div class="lx-hiw__blob lx-hiw__blob--1" aria-hidden="true"></div>
+  <div class="lx-hiw__blob lx-hiw__blob--2" aria-hidden="true"></div>
+
   <div class="lx-container">
 
-    <div class="lx-section-head lx-fade-in">
+    <div class="lx-hiw__head lx-fade-in">
       {% if section.settings.badge != blank %}
-      <span class="lx-badge lx-badge--navy">{{ section.settings.badge }}</span>
+      <div class="lx-hiw__badge">
+        <span class="lx-hiw__badge-dot" aria-hidden="true"></span>
+        {{ section.settings.badge }}
+      </div>
       {% endif %}
       {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading | newline_to_br }}</h2>
+      <h2 class="lx-hiw__heading">{{ section.settings.heading | newline_to_br }}</h2>
       {% endif %}
       {% if section.settings.subtext != blank %}
-      <p>{{ section.settings.subtext }}</p>
+      <p class="lx-hiw__sub">{{ section.settings.subtext }}</p>
       {% endif %}
     </div>
 
-    <div class="lx-hiw__steps lx-fade-in">
-      {% assign step_blocks = section.blocks | where: 'type', 'step' %}
-      {% for block in step_blocks %}
-      <div class="lx-hiw__step" {{ block.shopify_attributes }}>
-        <div class="lx-hiw__num"><span>{{ forloop.index }}</span></div>
-        <div class="lx-hiw__title">{{ block.settings.title }}</div>
-        <p class="lx-hiw__body">{{ block.settings.body }}</p>
+    <div class="lx-hiw__track" aria-label="Process steps">
+      <!-- connector line behind all steps -->
+      <div class="lx-hiw__line" aria-hidden="true"></div>
+
+      <div class="lx-hiw__steps lx-fade-in">
+        {% assign step_blocks = section.blocks | where: 'type', 'step' %}
+        {% for block in step_blocks %}
+        <div class="lx-hiw__step" {{ block.shopify_attributes }}>
+          <div class="lx-hiw__num" aria-hidden="true">
+            <span class="lx-hiw__num-bg">{{ forloop.index }}</span>
+            <span class="lx-hiw__num-label">{{ forloop.index }}</span>
+          </div>
+          <div class="lx-hiw__card">
+            <h3 class="lx-hiw__title">{{ block.settings.title }}</h3>
+            <p class="lx-hiw__body">{{ block.settings.body }}</p>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% unless forloop.last %}
-      <div class="lx-hiw__connector" aria-hidden="true"></div>
-      {% endunless %}
-      {% endfor %}
     </div>
 
     {% if section.settings.cta_label != blank %}
