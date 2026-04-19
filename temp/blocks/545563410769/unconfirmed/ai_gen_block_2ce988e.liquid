@@ -1,6 +1,549 @@
+{% doc %}
+  @prompt
+    i want build table and info about product 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-table-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    display: block;
+  }
+
+  .ai-product-table__wrapper-{{ ai_gen_id }} {
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.padding }}px;
+    overflow: hidden;
+  }
+
+  .ai-product-table__heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.spacing }}px 0;
+    font-weight: 600;
+  }
+
+  .ai-product-table__table-{{ ai_gen_id }} {
+    width: 100%;
+    border-collapse: collapse;
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.table_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-product-table__row-{{ ai_gen_id }} {
+    border-bottom: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-product-table__row-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-product-table__row-{{ ai_gen_id }}:nth-child(even) {
+    background-color: {{ block.settings.row_alternate_color }};
+  }
+
+  .ai-product-table__label-{{ ai_gen_id }} {
+    padding: {{ block.settings.cell_padding }}px;
+    font-weight: 600;
+    color: {{ block.settings.label_color }};
+    font-size: {{ block.settings.label_size }}px;
+    width: {{ block.settings.label_width }}%;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .ai-product-table__value-{{ ai_gen_id }} {
+    padding: {{ block.settings.cell_padding }}px;
+    color: {{ block.settings.value_color }};
+    font-size: {{ block.settings.value_size }}px;
+    text-align: left;
+  }
+
+  .ai-product-table__empty-{{ ai_gen_id }} {
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    background-color: #f9f9f9;
+    border-radius: {{ block.settings.table_border_radius }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-table__label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.label_size | times: 0.9 }}px;
+    }
+
+    .ai-product-table__value-{{ ai_gen_id }} {
+      font-size: {{ block.settings.value_size | times: 0.9 }}px;
+    }
+
+    .ai-product-table__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.85 }}px;
+    }
+  }
+{% endstyle %}
+
+<product-info-table-{{ ai_gen_id }} class="ai-product-table-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-product-table__wrapper-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-product-table__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    {% if product %}
+      <table class="ai-product-table__table-{{ ai_gen_id }}">
+        {% if block.settings.show_title %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.title_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ product.title }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_vendor and product.vendor != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.vendor_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ product.vendor }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_type and product.type != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.type_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ product.type }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_price %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.price_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">
+              {% if product.compare_at_price > product.price %}
+                <s>{{ product.compare_at_price | money }}</s>
+                {{ product.price | money }}
+              {% else %}
+                {{ product.price | money }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_sku and product.selected_or_first_available_variant.sku != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.sku_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ product.selected_or_first_available_variant.sku }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_barcode and product.selected_or_first_available_variant.barcode != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.barcode_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ product.selected_or_first_available_variant.barcode }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_availability %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.availability_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">
+              {% if product.available %}
+                {{ block.settings.in_stock_text }}
+              {% else %}
+                {{ block.settings.out_of_stock_text }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_tags and product.tags.size > 0 %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.tags_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ product.tags | join: ', ' }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.show_weight and product.selected_or_first_available_variant.weight > 0 %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.weight_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">
+              {{ product.selected_or_first_available_variant.weight | weight_with_unit }}
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.custom_field_1_label != blank and block.settings.custom_field_1_value != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.custom_field_1_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ block.settings.custom_field_1_value }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.custom_field_2_label != blank and block.settings.custom_field_2_value != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.custom_field_2_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ block.settings.custom_field_2_value }}</td>
+          </tr>
+        {% endif %}
+
+        {% if block.settings.custom_field_3_label != blank and block.settings.custom_field_3_value != blank %}
+          <tr class="ai-product-table__row-{{ ai_gen_id }}">
+            <td class="ai-product-table__label-{{ ai_gen_id }}">{{ block.settings.custom_field_3_label }}</td>
+            <td class="ai-product-table__value-{{ ai_gen_id }}">{{ block.settings.custom_field_3_value }}</td>
+          </tr>
+        {% endif %}
+      </table>
+    {% else %}
+      <div class="ai-product-table__empty-{{ ai_gen_id }}">
+        This block displays product information. Add it to a product template to see the table.
+      </div>
+    {% endif %}
+  </div>
+</product-info-table-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductInfoTable{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('product-info-table-{{ ai_gen_id }}', ProductInfoTable{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product info table",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Product details"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Display options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show product title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_label",
+      "label": "Title label",
+      "default": "Product name"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "vendor_label",
+      "label": "Vendor label",
+      "default": "Brand"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_type",
+      "label": "Show product type",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "type_label",
+      "label": "Type label",
+      "default": "Type"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "Price label",
+      "default": "Price"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "Show SKU",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "sku_label",
+      "label": "SKU label",
+      "default": "SKU"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_barcode",
+      "label": "Show barcode",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "barcode_label",
+      "label": "Barcode label",
+      "default": "Barcode"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_availability",
+      "label": "Show availability",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "availability_label",
+      "label": "Availability label",
+      "default": "Availability"
+    },
+    {
+      "type": "text",
+      "id": "in_stock_text",
+      "label": "In stock text",
+      "default": "In stock"
+    },
+    {
+      "type": "text",
+      "id": "out_of_stock_text",
+      "label": "Out of stock text",
+      "default": "Out of stock"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show tags",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "tags_label",
+      "label": "Tags label",
+      "default": "Tags"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_weight",
+      "label": "Show weight",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "weight_label",
+      "label": "Weight label",
+      "default": "Weight"
+    },
+    {
+      "type": "header",
+      "content": "Custom fields"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_1_label",
+      "label": "Custom field 1 label"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_1_value",
+      "label": "Custom field 1 value"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_2_label",
+      "label": "Custom field 2 label"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_2_value",
+      "label": "Custom field 2 value"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_3_label",
+      "label": "Custom field 3 label"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_3_value",
+      "label": "Custom field 3 value"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Value",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "row_alternate_color",
+      "label": "Alternate row",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "value_size",
+      "label": "Value size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "label_width",
+      "label": "Label column width",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Container border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "table_border_radius",
+      "label": "Table border radius",
+      "min": 0,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Container padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "cell_padding",
+      "label": "Cell padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Heading spacing",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product info table"
+    }
+  ]
+}
 {% endschema %}
