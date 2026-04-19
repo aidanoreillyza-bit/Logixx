@@ -2159,12 +2159,16 @@ p  { line-height: 1.7; }
   gap: 10px;
 }
 .lx-ing-dot {
-  width: 8px;
-  height: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: var(--c-mint);
+  background: linear-gradient(135deg, var(--c-mint), var(--c-mint-dk));
+  color: #fff;
   flex-shrink: 0;
-  box-shadow: 0 0 0 2px rgba(0,194,184,.18);
+  box-shadow: 0 2px 6px rgba(0,194,184,.30);
 }
 .lx-ing-table td:last-child { text-align: right; }
 .lx-ing-badge {
