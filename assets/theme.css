@@ -2198,6 +2198,77 @@ p  { line-height: 1.7; }
 .lx-rte a { color: var(--c-mint-dk); text-decoration: underline; }
 .lx-rte strong { color: var(--c-navy); }
 
+/* How to Use step cards */
+.lx-htu-wrap {
+  border: 1px solid var(--c-grey);
+  border-top: 3px solid var(--c-mint);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  width: 100%;
+}
+.lx-htu-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 24px;
+  background: linear-gradient(90deg, #f0fbfa 0%, var(--c-off) 100%);
+  border-bottom: 1px solid var(--c-grey);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-navy);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.lx-htu-header svg { color: var(--c-mint-dk); flex-shrink: 0; }
+.lx-htu-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--c-grey);
+}
+.lx-htu-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 28px 24px;
+  background: #fff;
+  transition: background .18s;
+}
+.lx-htu-step:hover { background: var(--c-mint-pale); }
+.lx-htu-step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-mint), var(--c-mint-dk));
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,194,184,.35);
+}
+.lx-htu-step__body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-body);
+}
+.lx-htu-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: linear-gradient(90deg, #f0fbfa 0%, var(--c-off) 100%);
+  border-top: 1px solid var(--c-grey);
+  font-size: 12px;
+  color: var(--c-mute);
+  font-style: italic;
+}
+.lx-htu-footer svg { flex-shrink: 0; color: var(--c-mint-dk); }
+
 /* ============================================================
    COLLECTION
    ============================================================ */
