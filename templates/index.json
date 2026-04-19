@@ -1,6 +1,7 @@
 {
   "sections": {
     "hero":         {"type": "hero",              "settings": {}},
+    "image":        {"type": "image-section",     "settings": {}},
     "brandtrust":   {"type": "brand-trust",       "settings": {}},
     "statsbar":     {"type": "stats-bar",         "settings": {}},
     "whyus":        {"type": "why-us",            "settings": {}},
@@ -14,5 +15,5 @@
     "instagram":    {"type": "instagram-feed",    "settings": {}},
     "cta":          {"type": "cta-banner",        "settings": {}}
   },
-  "order": ["hero","brandtrust","statsbar","whyus","howitworks","results","comparison","products","testimonials","faq","news","instagram","cta"]
+  "order": ["hero","image","brandtrust","statsbar","whyus","howitworks","results","comparison","products","testimonials","faq","news","instagram","cta"]
 }

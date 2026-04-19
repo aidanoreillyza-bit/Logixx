@@ -1,0 +1,82 @@
+<section class="lx-image-section lx-fade-in">
+  <div class="lx-container">
+
+    {% if section.settings.heading != blank or section.settings.subtext != blank %}
+    <div class="lx-section-head">
+      {% if section.settings.badge != blank %}
+      <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+      <p>{{ section.settings.subtext }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if section.settings.image != blank %}
+    <div class="lx-image-section__img-wrap">
+      <img
+        src="{{ section.settings.image | img_url: '1200x' }}"
+        srcset="{{ section.settings.image | img_url: '600x' }} 600w,
+                {{ section.settings.image | img_url: '900x' }} 900w,
+                {{ section.settings.image | img_url: '1200x' }} 1200w"
+        sizes="(max-width: 768px) 100vw, 1200px"
+        alt="{{ section.settings.image_alt | default: section.settings.heading | default: 'Section image' }}"
+        loading="lazy"
+        width="1200"
+        height="630"
+        class="lx-image-section__img"
+      >
+    </div>
+    {% endif %}
+
+    {% if section.settings.btn_label != blank %}
+    <div class="lx-image-section__cta">
+      <a href="{{ section.settings.btn_url | default: '/collections/all' }}" class="lx-btn lx-btn--mint lx-btn--lg">
+        {{ section.settings.btn_label }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .lx-image-section { padding: 64px 0; }
+  .lx-image-section__img-wrap {
+    margin-top: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .lx-image-section__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .lx-image-section__cta {
+    margin-top: 32px;
+    text-align: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image Section",
+  "settings": [
+    {"type":"image_picker","id":"image","label":"Image"},
+    {"type":"text","id":"image_alt","label":"Image Alt Text","info":"Describe the image for accessibility."},
+    {"type":"text","id":"badge","label":"Badge (optional)"},
+    {"type":"text","id":"heading","label":"Heading (optional)"},
+    {"type":"textarea","id":"subtext","label":"Subtext (optional)"},
+    {"type":"text","id":"btn_label","label":"Button Label (optional)"},
+    {"type":"url","id":"btn_url","label":"Button Link"}
+  ],
+  "presets":[{"name":"Image Section"}]
+}
+{% endschema %}
