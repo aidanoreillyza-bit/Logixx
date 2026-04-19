@@ -2066,7 +2066,8 @@ p  { line-height: 1.7; }
 }
 .lx-pdp-tab-panels { padding: 40px 0 8px; }
 .lx-pdp-tab-panel { display: none; max-width: 72ch; }
-.lx-pdp-tab-panel[data-panel="ingredients"] { max-width: 100%; }
+.lx-pdp-tab-panel[data-panel="ingredients"],
+.lx-pdp-tab-panel[data-panel="how-to-use"] { max-width: 100%; }
 .lx-pdp-tab-panel.active { display: block; }
 
 /* Ingredients card */

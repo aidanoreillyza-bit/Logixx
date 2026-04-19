@@ -121,6 +121,7 @@
     {% if product.description != blank %}{% assign has_about = true %}{% endif %}
     {% assign first_tab = 'about' %}
     {% if has_about == false and section.settings.ingredients != blank %}{% assign first_tab = 'ingredients' %}{% endif %}
+    {% if has_about == false and section.settings.ingredients == blank %}{% assign first_tab = 'how-to-use' %}{% endif %}
 
     <div class="lx-pdp-tabs">
       <div class="lx-pdp-tab-nav" role="tablist" aria-label="Product details">
@@ -130,9 +131,7 @@
         {% if section.settings.ingredients != blank %}
         <button class="lx-pdp-tab-btn{% if first_tab == 'ingredients' %} active{% endif %}" role="tab" aria-selected="{% if first_tab == 'ingredients' %}true{% else %}false{% endif %}" data-tab="ingredients">Ingredients</button>
         {% endif %}
-        {% if section.settings.how_to_use != blank %}
-        <button class="lx-pdp-tab-btn" role="tab" aria-selected="false" data-tab="how-to-use">How to Use</button>
-        {% endif %}
+        <button class="lx-pdp-tab-btn{% if first_tab == 'how-to-use' %} active{% endif %}" role="tab" aria-selected="{% if first_tab == 'how-to-use' %}true{% else %}false{% endif %}" data-tab="how-to-use">How to Use</button>
         {% if section.settings.clinical_note != blank %}
         <button class="lx-pdp-tab-btn" role="tab" aria-selected="false" data-tab="clinical">Clinical Evidence</button>
         {% endif %}
@@ -194,32 +193,32 @@
           </div>
         </div>
         {% endif %}
-        {% if section.settings.how_to_use != blank %}
-        <div class="lx-pdp-tab-panel" role="tabpanel" data-panel="how-to-use">
-          {% assign htu_paragraphs = section.settings.how_to_use | newline_to_br | split: '<br /><br />' %}
+        {% if section.settings.how_to_use != blank or true %}
+        <div class="lx-pdp-tab-panel{% if first_tab == 'how-to-use' %} active{% endif %}" role="tabpanel" data-panel="how-to-use">
           <div class="lx-htu-wrap">
             <div class="lx-htu-header">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v6m0 0l3-3m-3 3l-3-3"/><path d="M8 8H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-3"/></svg>
               How to Use
             </div>
             <div class="lx-htu-steps">
-              {% for para in htu_paragraphs %}
-                {% assign para_clean = para | strip | replace: '<br />', ' ' | strip %}
-                {% if para_clean != blank %}
-                  <div class="lx-htu-step">
-                    <div class="lx-htu-step__icon">
-                      {% if forloop.index == 1 %}
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                      {% elsif forloop.index == 2 %}
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                      {% else %}
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                      {% endif %}
-                    </div>
-                    <div class="lx-htu-step__body">{{ para_clean }}</div>
-                  </div>
-                {% endif %}
-              {% endfor %}
+              <div class="lx-htu-step">
+                <div class="lx-htu-step__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </div>
+                <div class="lx-htu-step__body">Take 2 sachets daily — one in the morning and one in the evening.</div>
+              </div>
+              <div class="lx-htu-step">
+                <div class="lx-htu-step__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                </div>
+                <div class="lx-htu-step__body">Mix each sachet with 200ml of water or juice. Best taken with food.</div>
+              </div>
+              <div class="lx-htu-step">
+                <div class="lx-htu-step__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div class="lx-htu-step__body">For best results, use consistently for a minimum of 90 days.</div>
+              </div>
             </div>
             <div class="lx-htu-footer">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
