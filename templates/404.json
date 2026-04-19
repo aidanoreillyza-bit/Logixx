@@ -9,6 +9,45 @@
  */
 {
   "sections": {
+    "hero_jjKbPP": {
+      "type": "hero",
+      "blocks": {
+        "trust_kLxCkq": {
+          "type": "trust",
+          "settings": {
+            "text": "Clinically Proven"
+          }
+        },
+        "trust_i8NkEw": {
+          "type": "trust",
+          "settings": {
+            "text": "Free UK Delivery £50+"
+          }
+        },
+        "trust_WXA68R": {
+          "type": "trust",
+          "settings": {
+            "text": "Halal Certified"
+          }
+        }
+      },
+      "block_order": [
+        "trust_kLxCkq",
+        "trust_i8NkEw",
+        "trust_WXA68R"
+      ],
+      "name": "Hero",
+      "settings": {
+        "pill": "Trusted for Over 10 Years",
+        "line1": "Prepared to",
+        "line2": "begin your journey.",
+        "sub": "Clinically proven supplements to support male and female fertility — trusted by thousands of families across the UK.",
+        "btn1": "Shop Now",
+        "btn1_url": "",
+        "btn2": "Learn More",
+        "btn2_url": ""
+      }
+    },
     "about_intro_dAAVpz": {
       "type": "about-intro",
       "name": "About Intro",
@@ -137,8 +176,146 @@
       ],
       "settings": {}
     },
-    "how_it_works_HjcUUk": {
+    "faq_section_QBCz9F": {
+      "type": "faq-section",
+      "blocks": {
+        "item_iPwRCN": {
+          "type": "item",
+          "settings": {
+            "question": "How long should I take Proxeed?",
+            "answer": "We recommend taking Proxeed for a minimum of 4–6 months. Sperm take approximately 90 days to mature, so consistent supplementation over this period gives the best results."
+          }
+        },
+        "item_FXbT3i": {
+          "type": "item",
+          "settings": {
+            "question": "Can my partner and I both take Proxeed?",
+            "answer": "Yes — Proxeed Plus or Proxeed Men is formulated for him, while Proxeed Women is specifically designed to support female fertility. Both can be taken simultaneously."
+          }
+        },
+        "item_qGNgLd": {
+          "type": "item",
+          "settings": {
+            "question": "Is Proxeed clinically proven?",
+            "answer": "Yes. Proxeed has been validated in multiple peer-reviewed clinical studies published in respected medical journals, demonstrating significant improvements in sperm parameters."
+          }
+        },
+        "item_GngjUh": {
+          "type": "item",
+          "settings": {
+            "question": "What is oxidative stress and why does it matter?",
+            "answer": "Oxidative stress occurs when free radicals damage sperm DNA. It is estimated to be a factor in up to 40% of male infertility cases. Proxeed's antioxidant formula helps neutralise free radicals to protect sperm health."
+          }
+        },
+        "item_3UCkJp": {
+          "type": "item",
+          "settings": {
+            "question": "Are your products Halal certified?",
+            "answer": "Yes — Proxeed Plus is Halal certified, making it suitable for customers following a Halal diet."
+          }
+        },
+        "item_TbBt3p": {
+          "type": "item",
+          "settings": {
+            "question": "Do you offer free delivery?",
+            "answer": "Yes! We offer free standard UK delivery on all orders over £50. All orders are dispatched in plain, discreet packaging."
+          }
+        }
+      },
+      "block_order": [
+        "item_iPwRCN",
+        "item_FXbT3i",
+        "item_qGNgLd",
+        "item_GngjUh",
+        "item_3UCkJp",
+        "item_TbBt3p"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "badge": "FAQ",
+        "heading": "Frequently asked questions",
+        "subtext": "Can't find your answer? Contact us at info@logixxpharma.com"
+      }
+    },
+    "stats_bar_3tEz4t": {
+      "type": "stats-bar",
+      "blocks": {
+        "stat_XLRqnd": {
+          "type": "stat",
+          "settings": {
+            "number": "10,000+",
+            "label": "Families Helped"
+          }
+        },
+        "stat_YGmkJ4": {
+          "type": "stat",
+          "settings": {
+            "number": "15+",
+            "label": "Years Experience"
+          }
+        },
+        "stat_cXWqrt": {
+          "type": "stat",
+          "settings": {
+            "number": "98%",
+            "label": "Patient Satisfaction"
+          }
+        },
+        "stat_YznqVQ": {
+          "type": "stat",
+          "settings": {
+            "number": "89%",
+            "label": "Clinical Success Rate"
+          }
+        }
+      },
+      "block_order": [
+        "stat_XLRqnd",
+        "stat_YGmkJ4",
+        "stat_cXWqrt",
+        "stat_YznqVQ"
+      ],
+      "name": "Stats Bar",
+      "settings": {}
+    },
+    "how_it_works_PMXbDQ": {
       "type": "how-it-works",
+      "blocks": {
+        "step_ydetxy": {
+          "type": "step",
+          "settings": {
+            "title": "Get Tested",
+            "body": "Start with CASA-grade semen analysis using LensHooke X1 PRO for a full picture of sperm health."
+          }
+        },
+        "step_ATUBi9": {
+          "type": "step",
+          "settings": {
+            "title": "Assess Stress",
+            "body": "MiOXSYS identifies oxidative stress — a factor in up to 40% of male infertility cases."
+          }
+        },
+        "step_WrG6dX": {
+          "type": "step",
+          "settings": {
+            "title": "Supplement",
+            "body": "Proxeed provides targeted nutrients across a 90-day sperm maturation cycle for measurable results."
+          }
+        },
+        "step_f9Arwb": {
+          "type": "step",
+          "settings": {
+            "title": "Monitor Progress",
+            "body": "Track improvements alongside lifestyle changes and professional guidance from our team."
+          }
+        }
+      },
+      "block_order": [
+        "step_ydetxy",
+        "step_ATUBi9",
+        "step_WrG6dX",
+        "step_f9Arwb"
+      ],
       "name": "How It Works",
       "settings": {
         "badge": "The Process",
@@ -147,45 +324,6 @@
         "cta_label": "Shop Products",
         "cta_url": ""
       }
-    },
-    "hero_jjKbPP": {
-      "type": "hero",
-      "blocks": {
-        "trust_kLxCkq": {
-          "type": "trust",
-          "settings": {
-            "text": "Clinically Proven"
-          }
-        },
-        "trust_i8NkEw": {
-          "type": "trust",
-          "settings": {
-            "text": "Free UK Delivery £50+"
-          }
-        },
-        "trust_WXA68R": {
-          "type": "trust",
-          "settings": {
-            "text": "Halal Certified"
-          }
-        }
-      },
-      "block_order": [
-        "trust_kLxCkq",
-        "trust_i8NkEw",
-        "trust_WXA68R"
-      ],
-      "name": "Hero",
-      "settings": {
-        "pill": "Trusted for Over 10 Years",
-        "line1": "Prepared to",
-        "line2": "begin your journey.",
-        "sub": "Clinically proven supplements to support male and female fertility — trusted by thousands of families across the UK.",
-        "btn1": "Shop Now",
-        "btn1_url": "",
-        "btn2": "Learn More",
-        "btn2_url": ""
-      }
     }
   },
   "order": [
@@ -193,6 +331,8 @@
     "about_intro_dAAVpz",
     "why_us_EqVNYN",
     "17765938422ec6d28b",
-    "how_it_works_HjcUUk"
+    "faq_section_QBCz9F",
+    "stats_bar_3tEz4t",
+    "how_it_works_PMXbDQ"
   ]
 }
