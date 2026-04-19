@@ -4,7 +4,7 @@
       "type": "about-intro",
       "settings": {
         "badge": "About Us",
-        "heading": "We are LogixX Fertility",
+        "heading": "We are <em>LogixX Fertility</em>",
         "subtext": "The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care.",
         "tagline": "You never walk alone.",
         "vision_title": "Our Vision",
@@ -28,7 +28,7 @@
       "type": "why-us",
       "settings": {
         "badge": "Our Values",
-        "heading": "The science of fertility,\nthe heart of care",
+        "heading": "The science of fertility,\nthe <em>heart of care</em>",
         "subtext": "Everything we do is guided by three core principles — rigorous science, compassionate support, and unwavering commitment to patient outcomes."
       },
       "blocks": {
@@ -71,7 +71,7 @@
       "type": "results",
       "settings": {
         "label": "Clinical Evidence",
-        "heading": "Proven results,\nnot just promises",
+        "heading": "Proven results,\nnot just <em>promises</em>",
         "desc": "Proxeed Plus has been validated in peer-reviewed clinical studies showing significant improvements across all key sperm parameters in just 90 days.",
         "card_title": "Proxeed Plus — Clinical Study Results",
         "card_pill": "90-Day Trial"
@@ -87,7 +87,7 @@
       "type": "about-timeline",
       "settings": {
         "badge": "Our Story",
-        "heading": "A decade of advancing fertility science",
+        "heading": "A decade of advancing <em>fertility science</em>",
         "subtext": "From a single product to an end-to-end fertility platform — here is how LogixX grew."
       },
       "blocks": {
@@ -143,7 +143,7 @@
       "type": "about-team",
       "settings": {
         "badge": "Our Team",
-        "heading": "The experts behind every result",
+        "heading": "The experts behind <em>every result</em>",
         "subtext": "Clinicians, scientists, and patient advocates united by one mission — helping families grow.",
         "cta_label": "Meet the full fertility team",
         "cta_url": "/pages/fertility-team"
