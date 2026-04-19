@@ -1,6 +1,8 @@
-<section class="lx-about-intro" style="background:#f7f9fc;padding:96px 0">
+<section class="lx-about-intro lx-fade-in">
   <div class="lx-container">
-    <div class="lx-section-head lx-fade-in">
+
+    <!-- Section header -->
+    <div class="lx-section-head lx-about-intro__head">
       {% if section.settings.badge != blank %}
       <span class="lx-badge lx-badge--mint">{{ section.settings.badge }}</span>
       {% endif %}
@@ -8,19 +10,162 @@
       <h2>{{ section.settings.heading | newline_to_br }}</h2>
       {% endif %}
       {% if section.settings.subtext != blank %}
-      <p>{{ section.settings.subtext }}</p>
+      <p class="lx-about-intro__lead">{{ section.settings.subtext }}</p>
       {% endif %}
     </div>
+
+    <!-- Vision + Mission cards -->
+    <div class="lx-about-intro__cards">
+
+      <!-- Vision -->
+      <div class="lx-about-intro__card">
+        <div class="lx-about-intro__card-icon" aria-hidden="true">
+          <!-- Eye / vision icon -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3>{{ section.settings.vision_title | default: 'Our Vision' }}</h3>
+        <p>{{ section.settings.vision_text }}</p>
+      </div>
+
+      <!-- Mission -->
+      <div class="lx-about-intro__card">
+        <div class="lx-about-intro__card-icon" aria-hidden="true">
+          <!-- Target / mission icon -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <h3>{{ section.settings.mission_title | default: 'Our Mission' }}</h3>
+        <p>{{ section.settings.mission_text }}</p>
+      </div>
+
+    </div>
+
+    <!-- Tagline banner -->
+    {% if section.settings.tagline != blank %}
+    <div class="lx-about-intro__tagline" aria-label="Brand tagline">
+      <svg class="lx-about-intro__tagline-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+      <span>{{ section.settings.tagline }}</span>
+    </div>
+    {% endif %}
+
   </div>
 </section>
+
+<style>
+  /* ── About Intro ───────────────────────────────────────── */
+  .lx-about-intro {
+    background: #f7f9fc;
+    padding: 96px 0 80px;
+  }
+
+  .lx-about-intro__head {
+    max-width: 680px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  .lx-about-intro__lead {
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+
+  /* Cards grid */
+  .lx-about-intro__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 768px) {
+    .lx-about-intro__cards { grid-template-columns: 1fr; }
+  }
+
+  .lx-about-intro__card {
+    background: #fff;
+    border: 1px solid rgba(0,194,184,.18);
+    border-radius: 20px;
+    padding: 40px 36px;
+    box-shadow: 0 4px 24px rgba(10,22,40,.06);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .lx-about-intro__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(10,22,40,.10);
+  }
+
+  .lx-about-intro__card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--c-mint-pale, #e6fffe);
+    color: var(--c-mint, #00C2B8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .lx-about-intro__card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--c-navy, #0a1628);
+    margin: 0 0 12px;
+    letter-spacing: .01em;
+  }
+
+  .lx-about-intro__card p {
+    font-size: .97rem;
+    color: #4a5568;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* Tagline banner */
+  .lx-about-intro__tagline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--c-navy, #0a1628) 0%, var(--c-navy-lt, #152035) 100%);
+    border-radius: 16px;
+    padding: 28px 36px;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    text-align: center;
+  }
+
+  .lx-about-intro__tagline-icon {
+    color: var(--c-mint, #00C2B8);
+    flex-shrink: 0;
+  }
+</style>
 
 {% schema %}
 {
   "name": "About Intro",
   "settings": [
     {"type":"text","id":"badge","label":"Badge","default":"About Us"},
-    {"type":"textarea","id":"heading","label":"Heading","default":"We are LogixX Pharma"},
-    {"type":"textarea","id":"subtext","label":"Subtext","default":"Dedicated to advancing fertility health through clinically proven science and compassionate care."}
+    {"type":"textarea","id":"heading","label":"Heading","default":"We are LogixX Fertility"},
+    {"type":"textarea","id":"subtext","label":"Subtext","default":"The leading advanced fertility diagnostic and treatment company — combining world-class science with compassionate, personalised care."},
+    {"type":"header","content":"Vision"},
+    {"type":"text","id":"vision_title","label":"Vision Title","default":"Our Vision"},
+    {"type":"textarea","id":"vision_text","label":"Vision Text","default":"LogixX Fertility aims to be the best advanced (male focussed) fertility diagnostic and treatment company."},
+    {"type":"header","content":"Mission"},
+    {"type":"text","id":"mission_title","label":"Mission Title","default":"Our Mission"},
+    {"type":"textarea","id":"mission_text","label":"Mission Text","default":"LogixX Fertility in partnership with testhim are the GO-TO companies for advanced fertility diagnostics & treatments. Through this partnership we provide extensive support to HCPs and patients through research, education, training and guidance — improving clinical outcomes and the patient experience."},
+    {"type":"header","content":"Tagline"},
+    {"type":"text","id":"tagline","label":"Tagline","default":"You never walk alone."}
   ],
   "presets": [{"name": "About Intro"}]
 }
