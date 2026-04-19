@@ -146,7 +146,27 @@
         {% endif %}
         {% if section.settings.ingredients != blank %}
         <div class="lx-pdp-tab-panel{% if first_tab == 'ingredients' %} active{% endif %}" role="tabpanel" data-panel="ingredients">
-          <div class="lx-rte lx-pdp-ingredients">{{ section.settings.ingredients | newline_to_br }}</div>
+          {% assign ing_rows = section.settings.ingredients | newline_to_br | split: '<br />' %}
+          <table class="lx-ing-table">
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Per Serving</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in ing_rows %}
+                {% assign row_clean = row | strip %}
+                {% if row_clean != blank %}
+                  {% assign cols = row_clean | split: '|' %}
+                  <tr>
+                    <td>{{ cols[0] | strip }}</td>
+                    <td>{% if cols[1] != blank %}{{ cols[1] | strip }}{% endif %}</td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
         {% endif %}
         {% if section.settings.how_to_use != blank %}
@@ -192,7 +212,7 @@
     {"type":"text","id":"trust_2","label":"Trust item 2","default":"Discreet Packaging"},
     {"type":"text","id":"trust_3","label":"Trust item 3","default":"Clinically Proven"},
     {"type":"text","id":"trust_4","label":"Trust item 4","default":"30-Day Returns"},
-    {"type":"textarea","id":"ingredients","label":"Ingredients","default":"L-Carnitine Fumarate 1000mg\nCoenzyme Q10 200mg\nVitamin E (as d-alpha tocopherol) 30mg\nZinc (as zinc gluconate) 15mg\nFolic Acid 400µg\nSelenium 55µg\nVitamin B12 2.4µg"},
+    {"type":"textarea","id":"ingredients","label":"Ingredients (one per line: Name | Amount)","default":"L-Carnitine Fumarate | 1000mg\nCoenzyme Q10 | 200mg\nVitamin E (d-alpha tocopherol) | 30mg\nZinc | 15mg\nFolic Acid | 400µg\nSelenium | 55µg\nVitamin B12 | 2.4µg"},
     {"type":"textarea","id":"how_to_use","label":"How to Use","default":"Take 2 sachets daily — one in the morning and one in the evening.\n\nMix each sachet with 200ml of water or juice. Best taken with food.\n\nFor best results, use consistently for a minimum of 90 days."},
     {"type":"textarea","id":"clinical_note","label":"Clinical Evidence","default":"Proxeed has been validated in multiple peer-reviewed clinical trials. Studies demonstrate significant improvements in sperm count, motility, progressive motility and normal morphology after a 90-day supplementation period.\n\nL-Carnitine Fumarate and the antioxidant complex in Proxeed are protected by patents and are not found in generic fertility supplements."}
   ],
