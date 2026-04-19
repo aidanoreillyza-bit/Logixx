@@ -421,9 +421,13 @@ em {
 }
 
 /* ---------- 8. MOBILE DRAWER ---------- */
-/* Overlay */
+
+/*
+ * FIX: Previously used `display: none` → `display: block`, which prevented
+ * the opacity transition from firing (both property changes hit the same frame).
+ * Now we use `visibility` + `pointer-events` so the opacity fade works correctly.
+ */
 .drawer-overlay {
-  display: none;
   position: fixed;
   inset: 0;
   background: rgba(8, 20, 40, 0.6);
@@ -431,12 +435,15 @@ em {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   opacity: 0;
-  transition: opacity var(--transition-base);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .drawer-overlay.open {
-  display: block;
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* Drawer panel */
@@ -809,6 +816,7 @@ body.drawer-open {
   position: absolute;
   top: 14px;
   left: 14px;
+  z-index: 1;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
   font-size: 11px;
@@ -1010,17 +1018,43 @@ body.drawer-open {
   color: var(--mint-600);
 }
 
+/*
+ * FIX: FAQ answers now use max-height + padding transitions instead of the
+ * `hidden` attribute alone, giving a smooth open AND close animation.
+ * The JS still toggles `hidden`, but we override the UA `display:none` via
+ * `[hidden] { display: block !important; }` and control visibility with
+ * max-height so the transition fires in both directions.
+ */
 .faq-answer {
-  padding: 0 var(--sp-5) var(--sp-4);
   font-size: 15px;
   color: var(--grey-600);
   line-height: 1.7;
-  animation: faq-open var(--transition-base) forwards;
+
+  /* Closed state */
+  max-height: 0;
+  overflow: hidden;
+  padding-block: 0;
+  padding-inline: var(--sp-5);
+  opacity: 0;
+  transition:
+    max-height 0.35s ease,
+    padding-block 0.35s ease,
+    opacity 0.25s ease;
 }
 
-@keyframes faq-open {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Override browser hidden → display:none so CSS transition works */
+.faq-answer[hidden] {
+  display: block !important;
+  max-height: 0;
+  padding-block: 0;
+  opacity: 0;
+}
+
+/* Open state: hidden attribute removed by JS */
+.faq-answer:not([hidden]) {
+  max-height: 600px;
+  padding-block: 0 var(--sp-4);
+  opacity: 1;
 }
 
 /* ---------- 15. EMAIL CTA SECTION ---------- */
@@ -1457,4 +1491,3 @@ body.drawer-open {
 
   .ticker-text { animation: none; }
 }
-
