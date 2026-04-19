@@ -19,7 +19,9 @@
         <div class="lx-compare__head-row" role="row">
           <div class="lx-compare__th lx-compare__th--feat" role="columnheader">Features</div>
           <div class="lx-compare__th lx-compare__th--generic" role="columnheader">
-            <div class="lx-compare__th-icon lx-compare__th-icon--bad" aria-hidden="true">✕</div>
+            <span class="lx-compare__th-icon lx-compare__th-icon--bad" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </span>
             {{ section.settings.col_generic | default: 'Generic Supplement' }}
           </div>
           <div class="lx-compare__th lx-compare__th--proxeed" role="columnheader">
@@ -34,24 +36,36 @@
           {% if block.type == 'row' %}
           {% assign is_last = false %}
           {% if forloop.last %}{% assign is_last = true %}{% endif %}
-          <div class="lx-compare__row{% if is_last %} lx-compare__row--last{% endif %}" role="row" {{ block.shopify_attributes }}>
+          <div class="lx-compare__row{% if forloop.index0 == 0 %} lx-compare__row--first{% endif %}{% if is_last %} lx-compare__row--last{% endif %}{% if forloop.index0 == 1 or forloop.index0 == 3 or forloop.index0 == 5 %} lx-compare__row--alt{% endif %}" role="row" {{ block.shopify_attributes }}>
             <div class="lx-compare__td lx-compare__td--feat" role="cell">{{ block.settings.feature }}</div>
             <div class="lx-compare__td lx-compare__td--{% if block.settings.generic == 'yes' %}yes{% elsif block.settings.generic == 'partial' %}maybe{% else %}no{% endif %}" role="cell">
               {% if block.settings.generic == 'yes' %}
-                <span class="lx-compare__yes" aria-label="Yes">✓</span>
+                <span class="lx-compare__yes" aria-label="Yes">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
               {% elsif block.settings.generic == 'partial' %}
-                <span class="lx-compare__maybe" aria-label="Partial">~</span>
+                <span class="lx-compare__maybe" aria-label="Partial">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14"/></svg>
+                </span>
               {% else %}
-                <span class="lx-compare__no" aria-label="No">✕</span>
+                <span class="lx-compare__no" aria-label="No">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </span>
               {% endif %}
             </div>
-            <div class="lx-compare__td lx-compare__td--{% if block.settings.brand == 'yes' %}yes{% elsif block.settings.brand == 'partial' %}maybe{% else %}no{% endif %}" role="cell">
+            <div class="lx-compare__td lx-compare__td--proxeed lx-compare__td--{% if block.settings.brand == 'yes' %}yes{% elsif block.settings.brand == 'partial' %}maybe{% else %}no{% endif %}" role="cell">
               {% if block.settings.brand == 'yes' %}
-                <span class="lx-compare__yes" aria-label="Yes">✓</span>
+                <span class="lx-compare__yes lx-compare__yes--brand" aria-label="Yes">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
               {% elsif block.settings.brand == 'partial' %}
-                <span class="lx-compare__maybe" aria-label="Partial">~</span>
+                <span class="lx-compare__maybe" aria-label="Partial">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14"/></svg>
+                </span>
               {% else %}
-                <span class="lx-compare__no" aria-label="No">✕</span>
+                <span class="lx-compare__no" aria-label="No">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </span>
               {% endif %}
             </div>
           </div>
