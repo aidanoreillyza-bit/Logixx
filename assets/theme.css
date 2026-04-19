@@ -412,7 +412,7 @@ p  { line-height: 1.7; }
 .lx-hdr__drop { cursor: pointer; }
 .lx-hdr__drop-panel {
   position: absolute;
-  top: calc(100% + 6px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   background: var(--c-navy-lt);
@@ -431,6 +431,15 @@ p  { line-height: 1.7; }
   will-change: opacity, transform;
   box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(0,194,184,.1), inset 0 1px 0 rgba(255,255,255,.04);
   z-index: 100;
+}
+/* Transparent bridge so moving the mouse into the panel never loses :hover */
+.lx-hdr__drop-panel::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
 }
 .lx-hdr__drop:hover .lx-hdr__drop-panel {
   opacity: 1;
