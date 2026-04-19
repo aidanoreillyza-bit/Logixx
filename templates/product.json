@@ -1,4 +1,89 @@
 {
-  "sections": {"main": {"type": "product-main"}},
-  "order": ["main"]
+  "sections": {
+    "main": {
+      "type": "product-main"
+    },
+    "compare": {
+      "type": "comparison",
+      "settings": {
+        "badge": "The Proxeed Difference",
+        "heading": "How does this product\ncompare to the rest?",
+        "subtext": "Most fertility supplements are generic multi-vitamins with no clinical backing. Proxeed is different — formulated specifically for fertility, with peer-reviewed evidence to prove it.",
+        "col_generic": "Generic Supplement",
+        "col_brand": "Proxeed",
+        "col_brand_badge": "Recommended",
+        "cta_label": "Add to Basket",
+        "cta_url": "",
+        "cta_note": "Clinically proven · Halal certified · Free UK delivery over £50"
+      },
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "Clinically tested for sperm parameters",
+            "generic": "no",
+            "brand": "yes"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Patented L-Carnitine Fumarate",
+            "generic": "no",
+            "brand": "yes"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "Peer-reviewed clinical evidence",
+            "generic": "no",
+            "brand": "yes"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Halal certified",
+            "generic": "no",
+            "brand": "yes"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Antioxidant protection complex",
+            "generic": "partial",
+            "brand": "yes"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Expert fertility specialist support",
+            "generic": "no",
+            "brand": "yes"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Free UK delivery on £50+",
+            "generic": "no",
+            "brand": "yes"
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "30-day returns guarantee",
+            "generic": "no",
+            "brand": "yes"
+          }
+        }
+      },
+      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5", "row_6", "row_7", "row_8"]
+    }
+  },
+  "order": ["main", "compare"]
 }
