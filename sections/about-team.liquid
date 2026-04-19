@@ -33,7 +33,8 @@
             {% else %}
             <!-- initials placeholder -->
             <div class="lx-team__initials" aria-hidden="true">
-              {{ block.settings.name | split: ' ' | map: 'first' | join: '' | upcase | truncate: 2, '' }}
+              {%- assign _nm = block.settings.name | split: ' ' -%}
+              {{- _nm.first | slice: 0 | upcase -}}{% if _nm.size > 1 %}{{- _nm.last | slice: 0 | upcase -}}{% endif %}
             </div>
             {% endif %}
             {% if block.settings.department != blank %}
