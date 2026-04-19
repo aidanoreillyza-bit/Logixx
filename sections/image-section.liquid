@@ -15,8 +15,8 @@
     </div>
     {% endif %}
 
-    {% if section.settings.image != blank %}
     <div class="lx-image-section__img-wrap">
+      {% if section.settings.image != blank %}
       <img
         src="{{ section.settings.image | img_url: '1200x' }}"
         srcset="{{ section.settings.image | img_url: '600x' }} 600w,
@@ -29,8 +29,10 @@
         height="630"
         class="lx-image-section__img"
       >
+      {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'lx-image-section__img lx-image-section__img--placeholder' }}
+      {% endif %}
     </div>
-    {% endif %}
 
     {% if section.settings.btn_label != blank %}
     <div class="lx-image-section__cta">
@@ -59,6 +61,10 @@
     object-fit: cover;
     border-radius: 16px;
   }
+  .lx-image-section__img--placeholder {
+    background: #f3f4f6;
+    height: 420px;
+  }
   .lx-image-section__cta {
     margin-top: 32px;
     text-align: center;
@@ -71,9 +77,9 @@
   "settings": [
     {"type":"image_picker","id":"image","label":"Image"},
     {"type":"text","id":"image_alt","label":"Image Alt Text","info":"Describe the image for accessibility."},
-    {"type":"text","id":"badge","label":"Badge (optional)"},
-    {"type":"text","id":"heading","label":"Heading (optional)"},
-    {"type":"textarea","id":"subtext","label":"Subtext (optional)"},
+    {"type":"text","id":"badge","label":"Badge (optional)","default":"Featured"},
+    {"type":"text","id":"heading","label":"Heading (optional)","default":"Our Story"},
+    {"type":"textarea","id":"subtext","label":"Subtext (optional)","default":"Upload an image and tell your brand story here."},
     {"type":"text","id":"btn_label","label":"Button Label (optional)"},
     {"type":"url","id":"btn_url","label":"Button Link"}
   ],
