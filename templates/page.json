@@ -1,4 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "sections": {"main": {"type": "page-main"}},
-  "order": ["main"]
+  "sections": {
+    "main": {
+      "type": "page-main",
+      "name": "About us",
+      "settings": {}
+    },
+    "news_preview_YY76Qf": {
+      "type": "news-preview",
+      "name": "News Preview",
+      "settings": {
+        "blog": "",
+        "heading": "From our <em>blog</em>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "news_preview_YY76Qf"
+  ]
 }
