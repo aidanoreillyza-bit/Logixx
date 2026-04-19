@@ -93,7 +93,7 @@
   position: relative;
   background: #fff;
   overflow: hidden;
-  padding: 96px 0 80px;
+  padding: 52px 0 44px;
   text-align: center;
 }
 
@@ -148,10 +148,10 @@
 /* heading — navy bold, mint on accent word (set via newline) */
 .lx-about__heading {
   font-family: var(--font-head);
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
   color: var(--c-navy, #0a1628);
-  line-height: 1.12;
-  margin: 0 0 20px;
+  line-height: 1.15;
+  margin: 0 0 14px;
   font-weight: 800;
 }
 /* Wrap the company name in <em> in Shopify to get teal colour */
@@ -162,11 +162,11 @@
 
 /* sub */
 .lx-about__sub {
-  font-size: 1.1rem;
+  font-size: .97rem;
   color: #4a5568;
-  line-height: 1.7;
+  line-height: 1.65;
   margin: 0;
-  max-width: 600px;
+  max-width: 560px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -174,7 +174,7 @@
 /* ── Feature rows ────────────────────────────────────────── */
 .lx-about__features {
   background: #f7f9fc;
-  padding: 64px 0 72px;
+  padding: 36px 0 44px;
 }
 
 .lx-about__feat {
@@ -187,10 +187,10 @@
   .lx-about__feat { flex-direction: column; gap: 16px; }
 }
 
-/* icon circle — larger, cleaner, no box */
+/* icon circle — cleaner, no box */
 .lx-about__feat-icon {
   flex-shrink: 0;
-  width: 68px; height: 68px;
+  width: 52px; height: 52px;
   border-radius: 50%;
   background: #fff;
   border: 2px solid rgba(0,194,184,.25);
@@ -198,8 +198,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,194,184,.10);
-  margin-top: 4px;
+  box-shadow: 0 3px 10px rgba(0,194,184,.10);
+  margin-top: 3px;
 }
 
 /* content */
@@ -211,17 +211,17 @@
 
 .lx-about__feat-title {
   font-family: var(--font-head);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--c-navy, #0a1628);
-  margin: 0 0 10px;
+  margin: 0 0 7px;
   letter-spacing: -.01em;
 }
 
 .lx-about__feat-body {
-  font-size: 1rem;
+  font-size: .95rem;
   color: #4a5568;
-  line-height: 1.8;
+  line-height: 1.75;
   margin: 0;
 }
 
@@ -230,13 +230,13 @@
   height: 1px;
   background: linear-gradient(90deg, var(--c-mint, #00C2B8) 0%, transparent 100%);
   opacity: .2;
-  margin: 40px 0;
+  margin: 24px 0;
 }
 
 /* ── Tagline strip ────────────────────────────────────────── */
 .lx-about__tagline-wrap {
   background: #f7f9fc;
-  padding: 0 0 80px;
+  padding: 0 0 44px;
 }
 
 .lx-about__tagline {
@@ -244,8 +244,8 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--c-navy, #0a1628) 0%, var(--c-navy-lt, #152035) 100%);
-  border-radius: 20px;
-  padding: 40px 52px;
+  border-radius: 16px;
+  padding: 28px 40px;
   position: relative;
   overflow: hidden;
 }
@@ -259,7 +259,7 @@
 
 .lx-about__tagline-deco {
   font-family: Georgia, serif;
-  font-size: 5rem;
+  font-size: 3.2rem;
   line-height: .7;
   color: var(--c-mint, #00C2B8);
   opacity: .3;
@@ -271,11 +271,11 @@
 
 .lx-about__tagline-text {
   font-family: var(--font-head);
-  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin: 0 20px;
+  margin: 0 16px;
   line-height: 1.4;
   position: relative; z-index: 1;
   background: linear-gradient(90deg, #fff 30%, var(--c-mint, #00C2B8) 100%);
@@ -285,9 +285,9 @@
 }
 
 @media (max-width: 600px) {
-  .lx-about__head { padding: 72px 0 60px; }
-  .lx-about__tagline { padding: 28px 24px; }
-  .lx-about__tagline-deco { font-size: 3.5rem; }
+  .lx-about__head { padding: 40px 0 32px; }
+  .lx-about__tagline { padding: 22px 20px; }
+  .lx-about__tagline-deco { font-size: 2.5rem; }
 }
 </style>
 
