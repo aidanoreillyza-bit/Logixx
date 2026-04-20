@@ -33,6 +33,9 @@
             {% if product.compare_at_price > product.price %}
             <span class="lx-pcard__sale" aria-label="Sale">SALE</span>
             {% endif %}
+            {% if product.tags contains 'best-seller' or product.tags contains 'Best Seller' %}
+            <span class="lx-pcard__bestseller" aria-label="Best Seller">Best Seller</span>
+            {% endif %}
           </div>
         </a>
         <div class="lx-pcard__body">

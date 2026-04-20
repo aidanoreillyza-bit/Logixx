@@ -4405,3 +4405,214 @@ p  { line-height: 1.75; }
   .lx-hero__mini-stats { display: flex; }
 }
 .pw-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:80px 40px;max-width:1240px;margin:0 auto}.pw-split__label{font-size:11px;font-weight:700;color:#d4589a;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}.pw-split h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:400;color:#0a1628;margin-bottom:20px;line-height:1.1;letter-spacing:-.02em}.pw-split h2 em{font-style:italic;color:#d4589a}.pw-split__text{font-size:16px;color:#3b4758;line-height:1.8;margin-bottom:28px}.pw-split__benefits{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}.pw-split__benefit{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:#3b4758;line-height:1.6}.pw-split__benefit-dot{width:22px;height:22px;min-width:22px;border-radius:50%;background:linear-gradient(135deg,#d4589a,#b03a7a);display:flex;align-items:center;justify-content:center;margin-top:2px}.pw-split__benefit-dot svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:block}.pw-split__btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;background:linear-gradient(135deg,#d4589a,#b03a7a);color:#fff;border-radius:100px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 8px 28px rgba(212,88,154,.3);transition:all .25s}.pw-split__btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(212,88,154,.42)}.pw-split__img-wrap{position:relative;border-radius:28px;background:linear-gradient(135deg,#fdf0f7,#f9e0f2);min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:40px}.pw-split__orb1{position:absolute;top:-20px;left:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(212,88,154,.15),transparent 70%)}.pw-split__orb2{position:absolute;bottom:-20px;right:-20px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(212,88,154,.1),transparent 70%)}.pw-split__logo-card{background:#fff;border-radius:20px;padding:24px 32px;box-shadow:0 8px 32px rgba(212,88,154,.15);text-align:center;position:relative;z-index:2}.pw-split__logo-name{font-family:'Instrument Serif',Georgia,serif;font-size:1.8rem;margin-bottom:4px}.pw-split__logo-tag{font-size:11px;color:#d4589a;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.pw-split__info-card{background:#fff;border-radius:14px;padding:14px 20px;box-shadow:0 4px 16px rgba(0,0,0,.06);text-align:center;position:relative;z-index:2}.pw-split__info-card-label{font-size:11px;font-weight:700;color:#d4589a;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}.pw-split__info-card-text{font-size:12px;color:#6b7485;line-height:1.5}@media(max-width:900px){.pw-split{grid-template-columns:1fr;padding:48px 24px}.pw-split__img-wrap{min-height:320px}}
+
+/* ============================================================
+   VISUAL UPGRADE — Extended palette & section enhancements
+   ============================================================ */
+
+/* ── Orange accent (Proxeed Plus / Best Seller) ─────────────── */
+:root {
+  --c-orange:       #E87722;
+  --c-orange-dk:    #cc6a1e;
+  --c-orange-l:     #ff9847;
+  --c-orange-pale:  #fff5eb;
+  --c-orange-glow:  rgba(232,119,34,.35);
+}
+
+/* ── Orange badge variant ────────────────────────────────────── */
+.lx-badge--orange {
+  background: linear-gradient(120deg, rgba(232,119,34,.18), rgba(255,152,71,.12));
+  color: var(--c-orange-dk);
+  border: 1px solid rgba(232,119,34,.3);
+}
+
+/* ── "Best Seller" badge — positioned inside .lx-pcard__img ─── */
+.lx-pcard__bestseller {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  background: linear-gradient(120deg, var(--c-orange), var(--c-orange-l));
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 50px;
+  box-shadow: 0 3px 12px var(--c-orange-glow);
+  animation: lx-bestseller-pulse 2.5s ease-in-out infinite;
+}
+@keyframes lx-bestseller-pulse {
+  0%, 100% { box-shadow: 0 3px 12px var(--c-orange-glow); }
+  50%       { box-shadow: 0 3px 22px rgba(232,119,34,.7), 0 0 30px rgba(232,119,34,.2); }
+}
+
+/* ── Product card — raise sale badge above image overlay ─────── */
+.lx-pcard__sale { z-index: 3; }
+
+/* ── Product card — inset top accent bar on hover ────────────── */
+.lx-pcard:hover {
+  box-shadow:
+    inset 0 4px 0 var(--c-mint),
+    0 28px 56px rgba(0,184,212,.18);
+}
+
+/* ── Product card — soft vignette gradient on image hover ─────── */
+.lx-pcard__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(10,22,40,.12) 100%);
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.lx-pcard:hover .lx-pcard__img::after { opacity: 1; }
+
+/* ── Product card add button — shimmer sweep on hover ─────────── */
+.lx-pcard__add-btn {
+  position: relative;
+  overflow: hidden;
+}
+.lx-pcard__add-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: none;
+}
+.lx-pcard__add-btn:hover::after {
+  left: 140%;
+  transition: left .5s ease;
+}
+
+/* ── Collection card — "Best Seller" badge orange ────────────── */
+.lx-coll-card__badge--best {
+  background: linear-gradient(120deg, var(--c-orange), var(--c-orange-l)) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px var(--c-orange-glow);
+}
+
+/* ── Testimonial cards — decorative oversized quote mark ─────── */
+.lx-testi__card {
+  position: relative;
+  overflow: hidden;
+}
+.lx-testi__card::before {
+  content: '\201C';
+  position: absolute;
+  top: -6px;
+  right: 18px;
+  font-family: var(--font-head);
+  font-size: 100px;
+  line-height: 1;
+  color: rgba(0,194,184,.07);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.lx-testi__stars,
+.lx-testi__quote,
+.lx-testi__author { position: relative; z-index: 1; }
+
+/* Alternate avatar gradients for variety */
+.lx-testi__card:nth-child(3) .lx-testi__avatar {
+  background: linear-gradient(135deg, var(--c-orange), var(--c-orange-l));
+}
+.lx-testi__card:nth-child(4) .lx-testi__avatar {
+  background: linear-gradient(135deg, #d4608a, #e882a9);
+}
+.lx-testi__card:nth-child(5) .lx-testi__avatar {
+  background: linear-gradient(135deg, var(--c-blue), #6941e0);
+}
+
+/* Testimonials section — richer background */
+.lx-testi {
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 70%, rgba(0,194,184,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 30%, rgba(51,102,217,.04) 0%, transparent 55%),
+    #f7f9fc;
+}
+
+/* ── Why Us — icon gradient variety by card position ─────────── */
+.lx-why__card:nth-child(2) .lx-why__icon {
+  background: linear-gradient(135deg, var(--c-blue), #6941e0);
+}
+.lx-why__card:nth-child(3) .lx-why__icon {
+  background: linear-gradient(135deg, var(--c-orange), var(--c-orange-l));
+}
+.lx-why__card:nth-child(4) .lx-why__icon {
+  background: linear-gradient(135deg, var(--c-mint-dk), #004f4f);
+}
+
+/* Why Us section — subtle radial gradient background */
+.lx-why {
+  background:
+    radial-gradient(ellipse 50% 70% at 95% 50%, rgba(0,194,184,.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 60% at 5% 50%, rgba(51,102,217,.05) 0%, transparent 55%),
+    #f7f9fc;
+}
+
+/* ── Stats — number glow on hover ────────────────────────────── */
+.lx-stats__item { cursor: default; }
+.lx-stats__num  { transition: filter .3s ease; }
+.lx-stats__item:hover .lx-stats__num {
+  filter: drop-shadow(0 0 14px rgba(0,194,184,.55));
+}
+
+/* ── Section heading em underline — wider gradient ───────────── */
+.lx-section-head h2 em::after {
+  height: 4px;
+  opacity: .8;
+  background: linear-gradient(90deg, var(--c-mint) 0%, var(--c-blue) 65%, rgba(232,119,34,.6) 100%);
+}
+
+/* ── CTA banner — richer triple-orb background ───────────────── */
+.lx-cta::before {
+  background:
+    radial-gradient(circle at 50% 130%, rgba(0,184,212,.28) 0%, transparent 55%),
+    radial-gradient(circle at 15% 50%,  rgba(51,102,217,.16) 0%, transparent 45%),
+    radial-gradient(circle at 88% 12%,  rgba(232,119,34,.1)  0%, transparent 40%);
+}
+
+/* ── Featured Products — subtle gradient section background ───── */
+.lx-prods {
+  background: linear-gradient(180deg, #ffffff 0%, #f3f8fc 100%);
+}
+
+/* ── Hero — stronger orb glows ───────────────────────────────── */
+.lx-hero__orb--1 {
+  background: radial-gradient(circle, rgba(0,184,212,.40) 0%, rgba(0,184,212,.08) 65%, transparent 100%);
+}
+.lx-hero__orb--2 {
+  background: radial-gradient(circle, rgba(51,102,217,.42) 0%, rgba(51,102,217,.07) 65%, transparent 100%);
+}
+
+/* ── Dropdown tag — orange Best Seller variant ───────────────── */
+.lx-drop-item__tag--bestseller {
+  background: rgba(232,119,34,.15);
+  color: var(--c-orange);
+}
+
+/* ── Results section — stat numbers use orange accent ────────── */
+.lx-results__stat-num {
+  background: linear-gradient(135deg, var(--c-mint) 0%, #40e0d0 50%, var(--c-orange-l) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Announcement bar dot — orange tint ─────────────────────── */
+@keyframes lx-ann-dot-shift {
+  0%, 100% { background: var(--c-mint); }
+  50%       { background: var(--c-orange); }
+}
+.lx-ann__msg::before {
+  animation: lx-ann-dot-shift 4s ease-in-out infinite;
+}
