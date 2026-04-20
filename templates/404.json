@@ -98,67 +98,6 @@
         "subtext": "We combine world-class science with compassionate support at every step of your fertility journey."
       }
     },
-    "faq_section_QBCz9F": {
-      "type": "faq-section",
-      "blocks": {
-        "item_iPwRCN": {
-          "type": "item",
-          "settings": {
-            "question": "How long should I take Proxeed?",
-            "answer": "We recommend taking Proxeed for a minimum of 4–6 months. Sperm take approximately 90 days to mature, so consistent supplementation over this period gives the best results."
-          }
-        },
-        "item_FXbT3i": {
-          "type": "item",
-          "settings": {
-            "question": "Can my partner and I both take Proxeed?",
-            "answer": "Yes — Proxeed Plus or Proxeed Men is formulated for him, while Proxeed Women is specifically designed to support female fertility. Both can be taken simultaneously."
-          }
-        },
-        "item_qGNgLd": {
-          "type": "item",
-          "settings": {
-            "question": "Is Proxeed clinically proven?",
-            "answer": "Yes. Proxeed has been validated in multiple peer-reviewed clinical studies published in respected medical journals, demonstrating significant improvements in sperm parameters."
-          }
-        },
-        "item_GngjUh": {
-          "type": "item",
-          "settings": {
-            "question": "What is oxidative stress and why does it matter?",
-            "answer": "Oxidative stress occurs when free radicals damage sperm DNA. It is estimated to be a factor in up to 40% of male infertility cases. Proxeed's antioxidant formula helps neutralise free radicals to protect sperm health."
-          }
-        },
-        "item_3UCkJp": {
-          "type": "item",
-          "settings": {
-            "question": "Are your products Halal certified?",
-            "answer": "Yes — Proxeed Plus is Halal certified, making it suitable for customers following a Halal diet."
-          }
-        },
-        "item_TbBt3p": {
-          "type": "item",
-          "settings": {
-            "question": "Do you offer free delivery?",
-            "answer": "Yes! We offer free standard UK delivery on all orders over £50. All orders are dispatched in plain, discreet packaging."
-          }
-        }
-      },
-      "block_order": [
-        "item_iPwRCN",
-        "item_FXbT3i",
-        "item_qGNgLd",
-        "item_GngjUh",
-        "item_3UCkJp",
-        "item_TbBt3p"
-      ],
-      "name": "FAQ",
-      "settings": {
-        "badge": "FAQ",
-        "heading": "Frequently asked questions",
-        "subtext": "Can't find your answer? Contact us at info@logixxpharma.com"
-      }
-    },
     "stats_bar_3tEz4t": {
       "type": "stats-bar",
       "blocks": {
@@ -263,6 +202,67 @@
       "type": "proxeed-women",
       "name": "Proxeed Women",
       "settings": {}
+    },
+    "faq_section_QBCz9F": {
+      "type": "faq-section",
+      "blocks": {
+        "item_iPwRCN": {
+          "type": "item",
+          "settings": {
+            "question": "How long should I take Proxeed?",
+            "answer": "We recommend taking Proxeed for a minimum of 4–6 months. Sperm take approximately 90 days to mature, so consistent supplementation over this period gives the best results."
+          }
+        },
+        "item_FXbT3i": {
+          "type": "item",
+          "settings": {
+            "question": "Can my partner and I both take Proxeed?",
+            "answer": "Yes — Proxeed Plus or Proxeed Men is formulated for him, while Proxeed Women is specifically designed to support female fertility. Both can be taken simultaneously."
+          }
+        },
+        "item_qGNgLd": {
+          "type": "item",
+          "settings": {
+            "question": "Is Proxeed clinically proven?",
+            "answer": "Yes. Proxeed has been validated in multiple peer-reviewed clinical studies published in respected medical journals, demonstrating significant improvements in sperm parameters."
+          }
+        },
+        "item_GngjUh": {
+          "type": "item",
+          "settings": {
+            "question": "What is oxidative stress and why does it matter?",
+            "answer": "Oxidative stress occurs when free radicals damage sperm DNA. It is estimated to be a factor in up to 40% of male infertility cases. Proxeed's antioxidant formula helps neutralise free radicals to protect sperm health."
+          }
+        },
+        "item_3UCkJp": {
+          "type": "item",
+          "settings": {
+            "question": "Are your products Halal certified?",
+            "answer": "Yes — Proxeed Plus is Halal certified, making it suitable for customers following a Halal diet."
+          }
+        },
+        "item_TbBt3p": {
+          "type": "item",
+          "settings": {
+            "question": "Do you offer free delivery?",
+            "answer": "Yes! We offer free standard UK delivery on all orders over £50. All orders are dispatched in plain, discreet packaging."
+          }
+        }
+      },
+      "block_order": [
+        "item_iPwRCN",
+        "item_FXbT3i",
+        "item_qGNgLd",
+        "item_GngjUh",
+        "item_3UCkJp",
+        "item_TbBt3p"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "badge": "FAQ",
+        "heading": "Frequently asked questions",
+        "subtext": "Can't find your answer? Contact us at info@logixxpharma.com"
+      }
     },
     "17766862609dc8b280": {
       "type": "_blocks",
