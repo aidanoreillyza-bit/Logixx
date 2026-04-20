@@ -290,40 +290,11 @@
     },
     "177668870532399b78": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_500ab29_7yrzxm": {
-          "type": "ai_gen_block_500ab29",
-          "name": "Split content For proxeed women ",
-          "settings": {
-            "heading": "<strong>Proxeed Women</strong>",
-            "description": "<p>Proxeed Women supports female fertility with a carefully selected blend of nutrients. L-carnitine and acetyl-L-carnitine help optimise energy production, whilst L-arginine supports healthy blood flow. N-acetyl cysteine works alongside essential vitamins and minerals to protect cellular health and promote the physiological balance your body needs.</p>",
-            "text_vertical_alignment": "center",
-            "text_padding": 40,
-            "button_text": "Shop now",
-            "button_link": "",
-            "button_border_radius": 4,
-            "image": "shopify://shop_images/Untitled_design_75.png",
-            "image_fit": "contain",
-            "image_position": "center",
-            "min_height": 500,
-            "desktop_width_percent": 100,
-            "mobile_text_order": "1",
-            "mobile_image_order": "2",
-            "text_background_color": "#ffffff",
-            "heading_color": "#000000",
-            "heading_size": 36,
-            "text_color": "#333333",
-            "text_size": 16,
-            "button_color": "#000000",
-            "button_hover_color": "#333333",
-            "button_text_color": "#ffffff"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_500ab29_7yrzxm"
-      ],
+      "settings": {}
+    },
+    "proxeed_women_fdzywN": {
+      "type": "proxeed-women",
+      "name": "Proxeed Women",
       "settings": {}
     }
   },
@@ -336,6 +307,7 @@
     "1776683422f83c0c1c",
     "1776686167165f3407",
     "17766862609dc8b280",
-    "177668870532399b78"
+    "177668870532399b78",
+    "proxeed_women_fdzywN"
   ]
 }
