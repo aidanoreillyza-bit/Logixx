@@ -1,8 +1,278 @@
+<section class="lx-spotlight lx-spotlight--plus">
+  <div class="lx-container">
+    <div class="lx-spotlight__grid">
+
+      <!-- Image column -->
+      <div class="lx-spotlight__img-col lx-fade-in">
+        <div class="lx-spotlight__img-wrap">
+          <div class="lx-spotlight__img-orb lx-spotlight__img-orb--1" aria-hidden="true"></div>
+          <div class="lx-spotlight__img-orb lx-spotlight__img-orb--2" aria-hidden="true"></div>
+          {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | img_url: '600x' }}"
+            srcset="{{ section.settings.image | img_url: '400x' }} 400w,
+                    {{ section.settings.image | img_url: '600x' }} 600w"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            alt="{{ section.settings.image_alt | default: 'Proxeed Plus' }}"
+            loading="lazy"
+            width="600"
+            height="600"
+            class="lx-spotlight__img"
+          >
+          {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'lx-spotlight__img lx-spotlight__img--placeholder' }}
+          {% endif %}
+          {% if section.settings.badge != blank %}
+          <span class="lx-spotlight__float-badge">{{ section.settings.badge }}</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Content column -->
+      <div class="lx-spotlight__content lx-fade-in">
+
+        {% if section.settings.label != blank %}
+        <span class="lx-badge lx-badge--navy">{{ section.settings.label }}</span>
+        {% endif %}
+
+        <h2 class="lx-spotlight__title">
+          {{ section.settings.heading | default: 'Proxeed Plus' | newline_to_br }}
+        </h2>
+
+        {% if section.settings.subtext != blank %}
+        <p class="lx-spotlight__sub">{{ section.settings.subtext }}</p>
+        {% endif %}
+
+        {% if section.settings.benefit_1 != blank or section.settings.benefit_2 != blank or section.settings.benefit_3 != blank or section.settings.benefit_4 != blank %}
+        <ul class="lx-spotlight__benefits" aria-label="Key benefits">
+          {% assign benefits = section.settings.benefit_1 | append: '|||' | append: section.settings.benefit_2 | append: '|||' | append: section.settings.benefit_3 | append: '|||' | append: section.settings.benefit_4 %}
+          {% assign benefits_arr = benefits | split: '|||' %}
+          {% for b in benefits_arr %}
+            {% if b != blank %}
+            <li>
+              <span class="lx-spotlight__benefit-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              {{ b }}
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if section.settings.price != blank %}
+        <div class="lx-spotlight__price-row">
+          <span class="lx-spotlight__price">{{ section.settings.price }}</span>
+          {% if section.settings.price_note != blank %}
+          <span class="lx-spotlight__price-note">{{ section.settings.price_note }}</span>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="lx-spotlight__btns">
+          {% if section.settings.cta_label != blank %}
+          <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lx-btn lx-btn--mint lx-btn--lg">
+            {{ section.settings.cta_label }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          {% endif %}
+          {% if section.settings.sec_label != blank %}
+          <a href="{{ section.settings.sec_url | default: '/pages/male-fertility' }}" class="lx-btn lx-btn--ghost-navy">
+            {{ section.settings.sec_label }}
+          </a>
+          {% endif %}
+        </div>
+
+        {% if section.settings.trust_note != blank %}
+        <p class="lx-spotlight__trust-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9a12.02 12.02 0 0 0-.382-3.016z"/></svg>
+          {{ section.settings.trust_note }}
+        </p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Proxeed Plus Spotlight ──────────────────────────────────── */
+.lx-spotlight {
+  padding: 72px 0;
+  background: #fff;
+}
+.lx-spotlight--plus {
+  background: linear-gradient(135deg, #f0fffe 0%, #fff 60%);
+}
+.lx-spotlight__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .lx-spotlight__grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* Image */
+.lx-spotlight__img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--c-mint-pale, #e6fffe) 0%, #fff 100%);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 48px rgba(0,194,184,.12);
+}
+.lx-spotlight__img-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.lx-spotlight__img-orb--1 {
+  width: 280px; height: 280px;
+  top: -60px; right: -60px;
+  background: radial-gradient(circle, rgba(0,194,184,.15) 0%, transparent 70%);
+}
+.lx-spotlight__img-orb--2 {
+  width: 180px; height: 180px;
+  bottom: -40px; left: -40px;
+  background: radial-gradient(circle, rgba(0,194,184,.1) 0%, transparent 70%);
+}
+.lx-spotlight__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.lx-spotlight__img--placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lx-spotlight__float-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-navy, #0a1628);
+  background: var(--c-mint, #00C2B8);
+  border-radius: 50px;
+  padding: 5px 14px;
+}
+
+/* Content */
+.lx-spotlight__content { display: flex; flex-direction: column; gap: 20px; }
+.lx-spotlight__title {
+  font-family: var(--font-head, sans-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  color: var(--c-navy, #0a1628);
+  line-height: 1.15;
+  margin: 0;
+}
+.lx-spotlight__sub {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Benefits list */
+.lx-spotlight__benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lx-spotlight__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .95rem;
+  color: #2d3748;
+  line-height: 1.5;
+}
+.lx-spotlight__benefit-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--c-mint, #00C2B8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* Price */
+.lx-spotlight__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.lx-spotlight__price {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--c-navy, #0a1628);
+}
+.lx-spotlight__price-note {
+  font-size: .85rem;
+  color: #718096;
+}
+
+/* Buttons */
+.lx-spotlight__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Trust note */
+.lx-spotlight__trust-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .82rem;
+  color: #718096;
+  margin: 0;
+}
+.lx-spotlight__trust-note svg { flex-shrink: 0; color: var(--c-mint, #00C2B8); }
+</style>
+
 {% schema %}
 {
   "name": "Proxeed Plus",
   "settings": [
-    {"type": "image_picker", "id": "image", "label": "Product Image"}
+    {"type":"image_picker","id":"image","label":"Product Image"},
+    {"type":"text","id":"image_alt","label":"Image Alt Text","default":"Proxeed Plus male fertility supplement"},
+    {"type":"text","id":"label","label":"Label Badge","default":"For Men"},
+    {"type":"text","id":"badge","label":"Image Badge (e.g. Bestseller)","default":"Bestseller"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"Proxeed Plus\nMale Fertility Supplement"},
+    {"type":"textarea","id":"subtext","label":"Description","default":"Clinically proven to improve sperm count, motility, and morphology. Formulated with patented L-Carnitine Fumarate and a targeted antioxidant complex — backed by peer-reviewed research."},
+    {"type":"text","id":"benefit_1","label":"Benefit 1","default":"Clinically proven to improve sperm parameters"},
+    {"type":"text","id":"benefit_2","label":"Benefit 2","default":"Patented L-Carnitine Fumarate formula"},
+    {"type":"text","id":"benefit_3","label":"Benefit 3","default":"Halal certified · GMP manufactured"},
+    {"type":"text","id":"benefit_4","label":"Benefit 4","default":"Results in as little as 90 days"},
+    {"type":"text","id":"price","label":"Price Display (e.g. £39.99)","default":"£39.99"},
+    {"type":"text","id":"price_note","label":"Price Note","default":"per month's supply"},
+    {"type":"text","id":"cta_label","label":"Primary Button","default":"Shop Proxeed Plus"},
+    {"type":"url","id":"cta_url","label":"Primary Button Link"},
+    {"type":"text","id":"sec_label","label":"Secondary Button (optional)","default":"Learn About Male Fertility"},
+    {"type":"url","id":"sec_url","label":"Secondary Button Link"},
+    {"type":"text","id":"trust_note","label":"Trust Note","default":"Free UK delivery over £50 · Discreet packaging · 30-day returns"}
   ],
   "presets": [{"name": "Proxeed Plus"}]
 }
