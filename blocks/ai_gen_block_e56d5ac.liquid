@@ -75,7 +75,7 @@
   }
 
   .ai-partner-bar__wrapper-{{ ai_gen_id }}:hover {
-    animation-play-state: {{ block.settings.pause_on_hover | default: true | if: 'paused', 'running' }};
+    animation-play-state: {% if block.settings.pause_on_hover %}paused{% else %}running{% endif %};
   }
 
   @media screen and (max-width: 749px) {
