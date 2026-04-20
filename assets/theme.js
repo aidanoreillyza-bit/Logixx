@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Scroll progress bar
+  const progressBar = document.createElement('div');
+  progressBar.className = 'lx-progress-bar';
+  progressBar.setAttribute('aria-hidden', 'true');
+  document.body.prepend(progressBar);
+  const updateProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
   // 1. Header scroll
   const hdr = document.querySelector('.lx-hdr');
   if (hdr) {
