@@ -203,6 +203,13 @@
       "name": "Proxeed Women",
       "settings": {}
     },
+    "proxeed_plus_J9cXta": {
+      "type": "proxeed-plus",
+      "name": "Proxeed Plus",
+      "settings": {
+        "image": "shopify://shop_images/Gemini_Generated_Image_gtm3y1gtm3y1gtm3.png"
+      }
+    },
     "faq_section_QBCz9F": {
       "type": "faq-section",
       "blocks": {
@@ -295,11 +302,6 @@
       "block_order": [
         "ai_gen_block_e56d5ac_w6EeUM"
       ],
-      "settings": {}
-    },
-    "proxeed_plus_J9cXta": {
-      "type": "proxeed-plus",
-      "name": "Proxeed Plus",
       "settings": {}
     }
   },
