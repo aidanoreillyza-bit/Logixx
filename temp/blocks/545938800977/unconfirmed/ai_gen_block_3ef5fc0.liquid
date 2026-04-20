@@ -1,6 +1,280 @@
+{% doc %}
+  @prompt
+    make panter  bar going right
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-painter-bar-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px 0;
+  }
+
+  .ai-painter-bar-container-{{ ai_gen_id }} {
+    position: relative;
+    height: {{ block.settings.bar_height }}px;
+    background-color: {{ block.settings.track_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-painter-bar-fill-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: {{ block.settings.bar_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    animation: ai-painter-bar-slide-{{ ai_gen_id }} {{ block.settings.animation_duration }}s {{ block.settings.animation_timing }} forwards;
+    animation-delay: {{ block.settings.animation_delay }}s;
+  }
+
+  {% if block.settings.repeat_animation %}
+    .ai-painter-bar-fill-{{ ai_gen_id }} {
+      animation-iteration-count: infinite;
+    }
+  {% endif %}
+
+  @keyframes ai-painter-bar-slide-{{ ai_gen_id }} {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .ai-painter-bar-label-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-top: {{ block.settings.label_spacing }}px;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+  }
+{% endstyle %}
+
+<painter-bar-{{ ai_gen_id }}
+  class="ai-painter-bar-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-painter-bar-container-{{ ai_gen_id }}">
+    <div class="ai-painter-bar-fill-{{ ai_gen_id }}"></div>
+  </div>
+  {% if block.settings.label != blank %}
+    <div class="ai-painter-bar-label-{{ ai_gen_id }}">
+      {{ block.settings.label }}
+    </div>
+  {% endif %}
+</painter-bar-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class PainterBar{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        const fill = this.querySelector('.ai-painter-bar-fill-{{ ai_gen_id }}');
+        
+        if (fill) {
+          fill.style.animationPlayState = 'running';
+        }
+      }
+    }
+
+    customElements.define('painter-bar-{{ ai_gen_id }}', PainterBar{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Painter bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bar style"
+    },
+    {
+      "type": "range",
+      "id": "bar_height",
+      "label": "Bar height",
+      "min": 4,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "bar_color",
+      "label": "Bar color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "color",
+      "id": "track_color",
+      "label": "Track color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Duration",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "s",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "animation_timing",
+      "label": "Timing",
+      "options": [
+        {
+          "value": "linear",
+          "label": "Linear"
+        },
+        {
+          "value": "ease",
+          "label": "Ease"
+        },
+        {
+          "value": "ease-in",
+          "label": "Ease in"
+        },
+        {
+          "value": "ease-out",
+          "label": "Ease out"
+        },
+        {
+          "value": "ease-in-out",
+          "label": "Ease in-out"
+        }
+      ],
+      "default": "ease-out"
+    },
+    {
+      "type": "checkbox",
+      "id": "repeat_animation",
+      "label": "Repeat animation",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "label_spacing",
+      "label": "Label spacing",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Painter bar"
+    }
+  ]
+}
 {% endschema %}
