@@ -246,6 +246,81 @@
         "cta_label": "Shop Products",
         "cta_url": ""
       }
+    },
+    "1776683422f83c0c1c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_48ca3e8_T8qAcz": {
+          "type": "ai_gen_block_48ca3e8",
+          "settings": {
+            "banner_height": 500,
+            "mobile_banner_height": 400,
+            "desktop_width_percent": 100,
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "heading": "Welcome to our store",
+            "text": "<p>Discover our curated collection of premium craft supplies</p>",
+            "content_max_width": 600,
+            "text_alignment": "center",
+            "content_vertical_alignment": "center",
+            "content_horizontal_alignment": "center",
+            "heading_size": 48,
+            "heading_color": "#ffffff",
+            "text_size": 18,
+            "text_color": "#ffffff",
+            "button_text": "Shop now",
+            "button_link": "",
+            "button_text_size": 16,
+            "button_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_hover_color": "#f0f0f0",
+            "button_border_radius": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_48ca3e8_T8qAcz"
+      ],
+      "settings": {}
+    },
+    "1776686167165f3407": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "17766862609dc8b280": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e56d5ac_w6EeUM": {
+          "type": "ai_gen_block_e56d5ac",
+          "settings": {
+            "partner_logo_1": "shopify://shop_images/Untitled_design_62.png",
+            "partner_logo_2": "shopify://shop_images/TH_BrightBlue_Navy_CMYK_480x480_677e989e-0e36-4bc8-8828-75a21fb87186.webp",
+            "partner_logo_3": "shopify://shop_images/cover.png",
+            "partner_logo_4": "shopify://shop_images/lenshooke.png",
+            "partner_logo_5": "shopify://shop_images/Untitled_design_70.png",
+            "partner_logo_6": "shopify://shop_images/Untitled_design_69.png",
+            "partner_logo_7": "shopify://shop_images/Untitled_design_72.png",
+            "partner_logo_8": "shopify://shop_images/Untitled_design_71.png",
+            "desktop_width_percent": 100,
+            "logo_width": 120,
+            "logo_height": 60,
+            "logo_spacing": 60,
+            "padding_vertical": 40,
+            "scroll_speed": 30,
+            "pause_on_hover": true,
+            "background_color": "#ffffff",
+            "grayscale_percent": 100,
+            "logo_opacity": 0.5
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e56d5ac_w6EeUM"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -253,6 +328,9 @@
     "why_us_EqVNYN",
     "faq_section_QBCz9F",
     "stats_bar_3tEz4t",
-    "how_it_works_PMXbDQ"
+    "how_it_works_PMXbDQ",
+    "1776683422f83c0c1c",
+    "1776686167165f3407",
+    "17766862609dc8b280"
   ]
 }
