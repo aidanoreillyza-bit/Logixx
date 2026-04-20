@@ -255,6 +255,15 @@
       "type": "_blocks",
       "settings": {}
     },
+    "177668870532399b78": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "proxeed_women_fdzywN": {
+      "type": "proxeed-women",
+      "name": "Proxeed Women",
+      "settings": {}
+    },
     "17766862609dc8b280": {
       "type": "_blocks",
       "blocks": {
@@ -287,27 +296,18 @@
         "ai_gen_block_e56d5ac_w6EeUM"
       ],
       "settings": {}
-    },
-    "177668870532399b78": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "proxeed_women_fdzywN": {
-      "type": "proxeed-women",
-      "name": "Proxeed Women",
-      "settings": {}
     }
   },
   "order": [
     "hero_jjKbPP",
     "why_us_EqVNYN",
-    "faq_section_QBCz9F",
     "stats_bar_3tEz4t",
     "how_it_works_PMXbDQ",
     "1776683422f83c0c1c",
     "1776686167165f3407",
-    "17766862609dc8b280",
     "177668870532399b78",
-    "proxeed_women_fdzywN"
+    "proxeed_women_fdzywN",
+    "faq_section_QBCz9F",
+    "17766862609dc8b280"
   ]
 }
