@@ -2176,24 +2176,29 @@ p  { line-height: 1.75; }
 }
 .lx-pdp__grid {
   display: grid;
-  grid-template-columns: 9fr 11fr;
-  gap: 56px;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
   align-items: start;
 }
 .lx-pdp__img-col {
   position: sticky;
   top: 90px;
 }
+/* Gallery wrapper */
+.lx-pdp__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 .lx-pdp__img-area {
-  background: linear-gradient(135deg, #e6f8fc 0%, #b3e8f5 50%, #e6f0ff 100%);
+  background: linear-gradient(145deg, #f0fbff 0%, #d6f4f4 45%, #eaf0ff 100%);
   border-radius: 24px;
   overflow: hidden;
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 32px;
 }
 .lx-pdp__img-orb {
   position: absolute;
@@ -2229,10 +2234,47 @@ p  { line-height: 1.75; }
 .lx-pdp__img-area img {
   position: relative;
   z-index: 1;
-  max-height: 360px;
-  width: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,.18));
+  padding: 28px;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.14));
+  transition: transform 0.3s ease;
+}
+.lx-pdp__img-area img:hover {
+  transform: scale(1.03);
+}
+/* Thumbnail strip */
+.lx-pdp__thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lx-pdp__thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--c-grey);
+  background: #f8fafc;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+.lx-pdp__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lx-pdp__thumb:hover {
+  border-color: var(--c-mint-dk);
+}
+.lx-pdp__thumb.active {
+  border-color: var(--c-mint-dk);
+  box-shadow: 0 0 0 3px rgba(0,194,184,.2);
 }
 /* Buy box */
 .lx-pdp__buy {
@@ -3625,8 +3667,9 @@ p  { line-height: 1.75; }
   .lx-hdr__nav { display: none; }
   .lx-hdr__burger { display: flex; }
   .lx-hdr__right .lx-btn { display: none; }
-  .lx-pdp__grid { grid-template-columns: 1fr; gap: 32px; }
+  .lx-pdp__grid { grid-template-columns: 1fr; gap: 40px; }
   .lx-pdp__img-col { position: static; }
+  .lx-pdp__img-area { aspect-ratio: 3 / 2; }
   .lx-pdp-tab-btn { padding: 14px 18px; font-size: 13px; }
   .lx-testi__grid { grid-template-columns: 1fr; }
 }
