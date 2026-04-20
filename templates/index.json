@@ -8,6 +8,8 @@
     "howitworks":   {"type": "how-it-works",      "settings": {}},
     "results":      {"type": "results",           "settings": {}},
     "comparison":   {"type": "comparison",        "settings": {}},
+    "proxeedplus":  {"type": "proxeed-plus",       "settings": {}},
+    "proxeedwomen": {"type": "proxeed-women",      "settings": {}},
     "products":     {"type": "featured-products", "settings": {}},
     "testimonials": {"type": "testimonials",      "settings": {}},
     "faq":          {"type": "faq-section",       "settings": {}},
@@ -15,5 +17,5 @@
     "instagram":    {"type": "instagram-feed",    "settings": {}},
     "cta":          {"type": "cta-banner",        "settings": {}}
   },
-  "order": ["hero","image","brandtrust","statsbar","whyus","howitworks","results","comparison","products","testimonials","faq","news","instagram","cta"]
+  "order": ["hero","image","brandtrust","statsbar","whyus","howitworks","results","comparison","proxeedplus","proxeedwomen","products","testimonials","faq","news","instagram","cta"]
 }
