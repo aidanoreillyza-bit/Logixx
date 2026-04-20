@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-male-fertility",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
