@@ -198,6 +198,11 @@
       "type": "_blocks",
       "settings": {}
     },
+    "proxeed_women_fdzywN": {
+      "type": "proxeed-women",
+      "name": "Proxeed Women",
+      "settings": {}
+    },
     "faq_section_QBCz9F": {
       "type": "faq-section",
       "blocks": {
@@ -291,6 +296,11 @@
         "ai_gen_block_e56d5ac_w6EeUM"
       ],
       "settings": {}
+    },
+    "proxeed_plus_J9cXta": {
+      "type": "proxeed-plus",
+      "name": "Proxeed Plus",
+      "settings": {}
     }
   },
   "order": [
@@ -301,6 +311,8 @@
     "1776683422f83c0c1c",
     "1776686167165f3407",
     "177668870532399b78",
+    "proxeed_women_fdzywN",
+    "proxeed_plus_J9cXta",
     "faq_section_QBCz9F",
     "17766862609dc8b280"
   ]
