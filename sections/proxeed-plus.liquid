@@ -1,8 +1,6 @@
 <section style="background:#f7f9fc;padding:80px 0">
 <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
 <div style="position:relative;border-radius:28px;background:#f7f9fc;min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1.5px solid #eaecf0">
-  <!-- Best Seller badge -->
-  <div style="position:absolute;top:20px;left:20px;z-index:4;font-size:11px;font-weight:700;color:#fff;background:#E87722;padding:5px 16px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 14px rgba(232,119,34,.45)">⭐ Best Seller</div>
   <!-- Product image -->
   {% if section.settings.image %}
   <img src="{{ section.settings.image | image_url: width: 700 }}" alt="Proxeed Plus" style="position:relative;z-index:2;width:100%;height:100%;object-fit:cover;display:block;">
@@ -15,6 +13,7 @@
 
 </div>
 <div>
+<div style="margin-bottom:16px"><span style="font-size:11px;font-weight:700;color:#fff;background:#E87722;padding:5px 16px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 14px rgba(232,119,34,.45)">⭐ Best Seller</span></div>
 <div style="font-size:11px;font-weight:700;color:#00C2B8;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px">Male Fertility</div>
 <h2 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:400;color:#0a1628;margin-bottom:20px;line-height:1.1">Proxeed <em style="font-style:italic;color:#E87722">Plus</em></h2>
 <p style="font-size:16px;color:#3b4758;line-height:1.8;margin-bottom:28px">Proxeed Plus is a high-quality fertility supplement specifically designed to support healthy sperm development and maximise a man's chances of fathering a child. The ingredients provide energy to developing sperm while protecting against oxidative stress.</p>
