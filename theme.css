@@ -720,11 +720,11 @@ body.drawer-open {
 
 .partner-bar-section__label {
   text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--grey-400);
+  color: var(--grey-800, #1a202c);
   margin-bottom: var(--sp-6);
 }
 
