@@ -31,6 +31,7 @@
   --grey-500: #6b7485;
   --grey-600: #4a5568;
   --grey-700: #2d3748;
+  --grey-800: #1a202c;
 
   /* Colours — Accent */
   --accent-red:    #ff4d5f;
@@ -308,7 +309,7 @@ em {
 }
 
 @keyframes ticker-scroll {
-  from { transform: translateX(30%);  }
+  from { transform: translateX(0);     }
   to   { transform: translateX(-100%); }
 }
 
@@ -782,23 +783,12 @@ body.drawer-open {
 }
 
 .partner-bar__logo img:hover {
-  filter: grayscale(0%) opacity(100%);
   transform: scale(1.06);
 }
 
 @keyframes partner-bar-scroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-
-@media screen and (max-width: 749px) {
-  .partner-bar__logo img {
-    height: 40px;
-  }
-
-  .partner-bar__track {
-    gap: 40px;
-  }
 }
 
 /* ---------- 11. WHY US SECTION ---------- */
@@ -1508,6 +1498,9 @@ body.drawer-open {
   .stats-grid    { grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); }
   .why-us-grid   { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
+
+  .partner-bar__logo img { height: 40px; }
+  .partner-bar__track    { gap: 40px; }
 
   .email-cta-form-wrap { padding: var(--sp-5); }
 
