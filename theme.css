@@ -710,6 +710,68 @@ body.drawer-open {
   font-weight: 500;
 }
 
+/* ---------- 10b. PARTNER BAR ---------- */
+.partner-bar-section {
+  background-color: var(--grey-50);
+  border-top: 1px solid var(--grey-200);
+  border-bottom: 1px solid var(--grey-200);
+}
+
+.partner-bar {
+  overflow: hidden;
+  padding-block: var(--sp-5);
+}
+
+.partner-bar__wrapper {
+  display: flex;
+  width: fit-content;
+  animation: partner-bar-scroll 28s linear infinite;
+}
+
+.partner-bar__wrapper:hover {
+  animation-play-state: paused;
+}
+
+.partner-bar__track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.partner-bar__logo {
+  flex-shrink: 0;
+}
+
+.partner-bar__logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(50%);
+  transition: filter 0.3s ease;
+}
+
+.partner-bar__logo img:hover {
+  filter: grayscale(0%) opacity(100%);
+}
+
+@keyframes partner-bar-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media screen and (max-width: 749px) {
+  .partner-bar__logo img {
+    height: 34px;
+  }
+
+  .partner-bar__track {
+    gap: 32px;
+  }
+}
+
 /* ---------- 11. WHY US SECTION ---------- */
 .why-us-section {
   padding-block: var(--sp-12);
