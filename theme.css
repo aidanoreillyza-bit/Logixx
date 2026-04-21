@@ -779,6 +779,31 @@ body.drawer-open {
   justify-content: center;
 }
 
+/* Visible tile — swap for a real <img> when you have logo files */
+.partner-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 52px;
+  border-radius: 8px;
+  background: hsl(var(--pt-hue, 210) 60% 92%);
+  color: hsl(var(--pt-hue, 210) 50% 30%);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  border: 1.5px solid hsl(var(--pt-hue, 210) 50% 80%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  filter: opacity(75%);
+}
+
+.partner-logo:hover .partner-tile {
+  filter: opacity(100%);
+  transform: scale(1.06);
+}
+
+/* Real logo image — shown when src loads successfully */
 .partner-logo img {
   height: 52px;
   width: auto;
