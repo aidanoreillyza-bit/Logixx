@@ -712,9 +712,9 @@ body.drawer-open {
 
 /* ---------- 10b. PARTNER BAR ---------- */
 .partner-bar-section {
-  background-color: #ffffff;
-  border-top: 1px solid var(--grey-200);
-  border-bottom: 1px solid var(--grey-200);
+  background-color: var(--grey-100);
+  border-top: 2px solid var(--grey-200);
+  border-bottom: 2px solid var(--grey-200);
   padding-block: var(--sp-8);
 }
 
@@ -777,7 +777,7 @@ body.drawer-open {
   height: 56px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%) opacity(65%);
+  filter: none;
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
