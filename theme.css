@@ -739,28 +739,64 @@ body.drawer-open {
   list-style: none;
 }
 
-.partner-logo {
+/* --- partner slot (replace src to show your real logo) --- */
+.partner-slot {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 180px;
+  height: 80px;
+  border: 2px dashed var(--grey-300);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.partner-logo img {
+.partner-slot:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* real logo image — shown when src loads successfully */
+.partner-slot img {
   height: 56px;
   width: auto;
   max-width: 160px;
   object-fit: contain;
-  filter: grayscale(100%) opacity(55%);
+  display: block;
+  filter: grayscale(20%) opacity(85%);
   transition: filter var(--transition-base), transform var(--transition-base);
 }
 
-.partner-logo img:hover {
+.partner-slot img:hover {
   filter: grayscale(0%) opacity(100%);
-  transform: scale(1.06);
+  transform: scale(1.05);
+}
+
+/* placeholder shown when the image hasn't been set yet */
+.partner-slot__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--grey-400);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
 }
 
 @media (max-width: 640px) {
-  .partner-logo img {
+  .partner-slot {
+    width: 140px;
+    height: 64px;
+  }
+
+  .partner-slot img {
     height: 40px;
     max-width: 120px;
   }
