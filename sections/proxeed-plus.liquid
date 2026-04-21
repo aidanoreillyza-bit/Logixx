@@ -1,21 +1,32 @@
 <section style="background:#f7f9fc;padding:80px 0">
 <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-<div style="position:relative;border-radius:28px;background:linear-gradient(135deg,#e6fffe,#c8f5f0);min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;overflow:hidden">
-<div style="position:absolute;top:-20px;right:-20px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,184,.2),transparent 70%)"></div>
-<div style="position:absolute;bottom:-20px;left:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,184,.12),transparent 70%)"></div>
-{% if section.settings.image %}
-<img src="{{ section.settings.image | image_url: width: 600 }}" alt="Proxeed Plus" style="max-height:260px;max-width:80%;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 12px 32px rgba(0,0,0,.12))">
-{% else %}
-<div style="width:180px;height:180px;border-radius:24px;background:rgba(0,194,184,.08);border:2px dashed rgba(0,194,184,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;z-index:2">
-<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00C2B8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-<span style="font-size:12px;font-weight:600;color:#00C2B8;opacity:.7">Upload product image</span>
-</div>
-{% endif %}
-<div style="background:#fff;border-radius:16px;padding:18px 24px;text-align:center;box-shadow:0 6px 24px rgba(0,194,184,.12);position:relative;z-index:2">
-<div style="font-size:11px;font-weight:700;color:#fff;background:#E87722;padding:4px 14px;border-radius:100px;display:inline-block;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase">Best Seller</div>
-<div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.5rem;margin-bottom:4px"><span style="color:#00C2B8;font-weight:700">Pro</span><span style="color:#0a1628">xeed</span><sup style="font-size:.5em;vertical-align:super">®</sup> <span style="font-size:.9rem;font-weight:700;color:#E87722;letter-spacing:.06em">PLUS</span></div>
-<div style="font-size:11px;color:#00C2B8;font-weight:600;text-transform:uppercase;letter-spacing:.08em">Male Fertility Supplement</div>
-</div>
+<div style="position:relative;border-radius:28px;background:linear-gradient(160deg,#e0fdfb 0%,#b2efea 100%);min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+  <!-- Glow blobs -->
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,184,.28),transparent 68%);pointer-events:none"></div>
+  <div style="position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,184,.16),transparent 70%)"></div>
+  <div style="position:absolute;bottom:-40px;left:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,184,.10),transparent 70%)"></div>
+  <!-- Best Seller badge -->
+  <div style="position:absolute;top:20px;left:20px;z-index:4;font-size:11px;font-weight:700;color:#fff;background:#E87722;padding:5px 16px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 14px rgba(232,119,34,.45)">⭐ Best Seller</div>
+  <!-- Product image -->
+  {% if section.settings.image %}
+  <img src="{{ section.settings.image | image_url: width: 700 }}" alt="Proxeed Plus" style="position:relative;z-index:2;max-height:340px;max-width:82%;width:auto;object-fit:contain;filter:drop-shadow(0 24px 48px rgba(0,0,0,.20));margin:64px 0 96px">
+  {% else %}
+  <div style="position:relative;z-index:2;width:180px;height:180px;border-radius:24px;background:rgba(0,194,184,.08);border:2px dashed rgba(0,194,184,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;margin:64px 0 96px">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00C2B8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span style="font-size:12px;font-weight:600;color:#00C2B8;opacity:.7">Upload product image</span>
+  </div>
+  {% endif %}
+  <!-- Floating info card -->
+  <div style="position:absolute;bottom:20px;left:20px;right:20px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:14px 20px;box-shadow:0 8px 32px rgba(0,0,0,.10);z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <div>
+      <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.3rem;line-height:1.2"><span style="color:#00C2B8;font-weight:700">Pro</span><span style="color:#0a1628">xeed</span><sup style="font-size:.5em;vertical-align:super">®</sup> <span style="font-size:.8rem;font-weight:700;color:#E87722;letter-spacing:.06em">PLUS</span></div>
+      <div style="font-size:11px;color:#00C2B8;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:3px">Male Fertility Supplement</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.5rem;color:#0a1628;line-height:1">£34.99</div>
+      <div style="font-size:11px;color:#6b7485;text-decoration:line-through;margin-top:2px">£44.99</div>
+    </div>
+  </div>
 </div>
 <div>
 <div style="font-size:11px;font-weight:700;color:#00C2B8;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px">Male Fertility</div>
