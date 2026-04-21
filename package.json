@@ -1,0 +1,29 @@
+{
+  "name": "logixx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "motion.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom",
+    "testMatch": ["**/tests/**/*.test.js"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidanoreillyza-bit/Logixx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aidanoreillyza-bit/Logixx/issues"
+  },
+  "homepage": "https://github.com/aidanoreillyza-bit/Logixx#readme",
+  "devDependencies": {
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0"
+  }
+}
