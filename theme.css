@@ -711,84 +711,61 @@ body.drawer-open {
   font-weight: 500;
 }
 
-/* ---------- 10b. PARTNER BAR ---------- */
-.partner-bar-section {
+/* ---------- 10b. PARTNERS SECTION ---------- */
+.partners-section {
   background-color: var(--grey-100);
   border-top: 2px solid var(--grey-200);
   border-bottom: 2px solid var(--grey-200);
   padding-block: var(--sp-8);
 }
 
-.partner-bar-section__label {
+.partners-section__label {
   text-align: center;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--grey-800, #1a202c);
-  margin-bottom: var(--sp-6);
+  color: var(--grey-800);
+  margin-bottom: var(--sp-7);
 }
 
-.partner-bar {
-  overflow: hidden;
-  /* Fade logos out at both edges */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-}
-
-.partner-bar__wrapper {
+/* Logo grid — add as many <li class="partner-logo"> as you need */
+.partners-grid {
   display: flex;
-  width: fit-content;
-  animation: partner-bar-scroll 22s linear infinite;
-}
-
-.partner-bar__wrapper:hover {
-  animation-play-state: paused;
-}
-
-.partner-bar__track {
-  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 64px;
+  justify-content: center;
+  gap: var(--sp-7);
   list-style: none;
-  padding: 0 32px;
-  margin: 0;
 }
 
-.partner-bar__logo {
-  flex-shrink: 0;
+.partner-logo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.partner-bar__logo img {
+.partner-logo img {
   height: 56px;
   width: auto;
+  max-width: 160px;
   object-fit: contain;
-  filter: none;
-  transition: filter 0.3s ease, transform 0.3s ease;
+  filter: grayscale(100%) opacity(55%);
+  transition: filter var(--transition-base), transform var(--transition-base);
 }
 
-.partner-bar__logo img:hover {
+.partner-logo img:hover {
+  filter: grayscale(0%) opacity(100%);
   transform: scale(1.06);
 }
 
-@keyframes partner-bar-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@media (max-width: 640px) {
+  .partner-logo img {
+    height: 40px;
+    max-width: 120px;
+  }
+
+  .partners-grid { gap: var(--sp-5); }
 }
 
 /* ---------- 11. WHY US SECTION ---------- */
@@ -1498,9 +1475,6 @@ body.drawer-open {
   .stats-grid    { grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); }
   .why-us-grid   { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
-
-  .partner-bar__logo img { height: 40px; }
-  .partner-bar__track    { gap: 40px; }
 
   .email-cta-form-wrap { padding: var(--sp-5); }
 
