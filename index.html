@@ -172,65 +172,38 @@
 
     <!-- ========== OUR PARTNERS ========== -->
     <section class="partners-section" aria-label="Our Partners">
-      <div class="container">
-        <p class="partners-section__label">Our Partners</p>
+      <p class="partners-section__label">Our Partners</p>
 
-        <ul class="partners-grid" role="list">
+      <!--
+        TICKER: The track contains 8 real items followed by 8 identical duplicates
+        (aria-hidden) so the loop is seamless. The CSS animates translateX(0) →
+        translateX(-50%), which is exactly one full set, then repeats perfectly.
 
-          <!--
-            HOW TO ADD A LOGO:
-            Replace  src="images/partner-1.png"  with your image file path.
-            Replace  alt="Partner 1"  with the partner's name.
-            Delete the inner <span> once you have a real image.
-          -->
+        TO ADD YOUR LOGO: replace the <img> src and alt on each item.
+        The item label below the image is optional — delete the <span> if you don't want it.
+      -->
+      <div class="partners-ticker" aria-live="off">
+        <ul class="partners-ticker__track" role="list">
 
-          <li class="partner-slot">
-            <img src="images/partner-1.png" alt="Partner 1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="partner-slot__placeholder" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-              <span>Add Logo</span>
-            </span>
-          </li>
+          <!-- ── REAL ITEMS (8) ── -->
+          <li class="partner-logo"><img src="images/partner-1.png" alt="Partner 1" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-2.png" alt="Partner 2" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-3.png" alt="Partner 3" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-4.png" alt="Partner 4" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-5.png" alt="Partner 5" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-6.png" alt="Partner 6" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-7.png" alt="Partner 7" loading="lazy" /></li>
+          <li class="partner-logo"><img src="images/partner-8.png" alt="Partner 8" loading="lazy" /></li>
 
-          <li class="partner-slot">
-            <img src="images/partner-2.png" alt="Partner 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="partner-slot__placeholder" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-              <span>Add Logo</span>
-            </span>
-          </li>
-
-          <li class="partner-slot">
-            <img src="images/partner-3.png" alt="Partner 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="partner-slot__placeholder" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-              <span>Add Logo</span>
-            </span>
-          </li>
-
-          <li class="partner-slot">
-            <img src="images/partner-4.png" alt="Partner 4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="partner-slot__placeholder" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-              <span>Add Logo</span>
-            </span>
-          </li>
-
-          <li class="partner-slot">
-            <img src="images/partner-5.png" alt="Partner 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="partner-slot__placeholder" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-              <span>Add Logo</span>
-            </span>
-          </li>
-
-          <li class="partner-slot">
-            <img src="images/partner-6.png" alt="Partner 6" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="partner-slot__placeholder" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-              <span>Add Logo</span>
-            </span>
-          </li>
+          <!-- ── DUPLICATES for seamless loop (aria-hidden) ── -->
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-1.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-2.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-3.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-4.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-5.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-6.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-7.png" alt="" loading="lazy" /></li>
+          <li class="partner-logo" aria-hidden="true"><img src="images/partner-8.png" alt="" loading="lazy" /></li>
 
         </ul>
       </div>
